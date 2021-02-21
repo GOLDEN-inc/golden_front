@@ -1,38 +1,76 @@
-.App {
-  text-align: left;
-  padding: 1em;
-  margin: 1em;
-  border: 2px solid #d3d3d3;
-  border-radius: .5em;
-  vertical-align: middle;
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-  margin-top: 100px;
+
+.logo-main {
+    height: 150px;
+    width: 150px;
 }
 
-.form {
-  padding: 1em;
+input[type="text"],
+input[type="password"] {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #dddddd;
 }
 
-label {
-  display: flex;
-  font-weight: 600;
+input[type="text"]:focus,
+input[type="password"]:focus {
+    box-shadow: 0 0 5px #dec65f;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #dec65f;
 }
 
-button {
-  justify-content: flex-end;
+button.button1 {
+    display: inline-block;
+    padding: 0.35rem 1.2em;
+    border: 0.1em solid #dec65f;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.2s;
+    border-radius: 0.2em;
+    background-color: #bb8c53;
+    width: 10rem;
 }
 
-.App-title {
-  font-size: 1.5em;
+button.button1:hover {
+    color: #000000;
+    background-color: #dec65f;
 }
 
-.App-intro {
-  font-size: large;
+@media all and (max-width: 30em) {
+    button.button1 {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form-input {
+    padding-bottom: 1.2rem;
+}
+
+.container-forms {
+    text-align: center;
+    padding: 2em;
+    margin: 2em;
+    border: 0.2rem solid #dec65f;
+    border-radius: 0.5em;
+    vertical-align: middle;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+}
+
+.forms-title {
+    padding-top: 1.5rem;
+    padding-bottom: 1em;
 }
