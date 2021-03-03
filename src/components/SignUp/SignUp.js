@@ -80,7 +80,7 @@ const SignUp = () => {
                 </Col>
                 <Col sm="12" lg="6">
                     <Container className="container-forms">
-                        <h4 className="forms-title">Cadastre-se</h4>
+                        <h4 className="forms-title">Cadastre-se.</h4>
                         <Form>
                             <Col sm="12" md={{ size: 8, offset: 2 }}>
                                 <FormGroup className="form-input">
@@ -147,10 +147,12 @@ const SignUp = () => {
                                 className="button1 button-singup"
                                 onClick={handleSubmit}
                             >
-                                Criar!
+                                Criar
                             </button>
                         </Form>
-                        <Link className="login-link" to="/login">Entrar</Link>
+                        <Link className="login-link" to="/login">
+                            Entrar
+                        </Link>
                     </Container>
                 </Col>
             </Row>

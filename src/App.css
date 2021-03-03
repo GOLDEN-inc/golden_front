@@ -1,10 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --white: #fff;
     --main: #bb8c53;
     --second: #dec65f;
 }
 
-/* Quando eu estiver com uma tela menor do que 1080px */
+/* Para quando a tela for menor que 1080px */
 @media (max-width: 1080px) {
     html {
         font-size: 93.75%;
