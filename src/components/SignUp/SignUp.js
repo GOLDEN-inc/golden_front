@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import firebaseConfig from "../../firebase/config";
+import { Redirect, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../actions/signup";
+
 import "./SignUp.css";
 import logo from "../../images/golden_logo_rounded.png";
 
@@ -16,12 +18,15 @@ import {
 import { useEffect } from "react/cjs/react.development";
 
 const SignUp = () => {
-    const [currentUser, setCurrentUser] = useState(null);
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(true);
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState(true);
     const [error, setError] = useState(false);
+    const [routeRedirect, setRedirect] = useState("");
+    const dispatch = useDispatch();
+    const createUserAction = (email, password) =>
+        dispatch(createUser(email, password));
 
     useEffect(() => {
         // Validate Email
@@ -40,21 +45,17 @@ const SignUp = () => {
         }
     }, [email, password]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         if (validateFields()) {
-            e.preventDefault();
-            try {
-                firebaseConfig
-                    .auth()
-                    .createUserWithEmailAndPassword(email, password);
-                setCurrentUser(true);
-            } catch (error) {
-                alert(error);
-            }
+            console.log("creating user");
+            await createUserAction(email, password);
+            setRedirect(true);
         }
     };
 
-    if (currentUser) {
+    const redirectTo = routeRedirect;
+    if (redirectTo) {
         return <Redirect to="/" />;
     }
 
@@ -73,8 +74,8 @@ const SignUp = () => {
                 <Col sm="12" lg="6">
                     <Container className="company-container">
                         <img className="logo-main" src={logo} alt="Logo" />
-                        <h1>GOLDEN</h1>
-                        <p>Venha fazer parte dessa rede.</p>
+                        <h1 className="company-name">GOLDEN</h1>
+                        <p>Indicou. Comprou. Ganhou.</p>
                     </Container>
                 </Col>
                 <Col sm="12" lg="6">
@@ -149,6 +150,7 @@ const SignUp = () => {
                                 Criar!
                             </button>
                         </Form>
+                        <Link className="login-link" to="/login">Entrar</Link>
                     </Container>
                 </Col>
             </Row>

@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
-import { AuthContext } from "../Auth";
-import firebaseConfig from "../../firebase/config";
+import React, { useState } from "react";
+import { Redirect, Link } from "react-router-dom";
 import logo from "../../images/golden_logo_rounded.png";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { loginUser } from "../../actions/login";
+import { useDispatch } from "react-redux";
+
 import "./Login.css";
 
 import { Container, Col, Form, FormGroup, Input, Row } from "reactstrap";
@@ -10,18 +12,27 @@ import { Container, Col, Form, FormGroup, Input, Row } from "reactstrap";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [redirect, setRedirect] = useState(false);
 
-    const handleSubmit = (e) => {
+    const dispatch = useDispatch();
+    const logInUserAction = (email, password) =>
+        dispatch(loginUser(email, password));
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            firebaseConfig.auth().signInWithEmailAndPassword(email, password);
-        } catch (error) {
-            alert(error);
+        if (email !== "" && password !== "") {
+            console.log("login user in");
+            let user = await logInUserAction(email, password);
+            if (user) {
+                setRedirect(true);
+            }
+        } else {
+            console.log("need to fill the credentials");
         }
     };
 
-    const { currentUser } = useContext(AuthContext);
-    if (currentUser) {
+    const redirectTo = redirect;
+    if (redirect) {
         return <Redirect to="/" />;
     }
 
@@ -36,7 +47,7 @@ const Login = () => {
                     <Container className="container-forms">
                         <img className="logo-main" src={logo} alt="Logo" />
                         <h1 className="main-title-login">GOLDEN</h1>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Col sm="12" md={{ size: 8, offset: 2 }}>
                                 <FormGroup className="form-input">
                                     <Input
@@ -62,13 +73,11 @@ const Login = () => {
                                     />
                                 </FormGroup>
                             </Col>
-                            <button
-                                className="button1 button-singup"
-                                onClick={handleSubmit}
-                            >
+                            <button className="button1 button-singup">
                                 Entrar
                             </button>
                         </Form>
+                        <Link className="registrar-link" to="/registrar">Cadastre-se</Link>
                     </Container>
                 </Col>
             </Row>

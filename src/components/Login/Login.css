@@ -1,3 +1,12 @@
-.main-title-login{
+.main-title-login {
     padding-bottom: 2rem;
+}
+
+.registrar-link {
+    color: var(--main);
+}
+
+.registrar-link:hover {
+    color: var(--second);
+    text-decoration: none;
 }

@@ -2,14 +2,32 @@
     padding: 0rem 1.5rem 0;
 }
 
-.company-container{
+.company-container {
     padding-top: 5rem;
     vertical-align: middle;
     text-align: center;
     position: relative;
 }
 
+/* Quando eu estiver com uma tela menor do que 1080px */
+@media (max-width: 991px) {
+    .company-container {
+        padding-top: 0rem;
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+    }
+}
 
 .button-singup {
     padding-top: 5rem;
+}
+
+.login-link {
+    color: var(--main);
+}
+
+.login-link:hover {
+    color: var(--second);
+    text-decoration: none;
 }
