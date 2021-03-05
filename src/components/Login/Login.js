@@ -41,11 +41,11 @@ const Login = () => {
             <Row>
                 <Col
                     lg={{ size: 6, offset: 3 }}
-                    md={{ size: 6, offset: 3 }}
-                    sm="6"
+                    md={{ size: 8, offset: 2 }}
+                    md={{ size: 10, offset: 1 }}
                 >
                     <Container className="container-forms">
-                        <img className="logo-main" src={logo} alt="Logo" />
+                        <img className="logo-main" src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2" alt="Logo" />
                         <h1 className="main-title-login">GOLDEN</h1>
                         <Form onSubmit={handleSubmit}>
                             <Col sm="12" md={{ size: 8, offset: 2 }}>

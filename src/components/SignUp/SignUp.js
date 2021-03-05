@@ -73,7 +73,7 @@ const SignUp = () => {
             <Row>
                 <Col sm="12" lg="6">
                     <Container className="company-container">
-                        <img className="logo-main" src={logo} alt="Logo" />
+                        <img className="logo-main" src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2" alt="Logo" />
                         <h1 className="company-name">GOLDEN</h1>
                         <p>Indicou. Comprou. Ganhou.</p>
                     </Container>
