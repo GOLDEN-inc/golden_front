@@ -81,7 +81,7 @@ const SignUp = () => {
                 <Col sm="12" lg="6">
                     <Container className="container-forms">
                         <h4 className="forms-title">Cadastre-se.</h4>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Col sm="12" md={{ size: 8, offset: 2 }}>
                                 <FormGroup className="form-input">
                                     {!emailError || !error ? (
@@ -145,7 +145,6 @@ const SignUp = () => {
                             </Col>
                             <button
                                 className="button1 button-singup"
-                                onClick={handleSubmit}
                             >
                                 Criar
                             </button>

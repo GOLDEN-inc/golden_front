@@ -74,6 +74,105 @@ class Firebase {
         return firestorePost;
     }
 
+    async getPost(postid) {
+        const post = await firebase
+            .firestore()
+            .collection("posts")
+            .doc(postid)
+            .get();
+
+        const postData = post.data();
+        console.log("postData ==> ", postData);
+        return postData;
+    }
+
+    async getPosts() {
+        let postsArray = [];
+
+        const posts = await firebase.firestore().collection("posts").get();
+        posts.forEach((doc) => {
+            postsArray.push({ id: doc.id, data: doc.data() });
+        });
+
+        return postsArray;
+    }
+
+    async updatePost(postid, postData) {
+        if (postData["cover"]) {
+            const storageRef = firebase.storage().ref();
+            // create a child inside the storage
+            const storageChild = storageRef.child(post.cover.name);
+            const postCover = await storageChild.put(post.cover);
+            const downloadURL = await storageChild.getDownloadURL();
+            const fileRef = postCover.ref._delegate._location.path;
+
+            await storageRef
+                .child(postData["oldcover"])
+                .delete()
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            console.log("image deleted successfullt");
+
+            let updatedPost = {
+                title: postData.title,
+                content: postData.content,
+                cover: downloadURL,
+                filered: fileRef,
+            };
+
+            const post = await firebase
+                .firestore()
+                .collection("posts")
+                .doc(postid)
+                .set(updatedPost, { merge: true })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            console.log("post updated successfully");
+
+            return post;
+        } else {
+            const post = await firebase
+                .firestore()
+                .collection("posts")
+                .doc(postid)
+                .set(postData, { merge: true })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            console.log("Post updated Successfully");
+
+            return post;
+        }
+    }
+
+    async deletePost(postid, fileref) {
+        const storageRef = firebase.storage().ref();
+        await storageRef
+            .child(fileref)
+            .delete()
+            .catch((err) => {
+                console.log(err);
+            });
+
+        console.log("Image deleted succesfully");
+
+        const post = await firebase
+            .firestore()
+            .collection("posts")
+            .doc(postid)
+            .delete()
+            .catch((err) => console.log(err));
+
+        console.log("Post deleted succesfully");
+
+        return post;
+    }
+
     async getUserState() {
         return new Promise((resolve) => {
             this.auth.onAuthStateChanged(resolve);
