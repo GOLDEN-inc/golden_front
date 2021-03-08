@@ -5,6 +5,7 @@ import { getPost } from "../../actions/getPost";
 import { updatePost } from "../../actions/updatePost";
 import { deletePost } from "../../actions/deletePost";
 import { Redirect } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import firebase from "../../firebase/config";
 import "./Post.css";
 
@@ -100,9 +101,9 @@ const Post = (props) => {
             (userState != null && isBusy == false)
         ) {
             deleteButton = (
-                <button className="delete" onClick={(e) => deleteCurrentPost()}>
-                    Delete Post
-                </button>
+                <Button color="danger" onClick={(e) => deleteCurrentPost()}>
+                    Apagar
+                </Button>
             );
         }
         if (isBusy) {
@@ -115,31 +116,39 @@ const Post = (props) => {
         } else {
             updateForm = (
                 <React.Fragment>
-                    <form className="editForm" onSubmit={updateCurrentPost}>
-                        <p>Update the current post</p>
+                    <Form className="form-post" onSubmit={updateCurrentPost}>
+                        <h3>Alterar a indicação</h3>
 
-                        <label htmlFor="title">Post Title: </label>
-                        <input
-                            type="text"
-                            name="title"
-                            ref={titleRef}
-                            defaultValue={defaultTitle}
-                        />
+                        <FormGroup>
+                            <Label htmlFor="title">Nome do Local</Label>
+                            <Input
+                                type="text"
+                                name="email"
+                                ref={titleRef}
+                                defaultValue={defaultTitle}
+                            />
+                        </FormGroup>
 
-                        <label htmlFor="content">Post Content: </label>
-                        <textarea
-                            name="content"
-                            ref={contentRef}
-                            defaultValue={defaultContent}
-                        ></textarea>
+                        <FormGroup>
+                            <Label htmlFor="content">Descrição do local</Label>
+                            <Input
+                                type="textarea"
+                                name="content"
+                                ref={contentRef}
+                                defaultValue={defaultContent}
+                            />
+                        </FormGroup>
 
-                        <label htmlFor="cover" className="cover">
-                            Cover
-                        </label>
-                        <input type="file" ref={fileRef} />
+                        <FormGroup>
+                            <Label for="exampleFile">Foto</Label>
+                            <Input type="file" ref={fileRef} />
+                            <FormText color="muted">
+                                Foto ou print da indicação.
+                            </FormText>
+                        </FormGroup>
 
                         <input type="submit" value="update post" />
-                    </form>
+                    </Form>
                 </React.Fragment>
             );
         }
