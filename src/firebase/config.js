@@ -59,6 +59,7 @@ class Firebase {
         let newPost = {
             title: post.title,
             content: post.content,
+            link: post.link,
             cover: downloadURL,
             fileref: fileRef,
         };
@@ -118,6 +119,7 @@ class Firebase {
             let updatedPost = {
                 title: postData.title,
                 content: postData.content,
+                link: postData.link,
                 cover: downloadURL,
                 filered: fileRef,
             };

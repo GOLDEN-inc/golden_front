@@ -7,25 +7,6 @@
     display: block;
 }
 
-
-.single {
-    width: 50%;
-    height: 60%;
-    margin: 3rem auto;
-    padding: 1rem;
-    border: 0.5rem solid #eee;
-}
-
-@media (max-width: 720px) {
-    .single {
-        width: 80%;
-        height: 60%;
-        margin: 3rem auto;
-        padding: 1rem;
-        border: 0.5rem solid #eee;
-    }
-}
-
 .single > img {
     width: 100%;
 }
@@ -52,10 +33,6 @@
     color: #222;
 }
 
-input[type="file"] {
-    display: none;
-}
-
 .input-file {
     border: 1px solid rgb(138, 55, 55);
     display: inline-block;
@@ -67,5 +44,5 @@ input[type="file"] {
     display: none;
     height: 15rem;
     width: 5rem;
-    background-image: url("./camera.png");
+    background-image: url("../../images/camera.png");
 }

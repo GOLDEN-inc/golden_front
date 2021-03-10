@@ -9,6 +9,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import firebase from "../../firebase/config";
 import "./Post.css";
 
+import camera from "../../images/camera.png";
+
 const Post = (props) => {
     const loginSelector = useSelector((state) => state.login);
     const signinSelector = useSelector((state) => state.signup);
@@ -118,7 +120,6 @@ const Post = (props) => {
                 <React.Fragment>
                     <Form className="form-post" onSubmit={updateCurrentPost}>
                         <h3>Alterar a indicação</h3>
-
                         <FormGroup>
                             <Label htmlFor="title">Nome do Local</Label>
                             <Input
@@ -128,7 +129,6 @@ const Post = (props) => {
                                 defaultValue={defaultTitle}
                             />
                         </FormGroup>
-
                         <FormGroup>
                             <Label htmlFor="content">Descrição do local</Label>
                             <Input
@@ -138,25 +138,24 @@ const Post = (props) => {
                                 defaultValue={defaultContent}
                             />
                         </FormGroup>
-
-                        <FormGroup>
-                            <Label for="exampleFile">Foto</Label>
-                            <Input type="file" ref={fileRef} />
-                            <FormText color="muted">
-                                Foto ou print da indicação.
-                            </FormText>
-                        </FormGroup>
-
-                        <input type="submit" value="update post" />
+                        <input type="file" id="upload" hidden />
+                        <label htmlFor="upload">
+                            <img
+                                src={camera}
+                                alt="Girl in a jacket"
+                                width="30rem"
+                                height="30rem"
+                            />
+                        </label>{" "}
+                        <br />
+                        <button className="button1">Atualizar</button>
                     </Form>
                 </React.Fragment>
             );
         }
     }
 
-    console.log("################ - 0. Timer", timer);
     if (timer) {
-        console.log("################ - 1");
         currentPost = <div className="loader">Loading...</div>;
     } else {
         if (
@@ -164,10 +163,9 @@ const Post = (props) => {
             signinSelector.user.hasOwnProperty("user") ||
             userState != null
         ) {
-            console.log("################ - 2");
             editButton = (
-                <button className="edit" onClick={(e) => editPost()}>
-                    Edit Post
+                <button className="button1" onClick={(e) => editPost()}>
+                    Editar indicação
                 </button>
             );
         }
@@ -178,6 +176,7 @@ const Post = (props) => {
 
                 <h2>{getPostSelector.post.title}</h2>
                 <p>{getPostSelector.post.content}</p>
+                <p>{getPostSelector.post.link}</p>
 
                 {editButton}
                 {updateForm}

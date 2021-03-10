@@ -50,6 +50,7 @@ a {
 }
 
 input[type="text"],
+input[type="textarea"],
 input[type="password"] {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -62,6 +63,7 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
+input[type="textarea"]:focus,
 input[type="password"]:focus {
     box-shadow: 0 0 5px var(--second);
     padding: 3px 0px 3px 3px;
@@ -92,10 +94,9 @@ button.button1:hover {
     background-color: var(--second);
 }
 
-@media all and (max-width: 30em) {
+@media all and (max-width: 720px) {
     button.button1 {
-        display: block;
-        margin: 0.4em auto;
+        width: 10rem;
     }
 }
 
@@ -121,5 +122,21 @@ button.button1:hover {
     padding-bottom: 1em;
 }
 
+.single {
+    width: 50%;
+    height: 60%;
+    margin: 3rem auto;
+    padding: 1rem;
+    border: 0.5rem solid #eee;
+}
 
+@media (max-width: 720px) {
+    .single {
+        width: 85%;
+        height: 60%;
+        margin: 3rem auto;
+        padding: 1rem;
+        border: 0.5rem solid #eee;
+    }
+}
 
