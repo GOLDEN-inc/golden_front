@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../actions/create";
 import { Link } from "react-router-dom";
+
 import {
     Button,
     Form,
@@ -13,6 +14,7 @@ import {
     Container,
     Row,
     Col,
+    Alert,
 } from "reactstrap";
 
 import camera from "../../images/camera.png";
@@ -24,12 +26,28 @@ const Create = () => {
     const [content, setContent] = useState("");
     const [link, setLink] = useState("");
     const [cover, setCover] = useState("");
+    const [error, setError] = useState("");
 
     const [routeRedirect, setRedirect] = useState("");
     const [loading, setLoading] = useState(false);
 
     const dispatch = useDispatch();
     const createPostAction = (post) => dispatch(createPost(post));
+
+    const types = ["image/png", "image/jpeg"];
+
+    const handleChange = (e) => {
+        console.log(e.target.files[0]);
+        let selected = e.target.files[0];
+
+        if (selected && types.includes(selected.type)) {
+            setCover(selected);
+            setError("");
+        } else {
+            setCover(null);
+            setError("Please select an image file (png or jpg)");
+        }
+    };
 
     const addPost = async (e) => {
         e.preventDefault();
@@ -38,7 +56,7 @@ const Create = () => {
             title,
             content,
             link,
-            cover: cover[0],
+            cover: cover,
         };
 
         await createPostAction(post);
@@ -87,25 +105,29 @@ const Create = () => {
                     Publique uma foto ou print!
                 </Label>
                 <br />
-                <input
-                    type="file"
-                    id="upload"
-                    hidden
-                    onChange={(e) => setCover(e.target.files)}
-                />
-                <label htmlFor="upload">
-                    <img
-                        src={camera}
-                        alt="Girl in a jacket"
-                        width="30rem"
-                        height="30rem"
-                    />
+
+                <label>
+                    <input type="file" onChange={handleChange} />
+                    <span>
+                        <img
+                            src={camera}
+                            alt="Girl in a jacket"
+                            width="30rem"
+                            height="30rem"
+                        />
+                    </span>
+                    <br/>
+                    {cover && (
+                        <Alert color="success">
+                            Foto adicionada com sucesso!
+                        </Alert>
+                    )}
                 </label>
                 <Container className="bottom-buttons">
                     <Row>
                         <Col
                             md={{ size: 6, offset: 0 }}
-                            sm={{ size: 'auto', offset: 1 }}
+                            sm={{ size: "auto", offset: 1 }}
                             xs="10"
                         >
                             <button className="button1">Criar indicação</button>

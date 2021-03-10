@@ -140,3 +140,8 @@ button.button1:hover {
     }
 }
 
+label input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}

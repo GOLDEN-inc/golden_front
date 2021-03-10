@@ -1,15 +1,27 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getPost } from "../../actions/getPost";
 import { updatePost } from "../../actions/updatePost";
 import { deletePost } from "../../actions/deletePost";
 import { Redirect } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {
+    Button,
+    Form,
+    FormGroup,
+    Label,
+    Input,
+    FormText,
+    Container,
+    Row,
+    Col,
+} from "reactstrap";
 import firebase from "../../firebase/config";
 import "./Post.css";
 
 import camera from "../../images/camera.png";
+import home from "../../images/home.png";
 
 const Post = (props) => {
     const loginSelector = useSelector((state) => state.login);
@@ -33,7 +45,6 @@ const Post = (props) => {
     const [postid, setPostId] = useState("");
 
     const getPostSelector = useSelector((state) => state.getPost);
-    console.log(getPostSelector);
     const dispatch = useDispatch();
 
     const getPostAction = (postid) => dispatch(getPost(postid));
@@ -174,11 +185,31 @@ const Post = (props) => {
             <div className="single">
                 <img src={getPostSelector.post.cover} />
 
-                <h2>{getPostSelector.post.title}</h2>
-                <p>{getPostSelector.post.content}</p>
-                <p>{getPostSelector.post.link}</p>
-
-                {editButton}
+                <Container>
+                    <Row>
+                        <Col>
+                            <h2>{getPostSelector.post.title}</h2>
+                            <p>{getPostSelector.post.content}</p>
+                            <p>{getPostSelector.post.link}</p>
+                            {editButton}
+                        </Col>
+                        <Col 
+                            className="home-style"
+                            lg={{ size: 1, offset: 2 }}
+                            sm={{ size: 2, offset: 3 }}
+                            xs="2"
+                        >
+                            <Link to="/">
+                                <img
+                                    src={home}
+                                    alt="Let's go back home baby baby"
+                                    width="30rem"
+                                    height="30rem"
+                                />
+                            </Link>
+                        </Col>
+                    </Row>
+                </Container>
                 {updateForm}
                 {deleteButton}
             </div>
