@@ -13,7 +13,7 @@ import {
     FormGroup,
     Label,
     Input,
-    Container,
+    Container,  
     Row,
     Col,
 } from "reactstrap";
@@ -80,8 +80,8 @@ const Post = (props) => {
     const updateCurrentPost = async (e) => {
         e.preventDefault();
         setIsBusy(true);
-        console.log("titleRef ==> ", titleRef);
-        console.log("titleRef ==> ", titleRef.current.value);
+        console.log("fileRef ==> ", fileRef);
+        console.log("fileRef ==> ", fileRef.current);
         const post = {
             id: postid,
             title: titleRef.current.value,

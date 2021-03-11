@@ -100,6 +100,24 @@ button.button1:hover {
     }
 }
 
+button.button2 {
+    display: inline-block;
+    padding: 0.35rem 0.1em;
+    border: 0.1em solid var(--second);
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    font-family: "Roboto", sans-serif;
+    font-weight: 3rem;
+    color: var(--white);
+    text-align: center;
+    transition: all 0.2s;
+    border-radius: 0.4em;
+    background-color: var(--main);
+    width: 5rem;
+}
+
 .form-input {
     padding-bottom: 1.2rem;
 }

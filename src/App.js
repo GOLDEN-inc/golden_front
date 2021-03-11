@@ -4,7 +4,6 @@ import { Provider, useSelector } from "react-redux";
 
 import firebase from "./firebase/config";
 import Routes from "./routes";
-import Nav from "./components/Nav";
 import "./App.css";
 
 function App() {
