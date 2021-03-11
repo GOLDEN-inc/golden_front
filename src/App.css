@@ -165,3 +165,15 @@ label input {
     width: 0;
     opacity: 0;
 }
+
+a {
+    color: var(--main) !important;
+}
+
+a:hover {
+    color: var(--third) !important;
+}
+
+.link {
+    padding: 0 2rem 2rem 0;
+}

@@ -129,13 +129,15 @@ const Home = (props) => {
                 <Container>
                     <Row>
                         <Col md={6}>
-                            <p className="main-text">Cada post possui uma indicação.</p>
+                            <p className="main-text">
+                                Cada post possui uma indicação.
+                            </p>
                         </Col>
                         <Col md={6}>
                             <p className="main-text">
-                                Clique no post e descubra mais sobre quem
-                                publicou, qual o local e ganhe um GOLDEN de
-                                desconto.
+                                Clique no post. Descubra mais sobre quem
+                                publicou. Encontre um novo local, além de ganhar
+                                um GOLDEN de desconto em lojas parceiras.
                             </p>
                         </Col>
                     </Row>
@@ -158,6 +160,13 @@ const Home = (props) => {
                                 <p className="post-title">{post.data.title}</p>
                             </Link>
                             <p className="post-content">{post.data.content}</p>
+                            <a
+                                className="link"
+                                target="_blank"
+                                href={post.data.link}
+                            >
+                                {post.data.link}
+                            </a>
                         </div>
                     );
                 })}

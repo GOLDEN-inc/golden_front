@@ -118,3 +118,9 @@
 .bg-pattern-effect img {
     max-width: 100%;
 }
+
+@media (min-width: 200px) and (max-width: 1024px) {
+    .bg-pattern-effect {
+        bottom: -7px;
+    }
+}

@@ -13,7 +13,7 @@ import {
     FormGroup,
     Label,
     Input,
-    Container,  
+    Container,
     Row,
     Col,
 } from "reactstrap";
@@ -206,25 +206,41 @@ const Post = (props) => {
                 <Container>
                     <Row>
                         <Col>
-                            <h2>{getPostSelector.post.title}</h2>
-                            <p>{getPostSelector.post.content}</p>
-                            <p>{getPostSelector.post.link}</p>
-                            {editButton}
-                        </Col>
-                        <Col
-                            className="home-style"
-                            lg={{ size: 1, offset: 2 }}
-                            sm={{ size: 2, offset: 3 }}
-                            xs="2"
-                        >
-                            <Link to="/">
-                                <img
-                                    src={home}
-                                    alt="Let's go back home baby baby"
-                                    width="30rem"
-                                    height="30rem"
-                                />
-                            </Link>
+                            <Row>
+                                <h2>{getPostSelector.post.title}</h2>
+                            </Row>
+                            <Row>
+                                <p>{getPostSelector.post.content}</p>
+                            </Row>
+                            <Row>
+                                <a
+                                    className="link"
+                                    target="_blank"
+                                    href={getPostSelector.post.link}
+                                >
+                                    {getPostSelector.post.link}
+                                </a>
+                            </Row>
+                            <Row>
+                                <Col lg="6" md="6" sm="6" xs="9">
+                                    {editButton}
+                                </Col>
+                                <Col
+                                    lg={{ size: "auto", offset: 4 }}
+                                    md={{ size: "auto", offset: 3 }}
+                                    sm={{ size: "auto", offset: 4 }}
+                                    xs="3"
+                                >
+                                    <Link to="/">
+                                        <img
+                                            src={home}
+                                            alt="Let's go back home baby baby"
+                                            width="30rem"
+                                            height="30rem"
+                                        />
+                                    </Link>
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </Container>
