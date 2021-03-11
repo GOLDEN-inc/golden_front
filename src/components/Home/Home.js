@@ -139,8 +139,9 @@ const Home = (props) => {
                                 }}
                             />
                             <Link to={"post/" + post.id}>
-                                <p>{post.data.title}</p>
+                                <p className="post-title">{post.data.title}</p>
                             </Link>
+                            <p className="post-content">{post.data.content}</p>
                         </div>
                     );
                 })}

@@ -55,10 +55,14 @@
     background-size: 200% !important;
     border-radius: 10px;
 }
-.post p {
+.post-title {
     color: var(--main);
     text-decoration: none;
     font-weight: bold;
+}
+
+.post-content {
+    color: var(--black);
 }
 
 .main-text-container {
