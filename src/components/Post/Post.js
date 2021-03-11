@@ -7,12 +7,12 @@ import { updatePost } from "../../actions/updatePost";
 import { deletePost } from "../../actions/deletePost";
 import { Redirect } from "react-router-dom";
 import {
+    Alert,
     Button,
     Form,
     FormGroup,
     Label,
     Input,
-    FormText,
     Container,
     Row,
     Col,
@@ -33,6 +33,7 @@ const Post = (props) => {
 
     const [defaultTitle, setDefaultTitle] = useState("");
     const [defaultContent, setDefaultContent] = useState("");
+    const [defaultLink, setDefaultLink] = useState("");
     const [fileref, setFileRef] = useState("");
     const [routeRedirect, setRedirect] = useState("");
 
@@ -41,6 +42,7 @@ const Post = (props) => {
     const titleRef = useRef(null);
     const contentRef = useRef(null);
     const fileRef = useRef(null);
+    const linkRef = useRef(null);
 
     const [postid, setPostId] = useState("");
 
@@ -78,10 +80,13 @@ const Post = (props) => {
     const updateCurrentPost = async (e) => {
         e.preventDefault();
         setIsBusy(true);
+        console.log("titleRef ==> ", titleRef);
+        console.log("titleRef ==> ", titleRef.current.value);
         const post = {
             id: postid,
             title: titleRef.current.value,
             content: contentRef.current.value,
+            link: linkRef.current.value,
         };
 
         if (fileRef.current.files.length > 0) {
@@ -89,7 +94,7 @@ const Post = (props) => {
             post["oldcover"] = getPostSelector.post.fileref;
         }
 
-        let updatedRes = await updatePostAction(postid, post);
+        await updatePostAction(postid, post);
         setIsBusy(false);
         setRedirect(true);
     };
@@ -97,6 +102,7 @@ const Post = (props) => {
     const editPost = () => {
         setDefaultTitle(getPostSelector.post.title);
         setDefaultContent(getPostSelector.post.content);
+        setDefaultLink(getPostSelector.post.link);
         setFileRef(getPostSelector.post.fileref);
         setEditMode(!editMode);
     };
@@ -122,8 +128,8 @@ const Post = (props) => {
         if (isBusy) {
             updateForm = (
                 <div className="processing">
-                    <p>Request is being processed</p>
-                    <div className="loader">Loading...</div>
+                    <p>Sua indicação está sendo atualizada!</p>
+                    <div className="loader">Carregando...</div>
                 </div>
             );
         } else {
@@ -136,7 +142,7 @@ const Post = (props) => {
                             <Input
                                 type="text"
                                 name="email"
-                                ref={titleRef}
+                                innerRef={titleRef}
                                 defaultValue={defaultTitle}
                             />
                         </FormGroup>
@@ -145,19 +151,31 @@ const Post = (props) => {
                             <Input
                                 type="textarea"
                                 name="content"
-                                ref={contentRef}
+                                innerRef={contentRef}
                                 defaultValue={defaultContent}
                             />
                         </FormGroup>
-                        <input type="file" id="upload" hidden />
-                        <label htmlFor="upload">
-                            <img
-                                src={camera}
-                                alt="Girl in a jacket"
-                                width="30rem"
-                                height="30rem"
+                        <FormGroup>
+                            <Label htmlFor="link">Link</Label>
+                            <Input
+                                type="text"
+                                name="link"
+                                innerRef={linkRef}
+                                defaultValue={defaultLink}
                             />
-                        </label>{" "}
+                        </FormGroup>
+                        <label>
+                            <input type="file" id="upload" ref={fileRef} />
+                            <span>
+                                <img
+                                    src={camera}
+                                    alt="Girl in a jacket"
+                                    width="30rem"
+                                    height="30rem"
+                                />
+                            </span>
+                            <br />
+                        </label>
                         <br />
                         <button className="button1">Atualizar</button>
                     </Form>
@@ -193,7 +211,7 @@ const Post = (props) => {
                             <p>{getPostSelector.post.link}</p>
                             {editButton}
                         </Col>
-                        <Col 
+                        <Col
                             className="home-style"
                             lg={{ size: 1, offset: 2 }}
                             sm={{ size: 2, offset: 3 }}

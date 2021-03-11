@@ -114,7 +114,7 @@ class Firebase {
                     console.log(err);
                 });
 
-            console.log("image deleted successfullt");
+            console.log("image deleted successfully");
 
             let updatedPost = {
                 title: postData.title,

@@ -5,12 +5,9 @@ import { createPost } from "../../actions/create";
 import { Link } from "react-router-dom";
 
 import {
-    Button,
     Form,
-    FormGroup,
     Label,
     Input,
-    FormText,
     Container,
     Row,
     Col,
@@ -37,7 +34,6 @@ const Create = () => {
     const types = ["image/png", "image/jpeg"];
 
     const handleChange = (e) => {
-        console.log(e.target.files[0]);
         let selected = e.target.files[0];
 
         if (selected && types.includes(selected.type)) {
