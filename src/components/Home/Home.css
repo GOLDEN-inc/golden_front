@@ -60,3 +60,12 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+.main-text-container {
+    padding-top: 4rem;
+}
+
+.main-text {
+    text-align: center;
+    padding: 4rem 0;
+}

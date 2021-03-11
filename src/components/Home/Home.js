@@ -13,7 +13,7 @@ import golden from "../../images/golden_baby.jpg";
 import { getPosts } from "../../actions/getPosts";
 
 import Nav from "../Navbar/Nav";
-import "./Home.css"
+import "./Home.css";
 
 import firebase from "../../firebase/config";
 
@@ -107,6 +107,26 @@ const Home = (props) => {
                         </Container>
                     </div>
                 </section>
+            </React.Fragment>
+
+            <React.Fragment>
+                <Container className="main-text-container">
+                    <Row>
+                        <Col>
+                            <h1 className="main-text">
+                                Indicações de nossa rede
+                            </h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <p>
+                            Abaixo estão todas as indicações feitas em nossas
+                            redes, para aproximar pessoas e ajudar tanto
+                            estabelecimentos onlines, quanto físico.
+                        </p>
+                        <p>Divirta-se, Golden!</p>
+                    </Row>
+                </Container>
             </React.Fragment>
 
             <div className="posts">
