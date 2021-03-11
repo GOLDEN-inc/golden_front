@@ -9,6 +9,7 @@ import ReactTextRotator from "react-text-rotator";
 
 import arrow from "../../images/arrow-down-white.png";
 import golden from "../../images/golden_baby.jpg";
+import bg from "../../images/bg-pattern-light.png";
 
 import { getPosts } from "../../actions/getPosts";
 
@@ -16,6 +17,8 @@ import Nav from "../Navbar/Nav";
 import "./Home.css";
 
 import firebase from "../../firebase/config";
+
+import SectionTitle from "./SectionTitle";
 
 const Home = (props) => {
     const [userState, setUserState] = useState(null);
@@ -113,21 +116,34 @@ const Home = (props) => {
                 <Container className="main-text-container">
                     <Row>
                         <Col>
-                            <h1 className="main-text">
-                                Indicações de nossa rede
-                            </h1>
+                            <SectionTitle
+                                title="Indicações feitas pelos nossos influenciadores"
+                                desc="Indique. Conheça. Ganhe Descontos."
+                            />
                         </Col>
                     </Row>
-                    <Row>
-                        <p>
-                            Abaixo estão todas as indicações feitas em nossas
-                            redes, para aproximar pessoas e ajudar tanto
-                            estabelecimentos onlines, quanto físico.
-                        </p>
-                        <p>Divirta-se, Golden!</p>
-                    </Row>
+                    <hr className="line"></hr>
                 </Container>
             </React.Fragment>
+            <section className="section bg-main" id="process">
+                <Container>
+                    <Row>
+                        <Col md={6}>
+                            <p className="main-text">Cada post possui uma indicação.</p>
+                        </Col>
+                        <Col md={6}>
+                            <p className="main-text">
+                                Clique no post e descubra mais sobre quem
+                                publicou, qual o local e ganhe um GOLDEN de
+                                desconto.
+                            </p>
+                        </Col>
+                    </Row>
+                </Container>
+                <div className="bg-pattern-effect">
+                    <img src={bg} alt="pattern" />
+                </div>
+            </section>
 
             <div className="posts">
                 {getPostsSelector.posts.map((post) => {

@@ -1,5 +1,5 @@
 .bg-overlay {
-    background: linear-gradient(to right, #bb8c53, #f5c16c);
+    background: linear-gradient(to right, var(--main), var(--third));
     opacity: 0.9;
     position: absolute;
     height: 100%;
@@ -8,6 +8,10 @@
     bottom: 0;
     left: 0;
     top: 0;
+}
+
+.bg-main {
+    background-color: var(--main);
 }
 
 .display-table-cell {
@@ -29,6 +33,28 @@
 
 .section-lg {
     padding: 5.25rem 0;
+}
+
+.section-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    padding-bottom: 1rem;
+    line-height: 1;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.section-title-border {
+    width: 50px;
+    height: 2px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--main);
+}
+
+.section-subtitle {
+    letter-spacing: 0.02em;
 }
 
 .vh-100 {
@@ -71,5 +97,24 @@
 
 .main-text {
     text-align: center;
-    padding: 4rem 0;
+    font-weight: bold;
+}
+
+.line {
+    padding-bottom: 4rem;
+}
+
+.description {
+    text-align: center;
+}
+
+.bg-pattern-effect {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.bg-pattern-effect img {
+    max-width: 100%;
 }
