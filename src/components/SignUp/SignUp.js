@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../actions/signup";
 
 import "./SignUp.css";
-import logo from "../../images/golden_logo_rounded.png";
 
 import {
     Container,
@@ -15,7 +14,6 @@ import {
     Input,
     Row,
 } from "reactstrap";
-import { useEffect } from "react/cjs/react.development";
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -73,7 +71,11 @@ const SignUp = () => {
             <Row>
                 <Col sm="12" lg="6">
                     <Container className="company-container">
-                        <img className="logo-main" src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2" alt="Logo" />
+                        <img
+                            className="logo-main"
+                            src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2"
+                            alt="Logo"
+                        />
                         <h1 className="company-name">GOLDEN</h1>
                         <p>Indicou. Comprou. Ganhou.</p>
                     </Container>
@@ -143,9 +145,7 @@ const SignUp = () => {
                                     )}
                                 </FormGroup>
                             </Col>
-                            <button
-                                className="button1 button-singup"
-                            >
+                            <button className="button1 button-singup">
                                 Criar
                             </button>
                         </Form>

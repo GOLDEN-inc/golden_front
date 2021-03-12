@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Store from "./store/store";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
-import firebase from "./firebase/config";
 import Routes from "./routes";
 import "./App.css";
 

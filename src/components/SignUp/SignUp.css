@@ -9,7 +9,7 @@
     position: relative;
 }
 
-/* Quando eu estiver com uma tela menor do que 1080px */
+/* Quando eu estiver com uma tela menor do que ...px */
 @media (max-width: 991px) {
     .company-container {
         padding-top: 0rem;

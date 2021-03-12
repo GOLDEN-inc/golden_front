@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
-import logo from "../../images/golden_logo_rounded.png";
-import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import { loginUser } from "../../actions/login";
 import { useDispatch } from "react-redux";
 

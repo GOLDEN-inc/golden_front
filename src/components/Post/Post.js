@@ -117,7 +117,7 @@ const Post = (props) => {
         if (
             loginSelector.user.hasOwnProperty("user") ||
             signinSelector.user.hasOwnProperty("user") ||
-            (userState != null && isBusy == false)
+            (userState != null && isBusy === false)
         ) {
             deleteButton = (
                 <Button color="danger" onClick={(e) => deleteCurrentPost()}>

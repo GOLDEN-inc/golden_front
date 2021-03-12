@@ -126,9 +126,8 @@ button.button2 {
 
 .container-forms {
     text-align: center;
-    padding: 2em;
-    margin: 2em;
-    margin-left: 3rem;
+    margin-top: 2em;
+    padding-bottom: 1em;
     border: 0.2rem solid var(--second);
     border-radius: 0.5em;
     vertical-align: middle;
