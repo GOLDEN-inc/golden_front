@@ -135,9 +135,18 @@ const Home = (props) => {
                         </Col>
                         <Col md={6}>
                             <p className="main-text">
-                                Clique no post. Descubra mais sobre quem
-                                publicou. Encontre um novo local, além de ganhar
-                                um GOLDEN de desconto em lojas parceiras.
+                                Clique no post que tiver interesse.
+                            </p>
+                        </Col>
+                        <Col md={6}>
+                            <p className="main-text">
+                                Descubra um local ou um produto novo.
+                            </p>
+                        </Col>
+                        <Col md={6}>
+                            <p className="main-text">
+                                Além de ganhar um GOLDEN de desconto em lojas
+                                parceiras.
                             </p>
                         </Col>
                     </Row>
