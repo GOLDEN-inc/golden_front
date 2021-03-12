@@ -151,11 +151,9 @@ const Home = (props) => {
                 {getPostsSelector.posts.map((post) => {
                     return (
                         <div className="post" key={post.id}>
-                            <div
-                                style={{
-                                    backgroundImage: `url(${post.data.cover})`,
-                                }}
-                            />
+                            <div className="single">
+                                <img src={post.data.cover} />
+                            </div>
                             <Link to={"post/" + post.id}>
                                 <p className="post-title">{post.data.title}</p>
                             </Link>

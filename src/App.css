@@ -149,6 +149,10 @@ button.button2 {
     border: 0.5rem solid #eee;
 }
 
+.single > img {
+    width: 100%;
+}
+
 @media (max-width: 720px) {
     .single {
         width: 85%;

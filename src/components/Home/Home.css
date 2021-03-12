@@ -119,6 +119,11 @@
     max-width: 100%;
 }
 
+.post-image {
+    width: 25rem;
+    height: 25rem;
+}
+
 @media (min-width: 200px) and (max-width: 1024px) {
     .bg-pattern-effect {
         bottom: -7px;
