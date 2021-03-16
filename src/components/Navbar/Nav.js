@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../actions/logout";
+import ReactDOM from "react-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 import {
     Collapse,
@@ -23,8 +23,6 @@ import {
 import firebase from "../../firebase/config";
 
 import "./Nav.css";
-
-import profileIcon from "../../images/user.png";
 
 const NavbarComponent = (props) => {
     const loginSelector = useSelector((state) => state.login);
@@ -59,17 +57,16 @@ const NavbarComponent = (props) => {
     ) {
         buttons = (
             <Container>
-                <Row>
-                    <Col>
-                        <FontAwesomeIcon icon={faCoffee} />
-                    </Col>
-
-                    <Col>
-                        <button className="button2" onClick={logout}>
-                            Logout
-                        </button>
-                    </Col>
-                </Row>
+                <NavItem>
+                    <NavLink href="/profile">
+                        <FontAwesomeIcon className="profile-icon" icon="user" />
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <button className="logout-nav button2" onClick={logout}>
+                        Logout
+                    </button>
+                </NavItem>
             </Container>
         );
     } else {
@@ -94,10 +91,10 @@ const NavbarComponent = (props) => {
                 <Link className="brand-name" to="/">
                     GOLDEN
                 </Link>
-                <NavbarToggler onClick={toggle} />
+                <NavbarToggler className="toggler" onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
-                        <NavItem>
+                        <NavItem className="navitem">
                             <NavLink className="link-indicacao" href="/create">
                                 {" "}
                                 Fazer uma indicação{" "}
