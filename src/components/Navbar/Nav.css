@@ -14,6 +14,7 @@
     text-decoration: none;
     color: var(--white) !important;
     font-size: medium;
+    padding: 2rem;
 }
 
 .registrar {
@@ -39,4 +40,8 @@
 .login:hover {
     text-decoration: none;
     color: var(--white);
+}
+
+.profile-icon {
+    padding-top: 0rem;
 }

@@ -3,8 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../actions/logout";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 import {
     Collapse,
+    Container,
     Navbar,
     NavbarToggler,
     NavbarBrand,
@@ -12,11 +16,15 @@ import {
     NavItem,
     NavLink,
     NavbarText,
+    Row,
+    Col,
 } from "reactstrap";
 
 import firebase from "../../firebase/config";
 
 import "./Nav.css";
+
+import profileIcon from "../../images/user.png";
 
 const NavbarComponent = (props) => {
     const loginSelector = useSelector((state) => state.login);
@@ -50,11 +58,19 @@ const NavbarComponent = (props) => {
         userState != null
     ) {
         buttons = (
-            <React.Fragment>
-                <button className="button2" onClick={logout}>
-                    Logout
-                </button>
-            </React.Fragment>
+            <Container>
+                <Row>
+                    <Col>
+                        <FontAwesomeIcon icon={faCoffee} />
+                    </Col>
+
+                    <Col>
+                        <button className="button2" onClick={logout}>
+                            Logout
+                        </button>
+                    </Col>
+                </Row>
+            </Container>
         );
     } else {
         buttons = (
