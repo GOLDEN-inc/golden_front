@@ -9,6 +9,7 @@ import Create from "./components/CreatePost/Create";
 import Post from "./components/Post/Post";
 
 import Auth from "./components/auth/auth";
+import Profile from "./components/Profile/Profile";
 
 const Routes = () => (
     <Switch>
@@ -17,6 +18,7 @@ const Routes = () => (
         <Route exact path="/registrar" component={Signup} />
         <Route exact path="/create" component={Auth(Create)} />
         <Route exact path="/post/:id" component={Post} />
+        <Route exact path="/profile" component={Profile} />
     </Switch>
 );
 

@@ -1,0 +1,10 @@
+.user-profile-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.user-profile {
+    height: 11rem;
+    width: 11rem;
+    border-radius: 50%;
+}
