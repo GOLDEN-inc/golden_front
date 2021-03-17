@@ -8,3 +8,33 @@
     width: 11rem;
     border-radius: 50%;
 }
+
+.qrcode-container {
+    text-align: center;
+}
+
+.golden-container {
+    padding-top: 2rem;
+}
+
+.editar-button {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.button1-profile {
+    width: 12rem !important;
+}
+
+.profile-hr {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px var(--main);
+}
+
+.label-center {
+    line-height: 150%;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+}
