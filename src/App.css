@@ -184,6 +184,7 @@ label input {
     justify-content: center;
     flex-wrap: wrap;
     height: 100%;
+    padding-bottom: 5rem;
 }
 
 .post {

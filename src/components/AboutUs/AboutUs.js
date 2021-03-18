@@ -7,9 +7,10 @@ import { Container, Row, Col } from "reactstrap";
 
 import arrow from "../../images/arrow-down-white.png";
 import golden from "../../images/golden_baby.jpg";
-import bg from "../../images/bg-pattern-light.png";
 
 import SectionTitle from "./SectionTitle";
+
+import "./AboutUs.css"
 
 const AboutUs = () => {
     const content = [
@@ -101,7 +102,7 @@ const AboutUs = () => {
                 </Container>
             </React.Fragment>
             <section className="section bg-main" id="process">
-                <Container>
+                <Container className="container-explanation">
                     <Row>
                         <Col md={6}>
                             <p className="main-text">
@@ -126,9 +127,6 @@ const AboutUs = () => {
                         </Col>
                     </Row>
                 </Container>
-                <div className="bg-pattern-effect">
-                    <img src={bg} alt="pattern" />
-                </div>
             </section>
         </React.Fragment>
     );
