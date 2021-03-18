@@ -33,6 +33,7 @@
 }
 
 .label-center {
+    padding: 2rem 0 0;
     line-height: 150%;
     font-size: 1em;
     display: block;

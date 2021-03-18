@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../actions/logout";
-import ReactDOM from "react-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,13 +10,9 @@ import {
     Container,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
-    NavbarText,
-    Row,
-    Col,
 } from "reactstrap";
 
 import firebase from "../../firebase/config";
@@ -98,6 +93,10 @@ const NavbarComponent = (props) => {
                             <NavLink className="link-indicacao" href="/create">
                                 {" "}
                                 Fazer uma indicação{" "}
+                            </NavLink>
+                            <NavLink className="link-indicacao" href="/aboutus">
+                                {" "}
+                                Sobre a GOLDEN{" "}
                             </NavLink>
                         </NavItem>
                     </Nav>

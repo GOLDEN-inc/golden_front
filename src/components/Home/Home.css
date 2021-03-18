@@ -61,36 +61,6 @@
     height: 100vh !important;
 }
 
-.posts {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100%;
-}
-
-.post {
-    margin: 60px 10px;
-    width: 300px;
-    min-width: 300px;
-}
-
-.post > div {
-    width: 100%;
-    height: 400px;
-    background-position: center;
-    background-size: 200% !important;
-    border-radius: 10px;
-}
-.post-title {
-    color: var(--main);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.post-content {
-    color: var(--black);
-}
-
 .main-text-container {
     padding-top: 4rem;
 }
