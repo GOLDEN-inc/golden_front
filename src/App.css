@@ -44,6 +44,11 @@ button {
 a {
     color: inherit;
     text-decoration: none;
+    color: var(--main) !important;
+}
+
+a:hover {
+    color: var(--third) !important;
 }
 
 .logo-main {
@@ -169,13 +174,6 @@ label input {
     opacity: 0;
 }
 
-a {
-    color: var(--main) !important;
-}
-
-a:hover {
-    color: var(--third) !important;
-}
 
 .link {
     padding: 0 2rem 2rem 0;
