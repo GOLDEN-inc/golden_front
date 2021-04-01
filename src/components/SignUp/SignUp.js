@@ -23,7 +23,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(true);
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState(true);
+    const [passwordError, setPasswordError] = useState(false);
 
     const [error, setError] = useState(false);
     const [routeRedirect, setRedirect] = useState("");
@@ -38,12 +38,12 @@ const SignUp = () => {
             setEmailError(true);
         }
 
-        // Validate Password
-        if (password === "") {
-            setPasswordError(true);
-        } else {
-            setPasswordError(false);
-        }
+        // // Validate Password
+        // if (password === "") {
+        //     setPasswordError(true);
+        // } else {
+        //     setPasswordError(false);
+        // }
 
         // Validate Golden
         if (golden === "") {
@@ -58,7 +58,7 @@ const SignUp = () => {
         } else {
             setNameError(false);
         }
-        console.log(name)
+        
     }, [email, password, name, golden]);
 
     const handleSubmit = async (e) => {
