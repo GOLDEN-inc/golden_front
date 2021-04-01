@@ -23,9 +23,14 @@ import {getPosts} from "../../actions/getPosts";
 import NavComponent from "../Navbar/Nav";
 import QRCode from "qrcode.react";
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+
+
 import golden from "../../images/golden_baby.jpg";
 
 import "./Profile.css";
+import {logoutUser} from "../../actions/logout";
 
 const Profile = (props) => {
     const [goldenInput, setGoldenInput] = useState("");
@@ -34,6 +39,8 @@ const Profile = (props) => {
     const getPostsSelector = useSelector((state) => state.getPosts);
     const dispatch = useDispatch();
     const getPostsAction = () => dispatch(getPosts());
+    const logoutUserAction = () => dispatch(logoutUser());
+
 
     const editProfile = () => {};
 
@@ -47,13 +54,25 @@ const Profile = (props) => {
         });
     });
 
+    const logout = async () => {
+        setUserState(null);
+        await logoutUserAction();
+        props.history.replace("/");
+    };
+
+
     return (
         <React.Fragment>
             <Navbar>
                 <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        <NavLink href="https://github.com/reactstrap/reactstrap">
-                            GitHub
+                    <NavItem className="logout-button">
+                        <NavLink onClick={logout}
+                            className="nav-link">
+                            <div className="row d-flex flex-column justify-content-center align-items-center">
+                                <FontAwesomeIcon size="lg"
+                                    icon={faSignOutAlt}/>
+                                <div>{"Sair"}</div>
+                            </div>
                         </NavLink>
                     </NavItem>
                 </Nav>
@@ -164,7 +183,7 @@ const Profile = (props) => {
                 </Row>
             </Container>
         </React.Fragment>
-    );
+    );;
 };
 
 export default Profile;

@@ -1,57 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../../actions/logout";
+import React, {useEffect, useState} from "react";
+import {withRouter} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {logoutUser} from "../../actions/logout";
 
-import {
-    Collapse,
-    Container,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink,
-} from "reactstrap";
+import {Container, Nav, NavItem, NavLink} from "reactstrap";
 
 import firebase from "../../firebase/config";
 
 import "./Nav.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faSearch,
     faHome,
     faUser,
     faCamera,
-    faShare,
-    faInfo,
+    faInfo
 } from "@fortawesome/free-solid-svg-icons";
 
 const tabs = [
     {
         route: "/",
         icon: faHome,
-        label: "Home",
+        label: "Home"
     },
     {
         route: "/search",
         icon: faSearch,
-        label: "Pesquisa",
+        label: "Pesquisa"
     },
     {
         route: "/create",
         icon: faCamera,
-        label: "Indicação",
+        label: "Indicação"
     },
     {
         route: "/profile",
         icon: faUser,
-        label: "Perfil",
-    },
-    {
+        label: "Perfil"
+    }, {
         route: "/aboutus",
         icon: faInfo,
-        label: "Sobre Nós",
+        label: "Sobre Nós"
     },
 ];
 
@@ -81,20 +71,17 @@ const NavbarComponent = (props) => {
     };
 
     let buttons;
-    if (
-        (loginSelector.user && loginSelector.user.hasOwnProperty("user")) ||
-        (signupSelector.user && signupSelector.user.hasOwnProperty("user")) ||
-        userState != null
-    ) {
+    if ((loginSelector.user && loginSelector.user.hasOwnProperty("user")) || (signupSelector.user && signupSelector.user.hasOwnProperty("user")) || userState != null) {
         buttons = (
             <Container>
                 <NavItem>
                     <NavLink href="/profile">
-                        <FontAwesomeIcon className="profile-icon" icon="user" />
+                        <FontAwesomeIcon className="profile-icon" icon="user"/>
                     </NavLink>
                 </NavItem>
                 <NavItem>
-                    <button className="logout-nav button2" onClick={logout}>
+                    <button className="logout-nav button2"
+                        onClick={logout}>
                         Logout
                     </button>
                 </NavItem>
@@ -105,42 +92,42 @@ const NavbarComponent = (props) => {
             <React.Fragment>
                 <NavLink className="login" href="/login">
                     {" "}
-                    Entrar{" "}
-                </NavLink>
+                    Entrar{" "} </NavLink>
 
                 <NavLink className="registrar" href="/registrar">
                     {" "}
-                    Registrar{" "}
-                </NavLink>
+                    Registrar{" "} </NavLink>
             </React.Fragment>
         );
     }
 
     return (
         <div>
-            <nav
-                className="navbar fixed-bottom navbar-light nav-background"
-                role="navigation"
-            >
+            <nav className="navbar fixed-bottom navbar-light nav-background" role="navigation">
                 <Nav className="w-100">
                     <div className=" d-flex flex-row justify-content-around w-100">
-                        {tabs.map((tab, index) => (
-                            <NavItem key={`tab-${index}`}>
-                                <NavLink
-                                    href={tab.route}
-                                    className="nav-link"
-                                >
+                        {
+                        tabs.map((tab, index) => (
+                            <NavItem key={
+                                `tab-${index}`
+                            }>
+                                <NavLink href={
+                                        tab.route
+                                    }
+                                    className="nav-link">
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
-                                        <FontAwesomeIcon
-                                            size="lg"
-                                            icon={tab.icon}
-                                        />
-                                        <div>{tab.label}</div>
+                                        <FontAwesomeIcon size="lg"
+                                            icon={
+                                                tab.icon
+                                            }/>
+                                        <div>{
+                                            tab.label
+                                        }</div>
                                     </div>
                                 </NavLink>
                             </NavItem>
-                        ))}
-                    </div>
+                        ))
+                    } </div>
                 </Nav>
             </nav>
         </div>
