@@ -129,7 +129,6 @@ const NavbarComponent = (props) => {
                                 <NavLink
                                     href={tab.route}
                                     className="nav-link"
-                                    activeClassName="active"
                                 >
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
                                         <FontAwesomeIcon
