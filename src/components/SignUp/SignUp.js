@@ -35,11 +35,16 @@ const SignUp = () => { // Name
     const [pix, setPix] = useState("");
     const [pixError, setPixError] = useState(true);
 
+    // Telefone
+    const [cell, setCell] = useState("");
+    const [cellError, setCellError] = useState(true);
 
+    // Keep track of errors in form
     const [error, setError] = useState(false);
     const [routeRedirect, setRedirect] = useState("");
+
     const dispatch = useDispatch();
-    const createUserAction = (email, password, name, golden, pix) => dispatch(createUser(email, password, name, golden, pix));
+    const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
 
 
     useEffect(() => { // Validate Email
@@ -71,11 +76,18 @@ const SignUp = () => { // Name
             setNameError(false);
         }
 
-        // Validate Name
+        // Validate PIX
         if (pix === "") {
             setPixError(true);
         } else {
             setPixError(false);
+        }
+
+        // Validate Cellphone
+        if (cell === "") {
+            setCellError(true);
+        } else {
+            setCellError(false);
         }
 
 
@@ -91,7 +103,8 @@ const SignUp = () => { // Name
         e.preventDefault();
         if (validateFields()) {
             console.log("creating user");
-            await createUserAction(email, password, name, golden, pix);
+            await createUserAction(email, password, name, golden, pix, cell);
+
             setRedirect(true);
         }
     };
@@ -102,7 +115,7 @@ const SignUp = () => { // Name
     }
 
     const validateFields = () => {
-        if (emailError === false && passwordError === false && nameError === false && goldenError === false) {
+        if (emailError === false && passwordError === false && nameError === false && goldenError === false && pixError === false && cellError === false) {
             setError(false);
             return true;
         }
@@ -247,6 +260,38 @@ const SignUp = () => { // Name
                                     passwordError && error && (
                                         <FormFeedback>
                                             Senha não pode estar vazia.
+                                        </FormFeedback>
+                                    )
+                                } </FormGroup>
+                            </Col>
+                            <Col sm="12"
+                                md={
+                                    {
+                                        size: 8,
+                                        offset: 2
+                                    }
+                            }>
+                                <FormGroup className="form-input">
+                                    {
+                                    !cellError || !error ? (
+                                        <Input name="cell" placeholder="Telefone: (61)99999-5555"
+                                            value={cell}
+                                            onChange={
+                                                (event) => setCell(event.target.value)
+                                            }/>
+                                    ) : (< Input invalid name = "cell" placeholder = "Telefone: (61)99999-5555" value =
+                                        { cell
+                                    }
+                                    onChange =
+                                        {( event) => setCell(event.target.value)
+
+                                    } />)
+                                }
+
+                                    {
+                                    cellError && error && (
+                                        <FormFeedback>
+                                            O campo de telefone não pode ser vazio!
                                         </FormFeedback>
                                     )
                                 } </FormGroup>

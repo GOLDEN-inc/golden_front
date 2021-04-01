@@ -1,7 +1,7 @@
 import firebase from "../firebase/config";
 import axios from "axios"
 
-export const createUser = (email, password, name, golden, pix) => {
+export const createUser = (email, password, name, golden, pix, telfone_wpp) => {
     return async function (dispatch) {
 
         const user = {
@@ -9,7 +9,9 @@ export const createUser = (email, password, name, golden, pix) => {
             golden,
             email,
             password,
-            pix
+            pix,
+            telfone_wpp
+
         }
 
         // const user = await firebase.signup(email, password); //! Code to user firebase
