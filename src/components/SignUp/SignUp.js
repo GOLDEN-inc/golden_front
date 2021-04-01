@@ -15,23 +15,32 @@ import {
     Row
 } from "reactstrap";
 
-const SignUp = () => {
+const SignUp = () => { // Name
     const [name, setName] = useState("");
     const [nameError, setNameError] = useState(true);
 
+    // Golden
     const [golden, setGolden] = useState("");
     const [goldenError, setGoldenError] = useState(true);
 
+    // Email
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(true);
 
+    // Password
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState(false);
+    const [passwordError, setPasswordError] = useState(true);
+
+    // Pix
+    const [pix, setPix] = useState("");
+    const [pixError, setPixError] = useState(true);
+
 
     const [error, setError] = useState(false);
     const [routeRedirect, setRedirect] = useState("");
     const dispatch = useDispatch();
-    const createUserAction = (email, password, name, golden) => dispatch(createUser(email, password, name, golden));
+    const createUserAction = (email, password, name, golden, pix) => dispatch(createUser(email, password, name, golden, pix));
+
 
     useEffect(() => { // Validate Email
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -62,13 +71,27 @@ const SignUp = () => {
             setNameError(false);
         }
 
-    }, [email, password, name, golden]);
+        // Validate Name
+        if (pix === "") {
+            setPixError(true);
+        } else {
+            setPixError(false);
+        }
+
+
+    }, [
+        email,
+        password,
+        name,
+        golden,
+        pix
+    ]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateFields()) {
             console.log("creating user");
-            await createUserAction(email, password, name, golden);
+            await createUserAction(email, password, name, golden, pix);
             setRedirect(true);
         }
     };
@@ -192,7 +215,7 @@ const SignUp = () => {
                                     {
                                     emailError && error && (
                                         <FormFeedback>
-                                            E-mail inválido :/
+                                            E-mail inválido.
                                         </FormFeedback>
                                     )
                                 } </FormGroup>
@@ -223,11 +246,45 @@ const SignUp = () => {
                                     {
                                     passwordError && error && (
                                         <FormFeedback>
-                                            Não pode ser vazio :/
+                                            Senha não pode estar vazia.
                                         </FormFeedback>
                                     )
                                 } </FormGroup>
                             </Col>
+                            <Col sm="12"
+                                md={
+                                    {
+                                        size: 8,
+                                        offset: 2
+                                    }
+                            }>
+                                <FormGroup className="form-input">
+                                    {
+                                    !pixError || !error ? (
+                                        <Input name="pix" placeholder="PIX: cpf, telefone, email..."
+                                            value={pix}
+                                            onChange={
+                                                (event) => setPix(event.target.value)
+                                            }/>
+                                    ) : (< Input invalid name = "pix" placeholder = "PIX: cpf, telefone, email..." value =
+
+                                        { pix
+                                    }
+                                    onChange =
+                                        {( event) => setPix(event.target.value)
+
+                                    } />)
+                                }
+
+                                    {
+                                    pixError && error && (
+                                        <FormFeedback>
+                                            O campo PIX não pode ser vazio!
+                                        </FormFeedback>
+                                    )
+                                } </FormGroup>
+                            </Col>
+
                             <button className="button1 button-singup">
                                 Criar
                             </button>

@@ -1,14 +1,15 @@
 import firebase from "../firebase/config";
 import axios from "axios"
 
-export const createUser = (email, password, name, golden) => {
+export const createUser = (email, password, name, golden, pix) => {
     return async function (dispatch) {
 
         const user = {
             name,
             golden,
             email,
-            password
+            password,
+            pix
         }
 
         // const user = await firebase.signup(email, password); //! Code to user firebase
@@ -19,11 +20,9 @@ export const createUser = (email, password, name, golden) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(user)
-        })
-        .then(response => {
+        }).then(response => {
             return response.json()
-        })
-        .catch(err => console.log(err))
+        }).catch(err => console.log(err))
         console.log(user);
         dispatch({type: "CREATE_USER", payload: userFetch});
     };
