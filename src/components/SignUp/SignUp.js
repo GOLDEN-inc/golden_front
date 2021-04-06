@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Redirect, Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+
 import {createUser} from "../../actions/signup";
 
 import "./SignUp.css";
@@ -15,7 +16,9 @@ import {
     Row
 } from "reactstrap";
 
-const SignUp = () => { // Name
+const SignUp = (props) => {
+    //
+    // Name
     const [name, setName] = useState("");
     const [nameError, setNameError] = useState(true);
 
@@ -43,11 +46,14 @@ const SignUp = () => { // Name
     const [error, setError] = useState(false);
     const [routeRedirect, setRedirect] = useState("");
 
+    const {isError} = useSelector(createUser);
+
     const dispatch = useDispatch();
     const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
 
-
-    useEffect(() => { // Validate Email
+    useEffect(() => {
+        //
+        // Validate Email
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (emailRex.test(email)) {
             setEmailError(false);
@@ -96,16 +102,22 @@ const SignUp = () => { // Name
         password,
         name,
         golden,
-        pix
+        pix,
+        cell
     ]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateFields()) {
-            console.log("creating user");
-            await createUserAction(email, password, name, golden, pix, cell);
+            console.log("creating user")
+            console.log(isError)
 
-            setRedirect(true);
+
+            await createUserAction(email, password, name, golden, pix, cell)
+
+            // if (Object.keys(errors).length === 0) {
+            //     setRedirect(true);
+            // }
         }
     };
 

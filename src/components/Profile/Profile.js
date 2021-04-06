@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 
-import firebase from "../../firebase/config";
+// import firebase from "../../firebase/config";
 
 import {
     Container,
@@ -36,22 +36,21 @@ const Profile = (props) => {
     const [goldenInput, setGoldenInput] = useState("");
     const [userState, setUserState] = useState(null);
 
-    const getPostsSelector = useSelector((state) => state.getPosts);
+    // const getPostsSelector = useSelector((state) => state.getPosts);
     const dispatch = useDispatch();
-    const getPostsAction = () => dispatch(getPosts());
+    // const getPostsAction = () => dispatch(getPosts());
     const logoutUserAction = () => dispatch(logoutUser());
 
 
     const editProfile = () => {};
 
-    useEffect(() => {
-        getPostsAction();
+    useEffect(() => { // getPostsAction();
     }, []);
 
     useEffect(() => {
-        firebase.getUserState().then((user) => {
-            setUserState(user);
-        });
+        // firebase.getUserState().then((user) => {
+        //     setUserState(user);
+        // });
     });
 
     const logout = async () => {
@@ -138,7 +137,7 @@ const Profile = (props) => {
                         <Label className="label-center">Posts</Label>
                     </Col>
 
-                    <Col>
+                    {/* <Col>
                         <div className="posts">
                             {" "}
                             {
@@ -179,8 +178,7 @@ const Profile = (props) => {
                             })
                         }
                             {" "} </div>
-                    </Col>
-                </Row>
+                    </Col> */} </Row>
             </Container>
         </React.Fragment>
     );;
