@@ -3,7 +3,7 @@ import {Redirect, Link} from "react-router-dom";
 import backendService from "../../backendService"
 
 
-// *Aldo Caamal
+// *Aldo Caamal - Redux
 // import {useSelector, useDispatch} from "react-redux";
 // import {createUser} from "../../actions/signup";
 
@@ -21,7 +21,8 @@ import {
 } from "reactstrap";
 
 const SignUp = () => {
-    //
+    // SignUp Component
+
     // Name
     const [name, setName] = useState("");
     const [nameError, setNameError] = useState(true);
@@ -53,7 +54,11 @@ const SignUp = () => {
     // User error message
     const [errorMessage, setErrorMessage] = useState("")
 
-    // *Aldo Caamal
+    // Succesfull signin messgae
+    const [signInSuccess, setSignInSuccess] = useState(false)
+
+
+    // *Aldo Caamal - Redux
     // const dispatch = useDispatch();
     // const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
 
@@ -103,7 +108,8 @@ const SignUp = () => {
             setCellError(false);
         }
 
-
+        // Set Error Message to Empty and SignIn state to false
+        setErrorMessage("")
     }, [
         email,
         password,
@@ -128,10 +134,12 @@ const SignUp = () => {
                     setGolden("")
                     setCell("")
                     setPix("")
+                    setSignInSuccess(true)
                 }
             });
 
-            // await createUserAction(email, password, name, golden, pix, cell) //*Aldo Caamal
+            // *Aldo Caamal - Redux
+            // await createUserAction(email, password, name, golden, pix, cell)
         }
     };
 
@@ -170,6 +178,17 @@ const SignUp = () => {
                             color="danger">
 
                             {errorMessage} </Alert>
+
+                        <Alert style={
+                                {
+                                    display: signInSuccess ? "" : "none"
+                                }
+                            }
+                            color="warning">
+                            Bem-vindo a GOLDEN!
+                            <br/>
+                            Por favor, faça o login.
+                        </Alert>
 
 
                         <Form onSubmit={handleSubmit}>

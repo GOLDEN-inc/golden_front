@@ -18,12 +18,8 @@ class BackEnd {
             },
             body: JSON.stringify(user)
         }).then(response => {
-            console.log("1 - $$$$$$$$$$$$")
-
             return response.json()
         }).catch(err => {
-            console.log("2 - $$$$$$$$$$$$")
-            console.log(err)
             return err
         })
     }
