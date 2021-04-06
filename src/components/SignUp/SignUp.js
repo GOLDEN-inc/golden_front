@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from "react";
 import {Redirect, Link} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
+import backendService from "../../backendService"
 
-import {createUser} from "../../actions/signup";
+
+// *Aldo Caamal
+// import {useSelector, useDispatch} from "react-redux";
+// import {createUser} from "../../actions/signup";
 
 import "./SignUp.css";
 
 import {
+    Alert,
     Container,
     Col,
     Form,
@@ -16,7 +20,7 @@ import {
     Row
 } from "reactstrap";
 
-const SignUp = (props) => {
+const SignUp = () => {
     //
     // Name
     const [name, setName] = useState("");
@@ -42,17 +46,20 @@ const SignUp = (props) => {
     const [cell, setCell] = useState("");
     const [cellError, setCellError] = useState(true);
 
-    // Keep track of errors in form
-    const [error, setError] = useState(false);
-    const [routeRedirect, setRedirect] = useState("");
+    // Keep track of errors in the form
+    const [error, setError] = useState(false)
+    const [routeRedirect, setRedirect] = useState("")
 
-    const {isError} = useSelector(createUser);
+    // User error message
+    const [errorMessage, setErrorMessage] = useState("")
 
-    const dispatch = useDispatch();
-    const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
+    // *Aldo Caamal
+    // const dispatch = useDispatch();
+    // const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
 
     useEffect(() => {
         //
+
         // Validate Email
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (emailRex.test(email)) {
@@ -109,15 +116,22 @@ const SignUp = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateFields()) {
-            console.log("creating user")
-            console.log(isError)
+            await backendService.signup(email, password, name, golden, pix, cell).then(data => {
 
+                if (data.error) {
+                    setErrorMessage(data.error)
 
-            await createUserAction(email, password, name, golden, pix, cell)
+                } else {
+                    setName("")
+                    setEmail("")
+                    setPassword("")
+                    setGolden("")
+                    setCell("")
+                    setPix("")
+                }
+            });
 
-            // if (Object.keys(errors).length === 0) {
-            //     setRedirect(true);
-            // }
+            // await createUserAction(email, password, name, golden, pix, cell) //*Aldo Caamal
         }
     };
 
@@ -148,6 +162,16 @@ const SignUp = (props) => {
                 <Col sm="12" lg="6">
                     <Container className="container-forms">
                         <h4 className="forms-title">Cadastre-se.</h4>
+                        <Alert style={
+                                {
+                                    display: errorMessage ? "" : "none"
+                                }
+                            }
+                            color="danger">
+
+                            {errorMessage} </Alert>
+
+
                         <Form onSubmit={handleSubmit}>
                             <Col sm="12"
                                 md={
