@@ -54,7 +54,7 @@ const SignUp = () => {
     // User error message
     const [errorMessage, setErrorMessage] = useState("")
 
-    // Succesfull signin messgae
+    // Succesfull SignUp messgae
     const [signInSuccess, setSignInSuccess] = useState(false)
 
 
