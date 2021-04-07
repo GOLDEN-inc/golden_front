@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
 
 import {Redirect, Link} from "react-router-dom";
-import backendService from "../../backendService"
+import backendService from "../../backendService";
 
 // *Aldo Caamal - Redux
 // import { useDispatch } from "react-redux";
 // import {loginUser} from "../../actions/login";
-
 
 import "./Login.css";
 
@@ -21,7 +20,7 @@ import {
 } from "reactstrap";
 
 const Login = () => {
-    // Login component
+    // * Login component
 
     // User email
     const [email, setEmail] = useState("");
@@ -33,10 +32,13 @@ const Login = () => {
     const [redirect, setRedirect] = useState(false);
 
     // User error message
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const [loading, setLoading] = useState(false)
-    const [recaptcha, setRecaptcha] = useState(false)
+    // Loading to tell the user the login is being processed
+    const [loading, setLoading] = useState(false);
+
+    // Recapthca variable
+    const [recaptcha, setRecaptcha] = useState(false);
 
     // *Aldo Caamal - Redux
     // const dispatch = useDispatch();
@@ -45,18 +47,17 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (email !== "" && password !== "") {
-            setLoading(true)
-            await backendService.signin(email, password).then(data => {
+            setLoading(true);
+            await backendService.signin(email, password).then((data) => {
                 if (data.error) {
-                    setErrorMessage(data.error)
-                    setLoading(false)
+                    setErrorMessage(data.error);
+                    setLoading(false);
                 } else { // authenticate
                     backendService.authenticate(data, () => {
-                        setRedirect(true)
+                        setRedirect(true);
                     });
                 }
             });
-
 
             // *Aldo Caamal - Redux
             // let user = await logInUserAction(email, password);
@@ -69,12 +70,12 @@ const Login = () => {
     };
 
     useEffect(() => {
-        setErrorMessage("")
-    }, [email, password])
+        setErrorMessage("");
+    }, [email, password]);
 
     const redirectTo = redirect;
     if (redirect) {
-        return <Redirect to="/"/>;
+        return <Redirect to="/" />;
     }
 
     return (<Container>
@@ -99,7 +100,19 @@ const Login = () => {
                                 display: errorMessage ? "" : "none"
                             }
                         }
-                        color="danger"> {errorMessage} </Alert>
+                        color="danger"> {" "}
+                        {errorMessage}
+                        {" "} </Alert>
+
+
+                    <Alert style={
+                            {
+                                display: loading ? false : "none"
+                            }
+                        }
+                        color="warning"> {" "}
+                        Aguarde um momento... {" "} </Alert>
+
 
                     <Form onSubmit={handleSubmit}>
                         <Col sm="12"
@@ -132,11 +145,11 @@ const Login = () => {
                                     }/>
                             </FormGroup>
                         </Col>
-                        <button className="button1 button-singup">
-                            Entrar
-                        </button>
+                        <button className="button1 button-singup">Entrar</button>
                     </Form>
-                    <Link className="registrar-link" to="/registrar">Cadastre-se</Link>
+                    <Link className="registrar-link" to="/registrar">
+                        Cadastre-se
+                    </Link>
                 </Container>
             </Col>
         </Row>
