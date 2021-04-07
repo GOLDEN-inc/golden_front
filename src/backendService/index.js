@@ -1,3 +1,5 @@
+import AsyncLocalStorage from '@createnextapp/async-local-storage'
+
 class BackEnd {
     async signup(email, password, name, golden, pix, telfone_wpp) {
 
@@ -56,20 +58,24 @@ class BackEnd {
 
 
     async signout(next) {
-
         if (typeof window !== 'undefined') 
             localStorage.removeItem('jwt');
         
 
 
         next();
-        return fetch("http://localhost:8081/signout", {method: 'GET'}).then(response => {
+        return fetch("http://localhost:8081/signout", {method: 'POST'}).then(response => {
 
             console.log('signout', response);
             return response.json();
         }).catch(err => console.log(err));
     };
 
+    async getUserState() {
+        return new Promise((resolve) => {
+            this.auth.onAuthStateChanged(resolve);
+        });
+    }
 }
 
 export default new BackEnd()
