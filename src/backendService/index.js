@@ -55,18 +55,21 @@ class BackEnd {
     };
 
 
-    async logout() {
-        return fetch("http://localhost:8081/signout", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            return response.json()
-        }).catch(err => console.log(err))
+    async signout(next) {
 
-    }
+        if (typeof window !== 'undefined') 
+            localStorage.removeItem('jwt');
+        
+
+
+        next();
+        return fetch("http://localhost:8081/signout", {method: 'GET'}).then(response => {
+
+            console.log('signout', response);
+            return response.json();
+        }).catch(err => console.log(err));
+    };
+
 }
 
 export default new BackEnd()
