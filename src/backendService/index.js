@@ -24,14 +24,14 @@ class BackEnd {
         })
     }
 
-    async login(email, password) {
+    async signin(email, password) {
         const user = {
             email,
             password
         }
 
 
-        return fetch("http://localhost:8080/signin", {
+        return fetch("http://localhost:8081/signin", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -46,6 +46,14 @@ class BackEnd {
         })
 
     }
+
+    async authenticate(jwt, next) {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('jwt', JSON.stringify(jwt));
+            next();
+        }
+    };
+
 
     async logout() {
         return fetch("http://localhost:8081/signout", {
