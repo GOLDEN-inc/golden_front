@@ -61,61 +61,73 @@ const NavbarComponent = () => {
         tabs.push({route: "/login", icon: faSignInAlt, label: "Entrar"});
     }
 
-    return (<div>
-        <nav className="navbar fixed-bottom navbar-light nav-background" role="navigation">
-            <Nav className="w-100">
-                <div className=" d-flex flex-row justify-content-around w-100">
-                    <NavItem>
-                        <NavLink href="/" className="nav-link">
-                            <div className="row d-flex flex-column justify-content-center align-items-center">
-                                <FontAwesomeIcon size="lg"
-                                    icon={faHome}/>
-                                <div>Home</div>
-                            </div>
-                        </NavLink>
-                    </NavItem>
-                    {
-                    userSignedIn ? (<NavItem> {" "}
-                        <NavLink href="/profile" className="nav-link"> {" "}
-                            <div className="row d-flex flex-column justify-content-center align-items-center"> {" "}
-                                <FontAwesomeIcon size="lg"
-                                    icon={faUser}/>{" "}
-                                <div>Perfil</div>
-                            </div>
-                            {" "} </NavLink>
-                        {" "} </NavItem>) : (<NavItem>
-                        <NavLink href="/" className="nav-link">
-                            <div className="row d-flex flex-column justify-content-center align-items-center">
-                                <FontAwesomeIcon size="lg"
-                                    icon={faInfo}/>
-                                <div>Golden</div>
-                            </div>
-                        </NavLink>
-                    </NavItem>)
-                }
-                    {" "}
-                    {
-                    userSignedIn ? (<NavItem>
-                        <NavLink href="/" className="nav-link">
-                            <div className="row d-flex flex-column justify-content-center align-items-center">
-                                <FontAwesomeIcon size="lg"
-                                    icon={faInfo}/>
-                                <div>Golden</div>
-                            </div>
-                        </NavLink>
-                    </NavItem>) : (<NavItem>
-                        <NavLink href="/login" className="nav-link">
-                            <div className="row d-flex flex-column justify-content-center align-items-center">
-                                <FontAwesomeIcon size="lg"
-                                    icon={faSignInAlt}/>
-                                <div>Entrar</div>
-                            </div>
-                        </NavLink>
-                    </NavItem>)
-                }
-                    {" "} </div>
-            </Nav>
-        </nav>
-    </div>);
+    return (
+        <div>
+            <nav className="navbar fixed-bottom navbar-light nav-background" role="navigation">
+                <Nav className="w-100">
+                    <div className=" d-flex flex-row justify-content-around w-100">
+                        <NavItem>
+                            <NavLink href="/" className="nav-link">
+                                <div className="row d-flex flex-column justify-content-center align-items-center">
+                                    <FontAwesomeIcon size="lg"
+                                        icon={faHome}/>
+                                    <div>Home</div>
+                                </div>
+                            </NavLink>
+                        </NavItem>
+                        {
+                        userSignedIn ? (
+                            <NavItem> {" "}
+                                <NavLink href="/profile" className="nav-link">
+                                    {" "}
+                                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                                        {" "}
+                                        <FontAwesomeIcon size="lg"
+                                            icon={faUser}/>{" "}
+                                        <div>Perfil</div>
+                                    </div>
+                                    {" "} </NavLink>
+                                {" "} </NavItem>
+                        ) : (
+                            <NavItem>
+                                <NavLink href="/" className="nav-link">
+                                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                                        <FontAwesomeIcon size="lg"
+                                            icon={faInfo}/>
+                                        <div>Golden</div>
+                                    </div>
+                                </NavLink>
+                            </NavItem>
+                        )
+                    }
+                        {" "}
+                        {
+                        userSignedIn ? (
+                            <NavItem>
+                                <NavLink href="/" className="nav-link">
+                                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                                        <FontAwesomeIcon size="lg"
+                                            icon={faInfo}/>
+                                        <div>Golden</div>
+                                    </div>
+                                </NavLink>
+                            </NavItem>
+                        ) : (
+                            <NavItem>
+                                <NavLink href="/login" className="nav-link">
+                                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                                        <FontAwesomeIcon size="lg"
+                                            icon={faSignInAlt}/>
+                                        <div>Entrar</div>
+                                    </div>
+                                </NavLink>
+                            </NavItem>
+                        )
+                    }
+                        {" "} </div>
+                </Nav>
+            </nav>
+        </div>
+    );
 };
 export default withRouter(NavbarComponent);
