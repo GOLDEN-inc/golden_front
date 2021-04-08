@@ -1,4 +1,4 @@
-export const TOKEN_KEY = "jwt";
+export const TOKEN_KEY = 'jwt';
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 

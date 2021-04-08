@@ -1,5 +1,5 @@
 // import firebase from "../firebase/config";
-import backendService from "../backendService";
+import backendService from '../backendService';
 
 export const createUser = (email, password, name, golden, pix, telfone_wpp) => {
   return async function (dispatch) {
@@ -14,10 +14,10 @@ export const createUser = (email, password, name, golden, pix, telfone_wpp) => {
       pix,
       telfone_wpp
     );
-    console.log("3 - $$$$$$$$$$$$");
+    console.log('3 - $$$$$$$$$$$$');
 
-    console.log("1) --->", response.error);
+    console.log('1) --->', response.error);
 
-    dispatch({ type: "CREATE_USER", payload: response });
+    dispatch({ type: 'CREATE_USER', payload: response });
   };
 };

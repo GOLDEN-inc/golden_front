@@ -5,7 +5,7 @@ const createUser = (
   },
   action
 ) => {
-  if (action.type === "CREATE_USER") {
+  if (action.type === 'CREATE_USER') {
     state = {
       ...state,
       user: action.payload,

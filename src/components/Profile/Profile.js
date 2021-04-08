@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
-import backendService from "../../backendService";
-import {isAuthenticated} from "../../backendService/auth";
+import React, {useEffect, useState} from 'react';
+import backendService from '../../backendService';
+import {isAuthenticated, getToken} from '../../backendService/auth';
 import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 
 import {
     Container,
@@ -15,17 +16,17 @@ import {
     Nav,
     NavItem,
     NavLink
-} from "reactstrap";
+} from 'reactstrap';
 
-import NavComponent from "../Navbar/Nav";
-import QRCode from "qrcode.react";
+import NavComponent from '../Navbar/Nav';
+import QRCode from 'qrcode.react';
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
-import golden from "../../images/golden_baby.jpg";
+import golden_img from '../../images/golden_baby.jpg';
 
-import "./Profile.css";
+import './Profile.css';
 
 // *Aldo Caamal - Redux
 // import {useSelector, useDispatch} from "react-redux";
@@ -35,8 +36,10 @@ import "./Profile.css";
 // import firebase from "../../firebase/config";
 
 const Profile = (props) => {
-    const [goldenInput, setGoldenInput] = useState("");
-    const [userState, setUserState] = useState(false);
+    const [goldenInput, setGoldenInput] = useState('http://localhost:3000/user/' + JSON.parse(getToken()).user.golden);
+    const [userIsSignedIn, setUserIsSignedIn] = useState(false);
+
+    const {golden} = useParams();
 
     // *Aldo Caamal - Redux
     // const getPostsSelector = useSelector((state) => state.getPosts);
@@ -47,20 +50,20 @@ const Profile = (props) => {
     const editProfile = () => {};
 
     const logout = async () => {
-        setUserState(false);
-        await backendService.signout(() => props.history.replace("/"));
+        setUserIsSignedIn(false);
+        await backendService.signout(() => props.history.replace('/'));
     };
 
     useEffect(() => {
         if (isAuthenticated()) {
-            setUserState(true);
+            setUserIsSignedIn(true);
         }
     }, []);
 
     return (
-        <React.Fragment> {" "}
+        <React.Fragment> {' '}
             {
-            userState && (
+            userIsSignedIn && (
                 <Navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem className="logout-button">
@@ -69,7 +72,7 @@ const Profile = (props) => {
                                 <div className="row d-flex flex-column justify-content-center align-items-center">
                                     <FontAwesomeIcon size="lg"
                                         icon={faSignOutAlt}/>
-                                    <div> {"Sair"}</div>
+                                    <div> {'Sair'}</div>
                                 </div>
                             </NavLink>
                         </NavItem>
@@ -83,7 +86,7 @@ const Profile = (props) => {
                     <Col>
                         <Container className="user-profile-container">
                             <img className="user-profile"
-                                src={golden}
+                                src={golden_img}
                                 alt="user profile"/>
                         </Container>
                     </Col>
@@ -104,9 +107,14 @@ const Profile = (props) => {
                             <FormGroup>
                                 <Container className="golden-container">
                                     <Label>GOLDEN</Label>
-                                    <Input type="text" placeholder="Daphne"
+                                    <Input type="text"
+                                        placeholder={
+                                            `${
+                                                JSON.parse(getToken()).user.golden
+                                            }`
+                                        }
                                         onChange={
-                                            (e) => setGoldenInput(e.target.value)
+                                            (e) => setGoldenInput('http://localhost:3000/user/' + e.target.value)
                                         }/>
                                 </Container>
                             </FormGroup>
@@ -141,6 +149,5 @@ const Profile = (props) => {
 Profile.propTypes = {
     history: PropTypes.object
 };
-
 
 export default Profile;

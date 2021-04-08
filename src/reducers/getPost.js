@@ -4,7 +4,7 @@ const getPost = (
   },
   action
 ) => {
-  if (action.type === "GET_POST") {
+  if (action.type === 'GET_POST') {
     state = { ...state, post: action.payload };
   }
   return state;

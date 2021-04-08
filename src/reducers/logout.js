@@ -5,7 +5,7 @@ const logoutUser = (
   },
   action
 ) => {
-  if (action.type === "LOGOUT_USER") {
+  if (action.type === 'LOGOUT_USER') {
     state = { ...state, user: action.payload };
   }
 

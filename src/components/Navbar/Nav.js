@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
-import {withRouter} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {withRouter} from 'react-router-dom';
 
-import {Nav, NavItem, NavLink} from "reactstrap";
+import {Nav, NavItem, NavLink} from 'reactstrap';
 
-import {isAuthenticated, getToken} from "../../backendService/auth";
+import {isAuthenticated, getToken} from '../../backendService/auth';
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faHome,
     faUser,
@@ -14,26 +14,25 @@ import {
     faPlus,
     // faSearch,
     // faCamera
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import "./Nav.css";
-
+import './Nav.css';
 
 // import firebase from "../../firebase/config";
 
 let tabs = [
     {
-        route: "/",
+        route: '/',
         icon: faHome,
-        label: "Home"
+        label: 'Home'
     }, {
-        route: "/profile",
+        route: '/profile',
         icon: faUser,
-        label: "Perfil"
+        label: 'Perfil'
     }, {
-        route: "/aboutus",
+        route: '/aboutus',
         icon: faInfo,
-        label: "GOLDEN"
+        label: 'GOLDEN'
     },
 ];
 // !In future versions such paths should be used
@@ -59,7 +58,7 @@ const NavbarComponent = () => {
 
     if (!userSignedIn) {
         tabs.splice(1, 1);
-        tabs.push({route: "/login", icon: faSignInAlt, label: "Entrar"});
+        tabs.push({route: '/login', icon: faSignInAlt, label: 'Entrar'});
     }
 
     return (
@@ -78,23 +77,23 @@ const NavbarComponent = () => {
                         </NavItem>
                         {
                         userSignedIn ? (
-                            <NavItem> {" "}
+                            <NavItem> {' '}
                                 <NavLink href={
                                         '/user/' + JSON.parse(getToken()).user.golden
                                     }
                                     className="nav-link">
-                                    {" "}
+                                    {' '}
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
-                                        {" "}
+                                        {' '}
                                         <FontAwesomeIcon size="lg"
-                                            icon={faUser}/>{" "}
+                                            icon={faUser}/>{' '}
                                         <div>Perfil</div>
                                     </div>
-                                    {" "} </NavLink>
-                                {" "} </NavItem>
+                                    {' '} </NavLink>
+                                {' '} </NavItem>
                         ) : (
                             <NavItem>
-                                <NavLink href="/" className="nav-link">
+                                <NavLink href="/aboutus" className="nav-link">
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
                                         <FontAwesomeIcon size="lg"
                                             icon={faInfo}/>
@@ -104,11 +103,11 @@ const NavbarComponent = () => {
                             </NavItem>
                         )
                     }
-                        {" "}
+                        {' '}
                         {
                         userSignedIn ? (
                             <NavItem>
-                                <NavLink href="/" className="nav-link">
+                                <NavLink href="/aboutus" className="nav-link">
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
                                         <FontAwesomeIcon size="lg"
                                             icon={faInfo}/>
@@ -136,11 +135,10 @@ const NavbarComponent = () => {
                                         </div>
                                     </NavLink>
                                 </NavItem>
-
                             </>
                         )
                     }
-                        {" "} </div>
+                        {' '} </div>
                 </Nav>
             </nav>
         </div>

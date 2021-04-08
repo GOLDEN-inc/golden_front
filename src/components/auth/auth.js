@@ -33,5 +33,4 @@
 //     return connect(mapStateToProps, "")(withRouter(Auth));
 // };
 
-
 // export default Auth;

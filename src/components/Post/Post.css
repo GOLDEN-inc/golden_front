@@ -40,7 +40,7 @@
   display: none;
   height: 15rem;
   width: 5rem;
-  background-image: url("../../images/camera.png");
+  background-image: url('../../images/camera.png');
 }
 
 .home-style {

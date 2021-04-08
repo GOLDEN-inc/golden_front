@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { getPost } from "../../actions/getPost";
-import { updatePost } from "../../actions/updatePost";
-import { deletePost } from "../../actions/deletePost";
-import { Redirect } from "react-router-dom";
+import { getPost } from '../../actions/getPost';
+import { updatePost } from '../../actions/updatePost';
+import { deletePost } from '../../actions/deletePost';
+import { Redirect } from 'react-router-dom';
 import {
   Alert,
   Button,
@@ -16,12 +16,12 @@ import {
   Container,
   Row,
   Col,
-} from "reactstrap";
-import firebase from "../../firebase/config";
-import "./Post.css";
+} from 'reactstrap';
+import firebase from '../../firebase/config';
+import './Post.css';
 
-import camera from "../../images/camera.png";
-import home from "../../images/home.png";
+import camera from '../../images/camera.png';
+import home from '../../images/home.png';
 
 const Post = (props) => {
   const loginSelector = useSelector((state) => state.login);
@@ -31,11 +31,11 @@ const Post = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [userState, setUserState] = useState(null);
 
-  const [defaultTitle, setDefaultTitle] = useState("");
-  const [defaultContent, setDefaultContent] = useState("");
-  const [defaultLink, setDefaultLink] = useState("");
-  const [fileref, setFileRef] = useState("");
-  const [routeRedirect, setRedirect] = useState("");
+  const [defaultTitle, setDefaultTitle] = useState('');
+  const [defaultContent, setDefaultContent] = useState('');
+  const [defaultLink, setDefaultLink] = useState('');
+  const [fileref, setFileRef] = useState('');
+  const [routeRedirect, setRedirect] = useState('');
 
   const [isBusy, setIsBusy] = useState(false);
 
@@ -44,7 +44,7 @@ const Post = (props) => {
   const fileRef = useRef(null);
   const linkRef = useRef(null);
 
-  const [postid, setPostId] = useState("");
+  const [postid, setPostId] = useState('');
 
   const getPostSelector = useSelector((state) => state.getPost);
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const Post = (props) => {
     });
 
     setTimeout(() => setTimer(false), 1000);
-    console.log("timer: ", timer);
+    console.log('timer: ', timer);
   }, []);
 
   const redirect = routeRedirect;
@@ -79,8 +79,8 @@ const Post = (props) => {
   const updateCurrentPost = async (e) => {
     e.preventDefault();
     setIsBusy(true);
-    console.log("fileRef ==> ", fileRef);
-    console.log("fileRef ==> ", fileRef.current);
+    console.log('fileRef ==> ', fileRef);
+    console.log('fileRef ==> ', fileRef.current);
     const post = {
       id: postid,
       title: titleRef.current.value,
@@ -89,8 +89,8 @@ const Post = (props) => {
     };
 
     if (fileRef.current.files.length > 0) {
-      post["cover"] = fileRef.current.files[0];
-      post["oldcover"] = getPostSelector.post.fileref;
+      post['cover'] = fileRef.current.files[0];
+      post['oldcover'] = getPostSelector.post.fileref;
     }
 
     await updatePostAction(postid, post);
@@ -114,8 +114,8 @@ const Post = (props) => {
   let updateForm;
   if (editMode) {
     if (
-      loginSelector.user.hasOwnProperty("user") ||
-      signinSelector.user.hasOwnProperty("user") ||
+      loginSelector.user.hasOwnProperty('user') ||
+      signinSelector.user.hasOwnProperty('user') ||
       (userState != null && isBusy === false)
     ) {
       deleteButton = (
@@ -187,8 +187,8 @@ const Post = (props) => {
     currentPost = <div className="loader">Loading...</div>;
   } else {
     if (
-      loginSelector.user.hasOwnProperty("user") ||
-      signinSelector.user.hasOwnProperty("user") ||
+      loginSelector.user.hasOwnProperty('user') ||
+      signinSelector.user.hasOwnProperty('user') ||
       userState != null
     ) {
       editButton = (
@@ -225,9 +225,9 @@ const Post = (props) => {
                   {editButton}
                 </Col>
                 <Col
-                  lg={{ size: "auto", offset: 4 }}
-                  md={{ size: "auto", offset: 3 }}
-                  sm={{ size: "auto", offset: 4 }}
+                  lg={{ size: 'auto', offset: 4 }}
+                  md={{ size: 'auto', offset: 3 }}
+                  sm={{ size: 'auto', offset: 4 }}
                   xs="3"
                 >
                   <Link to="/">

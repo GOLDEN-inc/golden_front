@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from "react";
-import {Redirect, Link} from "react-router-dom";
-import backendService from "../../backendService";
+import React, {useState, useEffect} from 'react';
+import {Redirect, Link} from 'react-router-dom';
+import backendService from '../../backendService';
 
 // *Aldo Caamal - Redux
 // import {useSelector, useDispatch} from "react-redux";
 // import {createUser} from "../../actions/signup";
 
-import "./SignUp.css";
+import './SignUp.css';
 
 import {
     Alert,
@@ -17,41 +17,41 @@ import {
     FormFeedback,
     Input,
     Row
-} from "reactstrap";
+} from 'reactstrap';
 
 const SignUp = () => {
     // SignUp Component
 
     // Name
-    const [name, setName] = useState("");
+    const [name, setName] = useState('');
     const [nameError, setNameError] = useState(true);
 
     // Golden
-    const [golden, setGolden] = useState("");
+    const [golden, setGolden] = useState('');
     const [goldenError, setGoldenError] = useState(true);
 
     // Email
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState(true);
 
     // Password
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState(true);
 
     // Pix
-    const [pix, setPix] = useState("");
+    const [pix, setPix] = useState('');
     const [pixError, setPixError] = useState(true);
 
     // Telefone
-    const [cell, setCell] = useState("");
+    const [cell, setCell] = useState('');
     const [cellError, setCellError] = useState(true);
 
     // Keep track of errors in the form
     const [error, setError] = useState(false);
-    const [routeRedirect, setRedirect] = useState("");
+    const [routeRedirect, setRedirect] = useState('');
 
     // User error message
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
 
     // Succesfull SignUp messgae
     const [signInSuccess, setSignInSuccess] = useState(false);
@@ -72,42 +72,42 @@ const SignUp = () => {
         }
 
         // Validate Password
-        if (password === "") {
+        if (password === '') {
             setPasswordError(true);
         } else {
             setPasswordError(false);
         }
 
         // Validate Golden
-        if (golden === "") {
+        if (golden === '') {
             setGoldenError(true);
         } else {
             setGoldenError(false);
         }
 
         // Validate Name
-        if (name === "") {
+        if (name === '') {
             setNameError(true);
         } else {
             setNameError(false);
         }
 
         // Validate PIX
-        if (pix === "") {
+        if (pix === '') {
             setPixError(true);
         } else {
             setPixError(false);
         }
 
         // Validate Cellphone
-        if (cell === "") {
+        if (cell === '') {
             setCellError(true);
         } else {
             setCellError(false);
         }
 
         // Set Error Message to Empty and SignIn state to false
-        setErrorMessage("");
+        setErrorMessage('');
     }, [
         email,
         password,
@@ -124,12 +124,12 @@ const SignUp = () => {
                 if (data.error) {
                     setErrorMessage(data.error);
                 } else {
-                    setName("");
-                    setEmail("");
-                    setPassword("");
-                    setGolden("");
-                    setCell("");
-                    setPix("");
+                    setName('');
+                    setEmail('');
+                    setPassword('');
+                    setGolden('');
+                    setCell('');
+                    setPix('');
                     setSignInSuccess(true);
                     setTimeout(() => {
                         setRedirect(true);
@@ -144,7 +144,7 @@ const SignUp = () => {
 
     if (routeRedirect) {
         return <Redirect to="/login"/>;
-    };
+    }
 
     const validateFields = () => {
         if (emailError === false && passwordError === false && nameError === false && goldenError === false && pixError === false && cellError === false) {
@@ -172,16 +172,16 @@ const SignUp = () => {
                         <h4 className="forms-title">Cadastre-se.</h4>
                         <Alert style={
                                 {
-                                    display: errorMessage ? "" : "none"
+                                    display: errorMessage ? '' : 'none'
                                 }
                             }
                             color="danger">
                             {errorMessage}
-                            {" "} </Alert>
+                            {' '} </Alert>
 
                         <Alert style={
                                 {
-                                    display: signInSuccess ? "" : "none"
+                                    display: signInSuccess ? '' : 'none'
                                 }
                             }
                             color="warning">
@@ -219,7 +219,7 @@ const SignUp = () => {
                                         <FormFeedback>Nome não pode ser vazio!</FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
                             <Col sm="12"
                                 md={
@@ -249,7 +249,7 @@ const SignUp = () => {
                                         <FormFeedback>E-mail inválido.</FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
                             <Col sm="12"
                                 md={
@@ -279,7 +279,7 @@ const SignUp = () => {
                                         <FormFeedback>Golden não pode ser vazio!</FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
                             <Col sm="12"
                                 md={
@@ -309,7 +309,7 @@ const SignUp = () => {
                                         <FormFeedback>Senha não pode estar vazia.</FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
                             <Col sm="12"
                                 md={
@@ -341,7 +341,7 @@ const SignUp = () => {
                                         </FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
                             <Col sm="12"
                                 md={
@@ -371,7 +371,7 @@ const SignUp = () => {
                                         <FormFeedback>O campo PIX não pode ser vazio!</FormFeedback>
                                     )
                                 }
-                                    {" "} </FormGroup>
+                                    {' '} </FormGroup>
                             </Col>
 
                             <button className="button1 button-singup">Criar</button>

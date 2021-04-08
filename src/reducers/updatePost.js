@@ -4,7 +4,7 @@ const updatePost = (
   },
   action
 ) => {
-  if (action.type === "UPDATE_POST") {
+  if (action.type === 'UPDATE_POST') {
     state = { ...state, post: action.payload };
   }
   return state;

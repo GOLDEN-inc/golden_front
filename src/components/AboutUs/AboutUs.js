@@ -1,38 +1,38 @@
-import React from "react";
-import Nav from "../Navbar/Nav";
+import React from 'react';
+import Nav from '../Navbar/Nav';
 
-import ReactTextRotator from "react-text-rotator";
+import ReactTextRotator from 'react-text-rotator';
 
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 
-import arrow from "../../images/arrow-down-white.png";
-import golden from "../../images/golden_baby.jpg";
+import arrow from '../../images/arrow-down-white.png';
+import golden from '../../images/golden_baby.jpg';
 
-import SectionTitle from "./SectionTitle";
+import SectionTitle from './SectionTitle';
 
-import "./AboutUs.css";
+import './AboutUs.css';
 
 const AboutUs = () => {
   const content = [
     {
-      text: "Nós somos a Golden.",
-      className: "classA",
-      animation: "fade",
+      text: 'Nós somos a Golden.',
+      className: 'classA',
+      animation: 'fade',
     },
     {
-      text: "Através de uma rede de influenciadores",
-      className: "classB",
-      animation: "fade",
+      text: 'Através de uma rede de influenciadores',
+      className: 'classB',
+      animation: 'fade',
     },
     {
-      text: "Impactamos pessoas e criamos conexões.",
-      className: "classC",
-      animation: "fade",
+      text: 'Impactamos pessoas e criamos conexões.',
+      className: 'classC',
+      animation: 'fade',
     },
     {
-      text: "Vamos nessa?",
-      className: "classD",
-      animation: "fade",
+      text: 'Vamos nessa?',
+      className: 'classD',
+      animation: 'fade',
     },
   ];
 
@@ -49,8 +49,8 @@ const AboutUs = () => {
           id="home"
           style={{
             backgroundImage: `url(${golden})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
           }}
         >
           <div className="bg-overlay"></div>
@@ -78,7 +78,7 @@ const AboutUs = () => {
                     src={arrow}
                     alt="continue"
                     style={{
-                      height: "2rem",
+                      height: '2rem',
                     }}
                   />
                 </Col>

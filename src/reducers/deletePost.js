@@ -4,7 +4,7 @@ const deletePost = (
   },
   action
 ) => {
-  if (action.type === "DELETE_POST") {
+  if (action.type === 'DELETE_POST') {
     state = { ...state, post: action.payload };
   }
   return state;

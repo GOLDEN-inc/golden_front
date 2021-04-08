@@ -4,7 +4,7 @@ const createPost = (
   },
   action
 ) => {
-  if (action.type === "CREATE_POST") {
+  if (action.type === 'CREATE_POST') {
     state = { ...state, post: action.payload };
   }
   return state;

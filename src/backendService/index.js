@@ -1,3 +1,5 @@
+const {REACT_APP_API_URL} = process.env;
+
 class BackEnd {
     async signup(email, password, name, golden, pix, telfone_wpp) {
         const user = {
@@ -9,11 +11,11 @@ class BackEnd {
             telfone_wpp
         };
 
-        return fetch("http://localhost:8081/signup", {
-            method: "POST",
+        return fetch(`${REACT_APP_API_URL}/signup`, {
+            method: 'POST',
             headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         }).then((response) => {
@@ -29,11 +31,11 @@ class BackEnd {
             password
         };
 
-        return fetch("http://localhost:8081/signin", {
-            method: "POST",
+        return fetch(`${REACT_APP_API_URL}/signin`, {
+            method: 'POST',
             headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         }).then((response) => {
@@ -44,29 +46,22 @@ class BackEnd {
     }
 
     async authenticate(jwt, next) {
-        if (typeof window !== "undefined") {
-            localStorage.setItem("jwt", JSON.stringify(jwt));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('jwt', JSON.stringify(jwt));
             next();
         }
     }
 
     async signout(next) {
-        if (typeof window !== "undefined") 
-            localStorage.removeItem("jwt");
+        if (typeof window !== 'undefined') 
+            localStorage.removeItem('jwt');
         
 
-
         next();
-        return fetch("http://localhost:8081/signout", {method: "POST"}).then((response) => {
-            console.log("signout", response);
+        return fetch(`${REACT_APP_API_URL}/signout`, {method: 'POST'}).then((response) => {
+            console.log('signout', response);
             return response.json();
         }).catch((err) => console.log(err));
-    }
-
-    async getUserState() {
-        return new Promise((resolve) => {
-            this.auth.onAuthStateChanged(resolve);
-        });
     }
 }
 

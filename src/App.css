@@ -34,7 +34,7 @@ body,
 input,
 textarea,
 button {
-  font: 400 1rem "Inter", sans-serif;
+  font: 400 1rem 'Inter', sans-serif;
 }
 
 button {
@@ -56,9 +56,9 @@ a:hover {
   width: 150px;
 }
 
-input[type="text"],
-input[type="textarea"],
-input[type="password"] {
+input[type='text'],
+input[type='textarea'],
+input[type='password'] {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -69,9 +69,9 @@ input[type="password"] {
   border: 1px solid #dddddd;
 }
 
-input[type="text"]:focus,
-input[type="textarea"]:focus,
-input[type="password"]:focus {
+input[type='text']:focus,
+input[type='textarea']:focus,
+input[type='password']:focus {
   box-shadow: 0 0 5px var(--second);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
@@ -86,7 +86,7 @@ button.button1 {
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none !important;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #ffffff;
   text-align: center;
@@ -115,7 +115,7 @@ button.button2 {
   border-radius: 0.5em;
   box-sizing: border-box;
   text-decoration: none !important;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 3rem;
   color: var(--white);
   text-align: center;

@@ -1,35 +1,36 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import {getPosts} from "../../actions/getPosts";
+import { getPosts } from '../../actions/getPosts';
 
-import Nav from "../Navbar/Nav";
+import Nav from '../Navbar/Nav';
 
 // import firebase from "../../firebase/config";
 
-import "./Home.css";
+import './Home.css';
 
 const Home = (props) => {
-    const [userState, setUserState] = useState(null);
+  const [userState, setUserState] = useState(null);
 
-    // const getPostsSelector = useSelector((state) => state.getPosts);
-    const dispatch = useDispatch();
-    // const getPostsAction = () => dispatch(getPosts());
+  // const getPostsSelector = useSelector((state) => state.getPosts);
+  const dispatch = useDispatch();
+  // const getPostsAction = () => dispatch(getPosts());
 
-    useEffect(() => { // getPostsAction();
-    }, []);
+  useEffect(() => {
+    // getPostsAction();
+  }, []);
 
-    useEffect(() => {
-        // firebase.getUserState().then((user) => {
-        //     setUserState(user);
-        // });
-    });
+  useEffect(() => {
+    // firebase.getUserState().then((user) => {
+    //     setUserState(user);
+    // });
+  });
 
-    return (
-        <React.Fragment>
-            <Nav/>{" "}
-            {/* <div className="posts">
+  return (
+    <React.Fragment>
+      <Nav />{' '}
+      {/* <div className="posts">
                 {getPostsSelector.posts.map((post) => {
                     return (
                         <div className="post" key={post.id}>
@@ -50,9 +51,9 @@ const Home = (props) => {
                         </div>
                     );
                 })}
-            </div> */}
-            {" "} </React.Fragment>
-    );
+            </div> */}{' '}
+    </React.Fragment>
+  );
 };
 
 export default Home;

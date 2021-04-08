@@ -4,7 +4,7 @@ const loginUser = (
   },
   action
 ) => {
-  if (action.type === "LOGIN_USER") {
+  if (action.type === 'LOGIN_USER') {
     state = { ...state, user: action.payload };
   }
   return state;

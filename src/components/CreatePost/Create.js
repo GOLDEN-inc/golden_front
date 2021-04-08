@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router";
-import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/create";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Redirect } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../actions/create';
+import { Link } from 'react-router-dom';
 
-import { Form, Label, Input, Container, Row, Col, Alert } from "reactstrap";
+import { Form, Label, Input, Container, Row, Col, Alert } from 'reactstrap';
 
-import camera from "../../images/camera.png";
-import home from "../../images/home.png";
-import "./Create.css";
+import camera from '../../images/camera.png';
+import home from '../../images/home.png';
+import './Create.css';
 
 const Create = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [link, setLink] = useState("");
-  const [cover, setCover] = useState("");
-  const [error, setError] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [link, setLink] = useState('');
+  const [cover, setCover] = useState('');
+  const [error, setError] = useState('');
 
-  const [routeRedirect, setRedirect] = useState("");
+  const [routeRedirect, setRedirect] = useState('');
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const createPostAction = (post) => dispatch(createPost(post));
 
-  const types = ["image/png", "image/jpeg"];
+  const types = ['image/png', 'image/jpeg'];
 
   const handleChange = (e) => {
     let selected = e.target.files[0];
 
     if (selected && types.includes(selected.type)) {
       setCover(selected);
-      setError("");
+      setError('');
     } else {
       setCover(null);
-      setError("Please select an image file (png or jpg)");
+      setError('Please select an image file (png or jpg)');
     }
   };
 
@@ -109,7 +109,7 @@ const Create = () => {
           <Row>
             <Col
               md={{ size: 6, offset: 0 }}
-              sm={{ size: "auto", offset: 1 }}
+              sm={{ size: 'auto', offset: 1 }}
               xs="10"
             >
               <button className="button1">Criar indicação</button>
