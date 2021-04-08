@@ -1,6 +1,6 @@
 const {REACT_APP_API_URL} = process.env;
 
-class BackEnd {
+class Auth {
     async signup(email, password, name, golden, pix, telfone_wpp) {
         const user = {
             name,
@@ -57,6 +57,7 @@ class BackEnd {
             localStorage.removeItem('jwt');
         
 
+
         next();
         return fetch(`${REACT_APP_API_URL}/signout`, {method: 'POST'}).then((response) => {
             console.log('signout', response);
@@ -65,4 +66,4 @@ class BackEnd {
     }
 }
 
-export default new BackEnd();
+export default new Auth();

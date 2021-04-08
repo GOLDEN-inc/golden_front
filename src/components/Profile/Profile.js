@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import backendService from '../../backendService';
+import user_backend from '../../backendService/user';
 import {isAuthenticated, getToken} from '../../backendService/auth';
 import PropTypes from 'prop-types';
-import {useParams} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 
 import {
+    Alert,
     Container,
     Col,
     Form,
@@ -22,7 +24,7 @@ import NavComponent from '../Navbar/Nav';
 import QRCode from 'qrcode.react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {faDraftingCompass, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 import golden_img from '../../images/golden_baby.jpg';
 
@@ -36,8 +38,16 @@ import './Profile.css';
 // import firebase from "../../firebase/config";
 
 const Profile = (props) => {
-    const [goldenInput, setGoldenInput] = useState('http://localhost:3000/user/' + JSON.parse(getToken()).user.golden);
+    // * Profile component
+
+    // golden
+    const [goldenInput, setGoldenInput] = useState('');
+
+    // Check if user is signed in
     const [userIsSignedIn, setUserIsSignedIn] = useState(false);
+
+    // Get user data from API
+    const [userData, setUserData] = useState(undefined);
 
     const {golden} = useParams();
 
@@ -54,11 +64,26 @@ const Profile = (props) => {
         await backendService.signout(() => props.history.replace('/'));
     };
 
-    useEffect(() => {
-        if (isAuthenticated()) {
+    useEffect(async () => {
+        if (isAuthenticated()) 
             setUserIsSignedIn(true);
-        }
+        
+
+
+        let data = await user_backend.getUserByGolden(golden);
+        setUserData(data);
+        if (userData != undefined) 
+            setGoldenInput('http://localhost:3000/user/' + userData.user.golden);
+        
+
+
     }, []);
+
+    if (userData === undefined) {
+        return <Alert color="warning">
+            Carregando...
+        </Alert>;
+    }
 
     return (
         <React.Fragment> {' '}
@@ -81,7 +106,7 @@ const Profile = (props) => {
             )
         }
             <NavComponent/>
-            <Container>
+            <Container className='main-container'>
                 <Row>
                     <Col>
                         <Container className="user-profile-container">
@@ -92,16 +117,6 @@ const Profile = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Container className="editar-button">
-                        <button className="button1 button1-profile"
-                            onClick={
-                                (e) => editProfile(e)
-                        }>
-                            Salvar informações
-                        </button>
-                    </Container>
-                </Row>
-                <Row>
                     <Col>
                         <Form>
                             <FormGroup>
@@ -110,7 +125,7 @@ const Profile = (props) => {
                                     <Input type="text"
                                         placeholder={
                                             `${
-                                                JSON.parse(getToken()).user.golden
+                                                userData.user.golden
                                             }`
                                         }
                                         onChange={
@@ -126,22 +141,94 @@ const Profile = (props) => {
                         </Container>
                     </Col>
                 </Row>
-                <hr className="profile-hr"/>
-                <Row>
-                    <Col>
-                        <Container>
-                            <Form>
-                                <FormGroup>
-                                    <Container>
-                                        <Label className="label-center">PIX</Label>
-                                        <Input type="text" placeholder="XXX.XXX.XXX-XX"/>
-                                    </Container>
-                                </FormGroup>
-                            </Form>
+                <hr className="profile-hr"/> {
+                userIsSignedIn && (
+                    <Row>
+                        <Container className="editar-button">
+                            <button className="button1 button1-profile"
+                                onClick={
+                                    (e) => editProfile(e)
+                            }>
+                                Salvar informações
+                            </button>
                         </Container>
-                    </Col>
-                </Row>
-            </Container>
+                    </Row>
+                )
+            }
+                {
+                userIsSignedIn && (
+                    <>
+                        <Row>
+                            <Col>
+                                <Form>
+                                    <FormGroup>
+                                        <Container className="golden-container">
+                                            <Label>Nome</Label>
+                                            <Input type="text"
+                                                placeholder={
+                                                    `${
+                                                        userData.user.name
+                                                    }`
+                                                }/>
+                                        </Container>
+                                    </FormGroup>
+                                </Form>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form>
+                                    <FormGroup>
+                                        <Container className="golden-container">
+                                            <Label>E-mail</Label>
+                                            <Input type="text"
+                                                placeholder={
+                                                    `${
+                                                        userData.user.email
+                                                    }`
+                                                }/>
+                                        </Container>
+                                    </FormGroup>
+                                </Form>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form>
+                                    <FormGroup>
+                                        <Container className="golden-container">
+                                            <Label>PIX</Label>
+                                            <Input type="text"
+                                                placeholder={
+                                                    `${
+                                                        userData.user.pix
+                                                    }`
+                                                }/>
+                                        </Container>
+                                    </FormGroup>
+                                </Form>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form>
+                                    <FormGroup>
+                                        <Container className="golden-container">
+                                            <Label>Telefone Whatsapp</Label>
+                                            <Input type="text"
+                                                placeholder={
+                                                    `${
+                                                        userData.user.telfone_wpp
+                                                    }`
+                                                }/>
+                                        </Container>
+                                    </FormGroup>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </>
+                )
+            } </Container>
         </React.Fragment>
     );
 };

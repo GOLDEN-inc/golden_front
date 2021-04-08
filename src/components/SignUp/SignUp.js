@@ -143,7 +143,7 @@ const SignUp = () => {
     };
 
     if (routeRedirect) {
-        return <Redirect to="/login"/>;
+        return <Redirect to="/entrar"/>;
     }
 
     const validateFields = () => {
