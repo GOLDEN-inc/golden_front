@@ -36,10 +36,15 @@
   box-shadow: inset 0 12px 12px -12px var(--main);
 }
 
-.label-center {
-  padding: 2rem 0 0;
-  line-height: 150%;
-  font-size: 1em;
-  display: block;
+.money-container {
+  padding-left: 2rem;
   text-align: center;
+}
+
+.money-retirado {
+  color: var(--main);
+}
+
+.money-pendente {
+  color: var(--green);
 }

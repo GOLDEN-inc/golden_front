@@ -2,13 +2,17 @@ const {REACT_APP_API_URL} = process.env;
 
 class Auth {
     async signup(email, password, name, golden, pix, telfone_wpp) {
+        let saldo_pendente = 0.0;
+        let dinheiro_retirado = 0.0;
         const user = {
             name,
             golden,
             email,
             password,
             pix,
-            telfone_wpp
+            telfone_wpp,
+            saldo_pendente,
+            dinheiro_retirado
         };
 
         return fetch(`${REACT_APP_API_URL}/signup`, {
