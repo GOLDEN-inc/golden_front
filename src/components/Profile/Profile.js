@@ -139,7 +139,7 @@ const Profile = (props) => {
 };
 
 Profile.propTypes = {
-    history: PropTypes.string
+    history: PropTypes.object
 };
 
 

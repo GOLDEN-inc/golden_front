@@ -376,7 +376,7 @@ const SignUp = () => {
 
                             <button className="button1 button-singup">Criar</button>
                         </Form>
-                        <Link className="login-link" to="/login">
+                        <Link className="login-link" to="/entrar">
                             Entrar
                         </Link>
                     </Container>

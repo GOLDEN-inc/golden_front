@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 
 import {Nav, NavItem, NavLink} from "reactstrap";
 
-import {isAuthenticated} from "../../backendService/auth";
+import {isAuthenticated, getToken} from "../../backendService/auth";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -52,7 +52,6 @@ const NavbarComponent = () => {
     const [userSignedIn, setUserSignedIn] = useState(false);
 
     useEffect(() => {
-        console.log("CUUUU - ", isAuthenticated());
         if (isAuthenticated()) {
             setUserSignedIn(true);
         }
@@ -80,7 +79,10 @@ const NavbarComponent = () => {
                         {
                         userSignedIn ? (
                             <NavItem> {" "}
-                                <NavLink href="/profile" className="nav-link">
+                                <NavLink href={
+                                        '/user/' + JSON.parse(getToken()).user.golden
+                                    }
+                                    className="nav-link">
                                     {" "}
                                     <div className="row d-flex flex-column justify-content-center align-items-center">
                                         {" "}
@@ -117,7 +119,7 @@ const NavbarComponent = () => {
                         ) : (
                             <>
                                 <NavItem>
-                                    <NavLink href="/login" className="nav-link">
+                                    <NavLink href="/entrar" className="nav-link">
                                         <div className="row d-flex flex-column justify-content-center align-items-center">
                                             <FontAwesomeIcon size="lg"
                                                 icon={faSignInAlt}/>
