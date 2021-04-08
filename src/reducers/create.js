@@ -1,13 +1,13 @@
 const createPost = (
-    state = {
-        post: {},
-    },
-    action
+  state = {
+    post: {},
+  },
+  action
 ) => {
-    if (action.type === "CREATE_POST") {
-        state = { ...state, post: action.payload };
-    }
-    return state;
+  if (action.type === "CREATE_POST") {
+    state = { ...state, post: action.payload };
+  }
+  return state;
 };
 
 export default createPost;

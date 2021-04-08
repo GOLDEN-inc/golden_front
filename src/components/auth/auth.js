@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 import firebase from "../../firebase/config";
 
 const Auth = (Component) => {
@@ -14,11 +14,7 @@ const Auth = (Component) => {
                 }
             });
 
-            if (
-                Object.keys(this.props.loggedIn).length === 0 &&
-                Object.keys(this.props.signedIn).length === 0 &&
-                Object.keys(userStatus).length === 0
-            ) {
+            if (Object.keys(this.props.loggedIn).length === 0 && Object.keys(this.props.signedIn).length === 0 && Object.keys(userStatus).length === 0) {
                 console.log("user is not set");
                 console.log(userStatus);
                 this.props.history.push("/login");
@@ -26,16 +22,12 @@ const Auth = (Component) => {
         };
 
         render() {
-            return <Component {...this.props} />;
+            return <Component {...this.props}/>;
         }
     }
 
-    function mapStateToProps(state) {
-        //state.ReducerName.reducerProperty
-        return {
-            loggedIn: state.login.user,
-            signedIn: state.signup.user,
-        };
+    function mapStateToProps(state) { // state.ReducerName.reducerProperty
+        return {loggedIn: state.login.user, signedIn: state.signup.user};
     }
     return connect(mapStateToProps, "")(withRouter(Auth));
 };

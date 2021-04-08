@@ -1,15 +1,15 @@
 const logoutUser = (
-    //initial state
-    state = {
-        user: {},
-    },
-    action
+  //initial state
+  state = {
+    user: {},
+  },
+  action
 ) => {
-    if (action.type === "LOGOUT_USER") {
-        state = { ...state, user: action.payload };
-    }
+  if (action.type === "LOGOUT_USER") {
+    state = { ...state, user: action.payload };
+  }
 
-    return state;
+  return state;
 };
 
 export default logoutUser;

@@ -1,17 +1,18 @@
-const createUser = (state = {
+const createUser = (
+  state = {
     isError: false,
-    user: {}
-}, action) => {
-    if (action.type === "CREATE_USER") {
-        state = {
-            ...state,
-            user: action.payload
-        };
-    }
-    console.log(state.isError)
-    console.log("2) --->", state.user.error)
+    user: {},
+  },
+  action
+) => {
+  if (action.type === "CREATE_USER") {
+    state = {
+      ...state,
+      user: action.payload,
+    };
+  }
 
-    return state;
+  return state;
 };
 
 export default createUser;

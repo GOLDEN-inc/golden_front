@@ -1,13 +1,13 @@
 const deletePost = (
-    state = {
-        posts: [],
-    },
-    action
+  state = {
+    posts: [],
+  },
+  action
 ) => {
-    if (action.type === "DELETE_POST") {
-        state = { ...state, post: action.payload };
-    }
-    return state;
+  if (action.type === "DELETE_POST") {
+    state = { ...state, post: action.payload };
+  }
+  return state;
 };
 
 export default deletePost;

@@ -1,137 +1,121 @@
 import React, {useEffect, useState} from "react";
 import {withRouter} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import {logoutUser} from "../../actions/logout";
 
-import {Container, Nav, NavItem, NavLink} from "reactstrap";
+import {Nav, NavItem, NavLink} from "reactstrap";
 
-import firebase from "../../firebase/config";
+import {isAuthenticated} from "../../backendService/auth";
 
 import "./Nav.css";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faSearch,
     faHome,
     faUser,
-    faCamera,
-    faInfo
+    faInfo,
+    faSignInAlt,
+    // faSearch,
+    // faCamera
 } from "@fortawesome/free-solid-svg-icons";
 
-const tabs = [
+// import firebase from "../../firebase/config";
+
+let tabs = [
     {
         route: "/",
         icon: faHome,
         label: "Home"
-    },
-    {
-        route: "/search",
-        icon: faSearch,
-        label: "Pesquisa"
-    },
-    {
-        route: "/create",
-        icon: faCamera,
-        label: "Indicação"
-    },
-    {
+    }, {
         route: "/profile",
         icon: faUser,
         label: "Perfil"
     }, {
         route: "/aboutus",
         icon: faInfo,
-        label: "Sobre Nós"
+        label: "GOLDEN"
     },
 ];
+// !In future versions such paths should be used
+// {
+//     route: "/search",
+//     icon: faSearch,
+//     label: "Pesquisa"
+// },
+// {
+//     route: "/create",
+//     icon: faCamera,
+//     label: "Indicação"
+// }
 
-const NavbarComponent = (props) => {
-    const loginSelector = useSelector((state) => state.login);
-    const signupSelector = useSelector((state) => state.signup);
-    const [menuState, setMenuState] = useState(false);
-    const [userState, setUserState] = useState(null);
-    const dispatch = useDispatch();
-    const logoutUserAction = () => dispatch(logoutUser());
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggle = () => setIsOpen(!isOpen);
+const NavbarComponent = () => {
+    const [userSignedIn, setUserSignedIn] = useState(false);
 
     useEffect(() => {
-        firebase.getUserState().then((user) => {
-            setUserState(user);
-        });
-    });
+        console.log("CUUUU - ", isAuthenticated());
+        if (isAuthenticated()) {
+            setUserSignedIn(true);
+        }
+    }, []);
 
-    const logout = async () => {
-        console.log("logout user");
-        setUserState(null);
-        await logoutUserAction();
-        props.history.replace("/");
-    };
-
-    let buttons;
-    if ((loginSelector.user && loginSelector.user.hasOwnProperty("user")) || (signupSelector.user && signupSelector.user.hasOwnProperty("user")) || userState != null) {
-        buttons = (
-            <Container>
-                <NavItem>
-                    <NavLink href="/profile">
-                        <FontAwesomeIcon className="profile-icon" icon="user"/>
-                    </NavLink>
-                </NavItem>
-                <NavItem>
-                    <button className="logout-nav button2"
-                        onClick={logout}>
-                        Logout
-                    </button>
-                </NavItem>
-            </Container>
-        );
-    } else {
-        buttons = (
-            <React.Fragment>
-                <NavLink className="login" href="/login">
-                    {" "}
-                    Entrar{" "} </NavLink>
-
-                <NavLink className="registrar" href="/registrar">
-                    {" "}
-                    Registrar{" "} </NavLink>
-            </React.Fragment>
-        );
+    if (!userSignedIn) {
+        tabs.splice(1, 1);
+        tabs.push({route: "/login", icon: faSignInAlt, label: "Entrar"});
     }
 
-    return (
-        <div>
-            <nav className="navbar fixed-bottom navbar-light nav-background" role="navigation">
-                <Nav className="w-100">
-                    <div className=" d-flex flex-row justify-content-around w-100">
-                        {
-                        tabs.map((tab, index) => (
-                            <NavItem key={
-                                `tab-${index}`
-                            }>
-                                <NavLink href={
-                                        tab.route
-                                    }
-                                    className="nav-link">
-                                    <div className="row d-flex flex-column justify-content-center align-items-center">
-                                        <FontAwesomeIcon size="lg"
-                                            icon={
-                                                tab.icon
-                                            }/>
-                                        <div>{
-                                            tab.label
-                                        }</div>
-                                    </div>
-                                </NavLink>
-                            </NavItem>
-                        ))
-                    } </div>
-                </Nav>
-            </nav>
-        </div>
-    );
+    return (<div>
+        <nav className="navbar fixed-bottom navbar-light nav-background" role="navigation">
+            <Nav className="w-100">
+                <div className=" d-flex flex-row justify-content-around w-100">
+                    <NavItem>
+                        <NavLink href="/" className="nav-link">
+                            <div className="row d-flex flex-column justify-content-center align-items-center">
+                                <FontAwesomeIcon size="lg"
+                                    icon={faHome}/>
+                                <div>Home</div>
+                            </div>
+                        </NavLink>
+                    </NavItem>
+                    {
+                    userSignedIn ? (<NavItem> {" "}
+                        <NavLink href="/profile" className="nav-link"> {" "}
+                            <div className="row d-flex flex-column justify-content-center align-items-center"> {" "}
+                                <FontAwesomeIcon size="lg"
+                                    icon={faUser}/>{" "}
+                                <div>Perfil</div>
+                            </div>
+                            {" "} </NavLink>
+                        {" "} </NavItem>) : (<NavItem>
+                        <NavLink href="/" className="nav-link">
+                            <div className="row d-flex flex-column justify-content-center align-items-center">
+                                <FontAwesomeIcon size="lg"
+                                    icon={faInfo}/>
+                                <div>Golden</div>
+                            </div>
+                        </NavLink>
+                    </NavItem>)
+                }
+                    {" "}
+                    {
+                    userSignedIn ? (<NavItem>
+                        <NavLink href="/" className="nav-link">
+                            <div className="row d-flex flex-column justify-content-center align-items-center">
+                                <FontAwesomeIcon size="lg"
+                                    icon={faInfo}/>
+                                <div>Golden</div>
+                            </div>
+                        </NavLink>
+                    </NavItem>) : (<NavItem>
+                        <NavLink href="/login" className="nav-link">
+                            <div className="row d-flex flex-column justify-content-center align-items-center">
+                                <FontAwesomeIcon size="lg"
+                                    icon={faSignInAlt}/>
+                                <div>Entrar</div>
+                            </div>
+                        </NavLink>
+                    </NavItem>)
+                }
+                    {" "} </div>
+            </Nav>
+        </nav>
+    </div>);
 };
-
 export default withRouter(NavbarComponent);

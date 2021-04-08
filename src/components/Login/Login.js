@@ -75,85 +75,87 @@ const Login = () => {
 
     const redirectTo = redirect;
     if (redirect) {
-        return <Redirect to="/" />;
+        return <Redirect to="/"/>;
     }
 
-    return (<Container>
-        <Row>
-            <Col lg={
-                    {
-                        size: 6,
-                        offset: 3
-                    }
-                }
-                md={
-                    {
-                        size: 8,
-                        offset: 2
-                    }
-            }>
-                <Container className="container-forms">
-                    <img className="logo-main" src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2" alt="Logo"/>
-                    <h1 className="main-title-login">GOLDEN</h1>
-                    <Alert style={
-                            {
-                                display: errorMessage ? "" : "none"
-                            }
+    return (
+        <Container>
+            <Row>
+                <Col lg={
+                        {
+                            size: 6,
+                            offset: 3
                         }
-                        color="danger"> {" "}
-                        {errorMessage}
-                        {" "} </Alert>
-
-
-                    <Alert style={
-                            {
-                                display: loading ? false : "none"
-                            }
+                    }
+                    md={
+                        {
+                            size: 8,
+                            offset: 2
                         }
-                        color="warning"> {" "}
-                        Aguarde um momento... {" "} </Alert>
-
-
-                    <Form onSubmit={handleSubmit}>
-                        <Col sm="12"
-                            md={
+                }>
+                    <Container className="container-forms">
+                        <img className="logo-main" src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2" alt="Logo"/>
+                        <h1 className="main-title-login">GOLDEN</h1>
+                        <Alert style={
                                 {
-                                    size: 8,
-                                    offset: 2
+                                    display: errorMessage ? "" : "none"
                                 }
-                        }>
-                            <FormGroup className="form-input">
-                                <Input name="email" placeholder="E-mail"
-                                    value={email}
-                                    onChange={
-                                        (event) => setEmail(event.target.value)
-                                    }/>
-                            </FormGroup>
-                        </Col>
-                        <Col sm="12"
-                            md={
+                            }
+                            color="danger">
+                            {" "}
+                            {errorMessage}
+                            {" "} </Alert>
+
+                        <Alert style={
                                 {
-                                    size: 8,
-                                    offset: 2
+                                    display: loading ? false : "none"
                                 }
-                        }>
-                            <FormGroup className="form-input">
-                                <Input name="password" type="password" placeholder="Senha"
-                                    value={password}
-                                    onChange={
-                                        (event) => setPassword(event.target.value)
-                                    }/>
-                            </FormGroup>
-                        </Col>
-                        <button className="button1 button-singup">Entrar</button>
-                    </Form>
-                    <Link className="registrar-link" to="/registrar">
-                        Cadastre-se
-                    </Link>
-                </Container>
-            </Col>
-        </Row>
-    </Container>);
+                            }
+                            color="warning">
+                            {" "}
+                            Aguarde um momento...{" "} </Alert>
+
+                        <Form onSubmit={handleSubmit}>
+                            <Col sm="12"
+                                md={
+                                    {
+                                        size: 8,
+                                        offset: 2
+                                    }
+                            }>
+                                <FormGroup className="form-input">
+                                    <Input name="email" placeholder="E-mail"
+                                        value={email}
+                                        onChange={
+                                            (event) => setEmail(event.target.value)
+                                        }/>
+                                </FormGroup>
+                            </Col>
+                            <Col sm="12"
+                                md={
+                                    {
+                                        size: 8,
+                                        offset: 2
+                                    }
+                            }>
+                                <FormGroup className="form-input">
+                                    <Input name="password" type="password" placeholder="Senha"
+                                        value={password}
+                                        onChange={
+                                            (event) => setPassword(event.target.value)
+                                        }/>
+                                </FormGroup>
+                            </Col>
+                            <button className="button1 button-singup">Entrar</button>
+                        </Form>
+                        <Link className="registrar-link" to="/registrar">
+                            Cadastre-se
+                        </Link>
+                    </Container>
+                </Col>
+            </Row>
+        </Container>
+    );
 };
 
 export default Login;

@@ -1,13 +1,13 @@
 const getPost = (
-    state = {
-        post: {},
-    },
-    action
+  state = {
+    post: {},
+  },
+  action
 ) => {
-    if (action.type === "GET_POST") {
-        state = { ...state, post: action.payload };
-    }
-    return state;
+  if (action.type === "GET_POST") {
+    state = { ...state, post: action.payload };
+  }
+  return state;
 };
 
 export default getPost;

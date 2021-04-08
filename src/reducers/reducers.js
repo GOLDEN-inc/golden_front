@@ -10,14 +10,14 @@ import updatePost from "./updatePost";
 import deletePost from "./deletePost";
 
 const reducers = combineReducers({
-    login: loginUser,
-    signup: createUser,
-    logout: logoutUser,
-    create: createPost,
-    getPost: getPost,
-    getPosts: getPosts,
-    updatePost: updatePost,
-    deletePost: deletePost,
+  login: loginUser,
+  signup: createUser,
+  logout: logoutUser,
+  create: createPost,
+  getPost: getPost,
+  getPosts: getPosts,
+  updatePost: updatePost,
+  deletePost: deletePost,
 });
 
 export default reducers;

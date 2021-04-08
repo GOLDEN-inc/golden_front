@@ -13,15 +13,15 @@ import Profile from "./components/Profile/Profile";
 import AboutUs from "./components/AboutUs/AboutUs";
 
 const Routes = () => (
-    <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/registrar" component={Signup} />
-        <Route exact path="/create" component={Auth(Create)} />
-        <Route exact path="/post/:id" component={Post} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/aboutus" component={AboutUs}/>
-    </Switch>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route exact path="/login" component={Login} />
+    <Route exact path="/registrar" component={Signup} />
+    <Route exact path="/create" component={Auth(Create)} />
+    <Route exact path="/post/:id" component={Post} />
+    <Route exact path="/profile" component={Profile} />
+    <Route exact path="/aboutus" component={AboutUs} />
+  </Switch>
 );
 
 export default Routes;

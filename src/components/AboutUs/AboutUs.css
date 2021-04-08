@@ -1,61 +1,60 @@
 .main-text-container {
-    padding-top: 4rem;
+  padding-top: 4rem;
 }
 
 .bg-main {
-    background-color: var(--main);
+  background-color: var(--main);
 }
 
 .section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  position: relative;
 }
 
 .section-lg {
-    padding: 5.25rem 0;
+  padding: 5.25rem 0;
 }
 
 .section-title {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0px;
-    padding-bottom: 1rem;
-    line-height: 1;
-    font-size: 1.75rem;
-    font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+  padding-bottom: 1rem;
+  line-height: 1;
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
 .section-title-border {
-    width: 50px;
-    height: 2px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: var(--main);
+  width: 50px;
+  height: 2px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: var(--main);
 }
 
 .section-subtitle {
-    letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
 }
 
 .bg-pattern-effect {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 .bg-pattern-effect img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 @media (min-width: 200px) and (max-width: 1024px) {
-    .bg-pattern-effect {
-        bottom: -7px;
-    }
+  .bg-pattern-effect {
+    bottom: -7px;
+  }
 }
 
-
 .container-explanation {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }

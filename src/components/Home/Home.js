@@ -26,10 +26,10 @@ const Home = (props) => {
         // });
     });
 
-
     return (
         <React.Fragment>
-            <Nav/> {/* <div className="posts">
+            <Nav/>{" "}
+            {/* <div className="posts">
                 {getPostsSelector.posts.map((post) => {
                     return (
                         <div className="post" key={post.id}>
@@ -50,7 +50,8 @@ const Home = (props) => {
                         </div>
                     );
                 })}
-            </div> */} </React.Fragment>
+            </div> */}
+            {" "} </React.Fragment>
     );
 };
 
