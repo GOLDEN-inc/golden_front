@@ -92,7 +92,7 @@ const Profile = (props) => {
                     <Container className="editar-button">
                         <button className="button1 button1-profile"
                             onClick={
-                                (e) => editProfile()
+                                (e) => editProfile(e)
                         }>
                             Salvar informações
                         </button>

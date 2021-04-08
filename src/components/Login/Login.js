@@ -73,10 +73,10 @@ const Login = () => {
         setErrorMessage("");
     }, [email, password]);
 
-    const redirectTo = redirect;
     if (redirect) {
         return <Redirect to="/"/>;
-    }
+    };
+
 
     return (
         <Container>

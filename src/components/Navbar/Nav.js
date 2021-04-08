@@ -5,17 +5,19 @@ import {Nav, NavItem, NavLink} from "reactstrap";
 
 import {isAuthenticated} from "../../backendService/auth";
 
-import "./Nav.css";
-
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faHome,
     faUser,
     faInfo,
     faSignInAlt,
+    faPlus,
     // faSearch,
     // faCamera
 } from "@fortawesome/free-solid-svg-icons";
+
+import "./Nav.css";
+
 
 // import firebase from "../../firebase/config";
 
@@ -113,15 +115,27 @@ const NavbarComponent = () => {
                                 </NavLink>
                             </NavItem>
                         ) : (
-                            <NavItem>
-                                <NavLink href="/login" className="nav-link">
-                                    <div className="row d-flex flex-column justify-content-center align-items-center">
-                                        <FontAwesomeIcon size="lg"
-                                            icon={faSignInAlt}/>
-                                        <div>Entrar</div>
-                                    </div>
-                                </NavLink>
-                            </NavItem>
+                            <>
+                                <NavItem>
+                                    <NavLink href="/login" className="nav-link">
+                                        <div className="row d-flex flex-column justify-content-center align-items-center">
+                                            <FontAwesomeIcon size="lg"
+                                                icon={faSignInAlt}/>
+                                            <div>Entrar</div>
+                                        </div>
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="/registrar" className="nav-link">
+                                        <div className="row d-flex flex-column justify-content-center align-items-center">
+                                            <FontAwesomeIcon size="lg"
+                                                icon={faPlus}/>
+                                            <div>Criar Conta</div>
+                                        </div>
+                                    </NavLink>
+                                </NavItem>
+
+                            </>
                         )
                     }
                         {" "} </div>
