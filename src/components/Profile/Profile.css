@@ -48,3 +48,8 @@
 .money-pendente {
   color: var(--main);
 }
+
+.alert {
+  align-items: center;
+  text-align: center;
+}

@@ -22,6 +22,7 @@ import {
 
 import NavComponent from '../Navbar/Nav';
 import QRCode from 'qrcode.react';
+import { Redirect } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -67,6 +68,9 @@ const Profile = (props) => {
   // User error message
   const [errorMessage, setErrorMessage] = useState('');
 
+  // User error message
+  const [reload, setReload] = useState(false);
+
   const { golden } = useParams();
 
   // *Aldo Caamal - Redux
@@ -87,13 +91,13 @@ const Profile = (props) => {
       setUserWithdraw(data.withdraw);
       setUserBalance(data.balance);
     });
-  }, []);
+  }, [reload]);
 
   if (userGolden === undefined) {
     return <Alert color="warning">Carregando...</Alert>;
   }
 
-  const clickSubmit = async (e) => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     const user = { userGolden, userName, userEmail, userPix, userWpp };
     const token = JSON.parse(getToken()).token;
@@ -103,15 +107,15 @@ const Profile = (props) => {
         setErrorMessage(data.error);
       } else {
         setUserGolden(data.golden);
-        setUserName(data.name);
-        setUserEmail(data.email);
-        setUserPix(data.pix);
-        setUserWpp(data.wpp);
-        setUserWithdraw(data.withdraw);
-        setUserBalance(data.balance);
+        setReload(true);
       }
     });
   };
+
+  if (reload) {
+    console.log('golden ==> ', userGolden);
+    return <Redirect to={`/user/${userGolden}`} />;
+  }
 
   const logout = async () => {
     setUserIsSignedIn(false);
@@ -174,12 +178,16 @@ const Profile = (props) => {
             </Row>
           </Col>
         </Row>
-        <Alert
-          style={{
-            display: errorMessage ? '' : 'none',
-          }}
-          color="danger"
-        ></Alert>
+        <div className="alert">
+          <Alert
+            style={{
+              display: errorMessage ? '' : 'none',
+            }}
+            color="danger"
+          >
+            {errorMessage}
+          </Alert>
+        </div>
         <Form>
           <hr className="profile-hr" />{' '}
           <Row>
