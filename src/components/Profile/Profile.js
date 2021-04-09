@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import backendService from '../../backendService';
-import {
-  getUserByGolden,
-  getBalanceByGolden,
-  getWithDrawByGolden,
-} from '../../backendService/user';
-import { isAuthenticated } from '../../backendService/auth';
+import { getUserByGolden, updateUserByGolden } from '../../backendService/user';
+import { isAuthenticated, getToken } from '../../backendService/auth';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
@@ -44,9 +40,6 @@ import './Profile.css';
 const Profile = (props) => {
   // * Profile component
 
-  // golden
-  const [goldenInput, setGoldenInput] = useState('');
-
   // Check if user is signed in
   const [userIsSignedIn, setUserIsSignedIn] = useState(false);
 
@@ -71,6 +64,9 @@ const Profile = (props) => {
   // User withdraw
   const [userWithdraw, setUserWithdraw] = useState(0.0);
 
+  // User error message
+  const [errorMessage, setErrorMessage] = useState('');
+
   const { golden } = useParams();
 
   // *Aldo Caamal - Redux
@@ -78,13 +74,6 @@ const Profile = (props) => {
   // const dispatch = useDispatch();
   // const getPostsAction = () => dispatch(getPosts());
   // const logoutUserAction = () => dispatch(logoutUser());
-
-  const editProfile = () => {};
-
-  const logout = async () => {
-    setUserIsSignedIn(false);
-    await backendService.signout(() => props.history.replace('/'));
-  };
 
   useEffect(() => {
     if (isAuthenticated()) setUserIsSignedIn(true);
@@ -103,6 +92,31 @@ const Profile = (props) => {
   if (userGolden === undefined) {
     return <Alert color="warning">Carregando...</Alert>;
   }
+
+  const clickSubmit = async (e) => {
+    e.preventDefault();
+    const user = { userGolden, userName, userEmail, userPix, userWpp };
+    const token = JSON.parse(getToken()).token;
+
+    updateUserByGolden(golden, token, user).then((data) => {
+      if (data.error) {
+        setErrorMessage(data.error);
+      } else {
+        setUserGolden(data.golden);
+        setUserName(data.name);
+        setUserEmail(data.email);
+        setUserPix(data.pix);
+        setUserWpp(data.wpp);
+        setUserWithdraw(data.withdraw);
+        setUserBalance(data.balance);
+      }
+    });
+  };
+
+  const logout = async () => {
+    setUserIsSignedIn(false);
+    await backendService.signout(() => props.history.replace('/'));
+  };
 
   return (
     <React.Fragment>
@@ -160,97 +174,105 @@ const Profile = (props) => {
             </Row>
           </Col>
         </Row>
-        <hr className="profile-hr" />{' '}
-        <Row>
-          <Col>
-            <Form>
+        <Alert
+          style={{
+            display: errorMessage ? '' : 'none',
+          }}
+          color="danger"
+        ></Alert>
+        <Form>
+          <hr className="profile-hr" />{' '}
+          <Row>
+            <Col>
               <FormGroup>
                 <Container className="golden-container">
                   <Label>GOLDEN</Label>
                   <Input
                     type="text"
                     placeholder={`${userGolden}`}
-                    onChange={(e) =>
-                      setGoldenInput(
-                        'http://localhost:3000/user/' + e.target.value
-                      )
-                    }
+                    onChange={(e) => setUserGolden(e.target.value)}
                   />
                 </Container>
               </FormGroup>
-            </Form>
-          </Col>
-          <Col>
-            <Container className="qrcode-container">
-              <QRCode value={goldenInput} />
-            </Container>
-          </Col>
-        </Row>
-        <hr className="profile-hr" />{' '}
-        {userIsSignedIn && (
-          <>
-            <Row>
-              <Col>
-                <Form>
+            </Col>
+            <Col>
+              <Container className="qrcode-container">
+                <QRCode value={'http://localhost:3000/user/' + userGolden} />
+              </Container>
+            </Col>
+          </Row>
+          <hr className="profile-hr" />{' '}
+          {userIsSignedIn && (
+            <>
+              <Row>
+                <Col>
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>Nome</Label>
-                      <Input type="text" placeholder={`${userName}`} />
+                      <Input
+                        type="text"
+                        placeholder={`${userName}`}
+                        onChange={(event) => setUserName(event.target.value)}
+                      />
                     </Container>
                   </FormGroup>
-                </Form>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>E-mail</Label>
-                      <Input type="text" placeholder={`${userEmail}`} />
+                      <Input
+                        type="text"
+                        placeholder={`${userEmail}`}
+                        onChange={(event) => setUserEmail(event.target.value)}
+                      />
                     </Container>
                   </FormGroup>
-                </Form>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>PIX</Label>
-                      <Input type="text" placeholder={`${userPix}`} />
+                      <Input
+                        type="text"
+                        placeholder={`${userPix}`}
+                        onChange={(event) => setUserPix(event.target.value)}
+                      />
                     </Container>
                   </FormGroup>
-                </Form>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>Telefone Whatsapp</Label>
-                      <Input type="text" placeholder={`${userWpp}`} />
+                      <Input
+                        type="text"
+                        placeholder={`${userWpp}`}
+                        onChange={(event) => setUserWpp(event.target.value)}
+                      />
                     </Container>
                   </FormGroup>
-                </Form>
-              </Col>
-            </Row>
-          </>
-        )}{' '}
-        {userIsSignedIn && (
-          <Row>
-            <Container className="editar-button">
-              <button
-                className="button1 button1-profile"
-                onClick={(e) => editProfile(e)}
-              >
-                Salvar informações
-              </button>
-            </Container>
-          </Row>
-        )}
+                </Col>
+              </Row>
+              <Row>
+                <Container className="editar-button">
+                  <button
+                    onClick={clickSubmit}
+                    className="button1 button1-profile"
+                  >
+                    Salvar informações
+                  </button>
+                </Container>
+              </Row>
+            </>
+          )}{' '}
+        </Form>
       </Container>
     </React.Fragment>
   );
