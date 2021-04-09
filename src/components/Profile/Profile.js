@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import backendService from '../../backendService';
-import user_backend from '../../backendService/user';
-import { isAuthenticated, getToken } from '../../backendService/auth';
+import {
+  getUserByGolden,
+  getBalanceByGolden,
+  getWithDrawByGolden,
+} from '../../backendService/user';
+import { isAuthenticated } from '../../backendService/auth';
 import PropTypes from 'prop-types';
-import { Redirect, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import {
   Alert,
@@ -24,10 +28,7 @@ import NavComponent from '../Navbar/Nav';
 import QRCode from 'qrcode.react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faDraftingCompass,
-  faSignOutAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import golden_img from '../../images/golden_baby.jpg';
 
@@ -49,8 +50,26 @@ const Profile = (props) => {
   // Check if user is signed in
   const [userIsSignedIn, setUserIsSignedIn] = useState(false);
 
-  // Get user data from API
-  const [userData, setUserData] = useState(undefined);
+  // -- Get user data from API - GOLDEN
+  const [userGolden, setUserGolden] = useState(undefined);
+
+  // -- Get user data from API - Name
+  const [userName, setUserName] = useState(undefined);
+
+  // -- Get user data from API - Email
+  const [userEmail, setUserEmail] = useState(undefined);
+
+  // -- Get user data from API - PIX
+  const [userPix, setUserPix] = useState(undefined);
+
+  // -- Get user data from API - WPP
+  const [userWpp, setUserWpp] = useState(undefined);
+
+  // User balance
+  const [userBalance, setUserBalance] = useState(0.0);
+
+  // User withdraw
+  const [userWithdraw, setUserWithdraw] = useState(0.0);
 
   const { golden } = useParams();
 
@@ -67,16 +86,21 @@ const Profile = (props) => {
     await backendService.signout(() => props.history.replace('/'));
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (isAuthenticated()) setUserIsSignedIn(true);
 
-    let data = await user_backend.getUserByGolden(golden);
-    setUserData(data);
-    if (userData != undefined)
-      setGoldenInput('http://localhost:3000/user/' + userData.user.golden);
+    getUserByGolden(golden).then((data) => {
+      setUserGolden(data.golden);
+      setUserName(data.name);
+      setUserEmail(data.email);
+      setUserPix(data.pix);
+      setUserWpp(data.wpp);
+      setUserWithdraw(data.withdraw);
+      setUserBalance(data.balance);
+    });
   }, []);
 
-  if (userData === undefined) {
+  if (userGolden === undefined) {
     return <Alert color="warning">Carregando...</Alert>;
   }
 
@@ -119,7 +143,7 @@ const Profile = (props) => {
             </Row>
             <Row>
               <Container className="money-container">
-                <h6 className="money-retirado">R$ 0,00</h6>
+                <h6 className="money-retirado">R$ {userBalance}</h6>
               </Container>
             </Row>
           </Col>
@@ -131,7 +155,7 @@ const Profile = (props) => {
             </Row>
             <Row>
               <Container className="money-container">
-                <h6 className="money-pendente">R$ 0,00</h6>
+                <h6 className="money-pendente">R$ {userWithdraw}</h6>
               </Container>
             </Row>
           </Col>
@@ -145,7 +169,7 @@ const Profile = (props) => {
                   <Label>GOLDEN</Label>
                   <Input
                     type="text"
-                    placeholder={`${userData.user.golden}`}
+                    placeholder={`${userGolden}`}
                     onChange={(e) =>
                       setGoldenInput(
                         'http://localhost:3000/user/' + e.target.value
@@ -183,10 +207,7 @@ const Profile = (props) => {
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>Nome</Label>
-                      <Input
-                        type="text"
-                        placeholder={`${userData.user.name}`}
-                      />
+                      <Input type="text" placeholder={`${userName}`} />
                     </Container>
                   </FormGroup>
                 </Form>
@@ -198,10 +219,7 @@ const Profile = (props) => {
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>E-mail</Label>
-                      <Input
-                        type="text"
-                        placeholder={`${userData.user.email}`}
-                      />
+                      <Input type="text" placeholder={`${userEmail}`} />
                     </Container>
                   </FormGroup>
                 </Form>
@@ -213,7 +231,7 @@ const Profile = (props) => {
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>PIX</Label>
-                      <Input type="text" placeholder={`${userData.user.pix}`} />
+                      <Input type="text" placeholder={`${userPix}`} />
                     </Container>
                   </FormGroup>
                 </Form>
@@ -225,10 +243,7 @@ const Profile = (props) => {
                   <FormGroup>
                     <Container className="golden-container">
                       <Label>Telefone Whatsapp</Label>
-                      <Input
-                        type="text"
-                        placeholder={`${userData.user.telfone_wpp}`}
-                      />
+                      <Input type="text" placeholder={`${userWpp}`} />
                     </Container>
                   </FormGroup>
                 </Form>
