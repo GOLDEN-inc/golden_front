@@ -138,12 +138,12 @@ const Profile = (props) => {
           <Col>
             <Row>
               <Container className="money-container">
-                <h6>Quantidade retirada</h6>
+                <h6>Saldo disponível</h6>
               </Container>
             </Row>
             <Row>
               <Container className="money-container">
-                <h6 className="money-retirado">R$ {userBalance}</h6>
+                <h6 className="money-disponivel">R$ {userWithdraw}</h6>
               </Container>
             </Row>
           </Col>
@@ -155,7 +155,7 @@ const Profile = (props) => {
             </Row>
             <Row>
               <Container className="money-container">
-                <h6 className="money-pendente">R$ {userWithdraw}</h6>
+                <h6 className="money-pendente">R$ {userBalance}</h6>
               </Container>
             </Row>
           </Col>
@@ -187,18 +187,6 @@ const Profile = (props) => {
           </Col>
         </Row>
         <hr className="profile-hr" />{' '}
-        {userIsSignedIn && (
-          <Row>
-            <Container className="editar-button">
-              <button
-                className="button1 button1-profile"
-                onClick={(e) => editProfile(e)}
-              >
-                Salvar informações
-              </button>
-            </Container>
-          </Row>
-        )}
         {userIsSignedIn && (
           <>
             <Row>
@@ -251,6 +239,18 @@ const Profile = (props) => {
             </Row>
           </>
         )}{' '}
+        {userIsSignedIn && (
+          <Row>
+            <Container className="editar-button">
+              <button
+                className="button1 button1-profile"
+                onClick={(e) => editProfile(e)}
+              >
+                Salvar informações
+              </button>
+            </Container>
+          </Row>
+        )}
       </Container>
     </React.Fragment>
   );
