@@ -149,9 +149,16 @@ const Profile = (props) => {
           </Nav>
         </Navbar>
       )}
+      {!userIsSignedIn && (
+        <>
+          <br />
+          <br />
+          <br />
+        </>
+      )}
       <NavComponent />
       <Container className="main-container">
-        <Row>
+        {/* <Row>
           <Col>
             <Container className="user-profile-container">
               <img
@@ -161,57 +168,89 @@ const Profile = (props) => {
               />
             </Container>
           </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Row>
-              <Container className="money-container">
-                <h6>Saldo disponível</h6>
-              </Container>
-            </Row>
-            <Row>
-              <Container className="money-container">
-                <h6 className="money-disponivel">R$ {userWithdraw}</h6>
-              </Container>
-            </Row>
-          </Col>
-          <Col>
-            <Row>
-              <Container className="money-container">
-                <h6>Saldo pendente</h6>
-              </Container>
-            </Row>
-            <Row>
-              <Container className="money-container">
-                <h6 className="money-pendente">R$ {userBalance}</h6>
-              </Container>
-            </Row>
-          </Col>
-        </Row>
-        <Form>
-          <hr className="profile-hr" />{' '}
+        </Row> */}
+        {userIsSignedIn && (
           <Row>
             <Col>
-              <FormGroup>
-                <Container className="golden-container">
-                  <Label>GOLDEN</Label>
-                  <Input
-                    type="text"
-                    placeholder={`${userGolden}`}
-                    onChange={(e) => setUserGolden(e.target.value)}
-                  />
+              <Row>
+                <Container className="money-container">
+                  <h6>Saldo disponível</h6>
                 </Container>
-              </FormGroup>
+              </Row>
+              <Row>
+                <Container className="money-container">
+                  <h6 className="money-disponivel">R$ {userWithdraw}</h6>
+                </Container>
+              </Row>
             </Col>
             <Col>
-              <Container className="qrcode-container">
-                <QRCode value={'http://localhost:3000/user/' + userGolden} />
-              </Container>
+              <Row>
+                <Container className="money-container">
+                  <h6>Saldo pendente</h6>
+                </Container>
+              </Row>
+              <Row>
+                <Container className="money-container">
+                  <h6 className="money-pendente">R$ {userBalance}</h6>
+                </Container>
+              </Row>
             </Col>
           </Row>
-          <hr className="profile-hr" />{' '}
+        )}
+        <Form>
+          {!userIsSignedIn && (
+            <>
+              <hr className="profile-hr" />{' '}
+              <Row>
+                <Col>
+                  <FormGroup>
+                    <Container className="golden-container">
+                      <Label>GOLDEN</Label>
+                      <Input
+                        disabled
+                        type="text"
+                        placeholder={`${userGolden}`}
+                        onChange={(e) => setUserGolden(e.target.value)}
+                      />
+                    </Container>
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <Container className="qrcode-container">
+                    <QRCode
+                      value={'http://localhost:3000/user/' + userGolden}
+                    />
+                  </Container>
+                </Col>
+              </Row>
+              <hr className="profile-hr" />{' '}
+            </>
+          )}
           {userIsSignedIn && (
             <>
+              <hr className="profile-hr" />{' '}
+              <Row>
+                <Col>
+                  <FormGroup>
+                    <Container className="golden-container">
+                      <Label>GOLDEN</Label>
+                      <Input
+                        type="text"
+                        placeholder={`${userGolden}`}
+                        onChange={(e) => setUserGolden(e.target.value)}
+                      />
+                    </Container>
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <Container className="qrcode-container">
+                    <QRCode
+                      value={'http://localhost:3000/user/' + userGolden}
+                    />
+                  </Container>
+                </Col>
+              </Row>
+              <hr className="profile-hr" />{' '}
               <Row>
                 <Col>
                   <FormGroup>
