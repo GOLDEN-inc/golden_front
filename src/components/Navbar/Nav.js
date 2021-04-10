@@ -20,35 +20,6 @@ import './Nav.css';
 
 // import firebase from "../../firebase/config";
 
-let tabs = [
-  {
-    route: '/',
-    icon: faHome,
-    label: 'Home',
-  },
-  {
-    route: '/profile',
-    icon: faUser,
-    label: 'Perfil',
-  },
-  {
-    route: '/aboutus',
-    icon: faInfo,
-    label: 'GOLDEN',
-  },
-];
-// !In future versions such paths should be used
-// {
-//     route: "/search",
-//     icon: faSearch,
-//     label: "Pesquisa"
-// },
-// {
-//     route: "/create",
-//     icon: faCamera,
-//     label: "Indicação"
-// }
-
 const NavbarComponent = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
 
@@ -57,11 +28,6 @@ const NavbarComponent = () => {
       setUserSignedIn(true);
     }
   }, []);
-
-  if (!userSignedIn) {
-    tabs.splice(1, 1);
-    tabs.push({ route: '/login', icon: faSignInAlt, label: 'Entrar' });
-  }
 
   return (
     <div>
@@ -96,7 +62,11 @@ const NavbarComponent = () => {
               </NavItem>
             ) : (
               <NavItem>
-                <NavLink href="/aboutus" className="nav-link">
+                <NavLink
+                  target="_blank"
+                  href="https://www.youtube.com/watch?v=I2QXmjBn4Yc"
+                  className="nav-link"
+                >
                   <div className="row d-flex flex-column justify-content-center align-items-center">
                     <FontAwesomeIcon size="lg" icon={faInfo} />
                     <div>Golden</div>
@@ -106,7 +76,11 @@ const NavbarComponent = () => {
             )}{' '}
             {userSignedIn ? (
               <NavItem>
-                <NavLink href="/aboutus" className="nav-link">
+                <NavLink
+                  target="_blank"
+                  href="https://www.youtube.com/watch?v=I2QXmjBn4Yc"
+                  className="nav-link"
+                >
                   <div className="row d-flex flex-column justify-content-center align-items-center">
                     <FontAwesomeIcon size="lg" icon={faInfo} />
                     <div>Golden</div>
