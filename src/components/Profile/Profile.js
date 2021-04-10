@@ -68,8 +68,9 @@ const Profile = (props) => {
   // User error message
   const [errorMessage, setErrorMessage] = useState('');
 
-  // User error message
-  const [reload, setReload] = useState(false);
+  // Flag
+  const [dataUpdateSuccess, setDataUpdateSuccess] = useState(false);
+  const [dataUpdateFail, setDataUpdateFail] = useState(false);
 
   const { golden } = useParams();
 
@@ -91,7 +92,12 @@ const Profile = (props) => {
       setUserWithdraw(data.withdraw);
       setUserBalance(data.balance);
     });
-  }, [reload]);
+  }, []);
+
+  useEffect(() => {
+    // Set Error Message to Empty and SignIn state to false
+    setErrorMessage('');
+  }, [userGolden, userName]);
 
   if (userGolden === undefined) {
     return <Alert color="warning">Carregando...</Alert>;
@@ -105,17 +111,21 @@ const Profile = (props) => {
     updateUserByGolden(golden, token, user).then((data) => {
       if (data.error) {
         setErrorMessage(data.error);
+        setDataUpdateFail(true);
       } else {
-        setUserGolden(data.golden);
-        setReload(true);
+        setDataUpdateSuccess(true);
+        setTimeout(() => {
+          setDataUpdateSuccess(false);
+        }, 3000);
+        props.history.replace(`./${userGolden}`);
       }
     });
   };
 
-  if (reload) {
-    console.log('golden ==> ', userGolden);
-    return <Redirect to={`/user/${userGolden}`} />;
-  }
+  const clickCancel = (e) => {
+    e.preventDefault();
+    window.location.reload(); //page reload
+  };
 
   const logout = async () => {
     setUserIsSignedIn(false);
@@ -178,16 +188,6 @@ const Profile = (props) => {
             </Row>
           </Col>
         </Row>
-        <div className="alert">
-          <Alert
-            style={{
-              display: errorMessage ? '' : 'none',
-            }}
-            color="danger"
-          >
-            {errorMessage}
-          </Alert>
-        </div>
         <Form>
           <hr className="profile-hr" />{' '}
           <Row>
@@ -268,7 +268,39 @@ const Profile = (props) => {
                   </FormGroup>
                 </Col>
               </Row>
+              <div className="alert">
+                <Alert
+                  style={{
+                    display: errorMessage ? '' : 'none',
+                  }}
+                  color="danger"
+                >
+                  {errorMessage}
+                </Alert>
+                <Alert
+                  style={{
+                    display: dataUpdateSuccess ? '' : 'none',
+                  }}
+                  color="warning"
+                >
+                  Dados atualizados com sucesso!
+                </Alert>
+              </div>
               <Row>
+                <Col>
+                  <Row>
+                    {dataUpdateFail && (
+                      <Container className="editar-button">
+                        <button
+                          onClick={clickCancel}
+                          className="buttonWarning button1-profile"
+                        >
+                          Cancelar edição
+                        </button>
+                      </Container>
+                    )}
+                  </Row>
+                </Col>
                 <Container className="editar-button">
                   <button
                     onClick={clickSubmit}

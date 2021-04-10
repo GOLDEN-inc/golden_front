@@ -11,6 +11,7 @@
   --second: #dec65f;
   --third: #f5c16c;
   --green: #4b9b04;
+  --red: #76140a;
 }
 
 /* Para quando a tela for menor que 1080px */
@@ -100,6 +101,29 @@ button.button1 {
 button.button1:hover {
   color: #000000;
   background-color: var(--second);
+}
+
+button.buttonWarning {
+  display: inline-block;
+  padding: 0.35rem 1.2em;
+  border: 0.1em solid var(--white);
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 0.2em;
+  background-color: var(--red);
+  width: 10rem;
+}
+
+button.buttonWarning:hover {
+  color: #000000;
+  background-color: var(--red);
 }
 
 @media all and (max-width: 720px) {
