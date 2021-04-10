@@ -77,12 +77,14 @@ const AboutUs = () => {
                 <em className="emphais">10%</em> de comissão no valor{' '}
                 <em className="emphais">TOTAL</em> da compra
               </CardText>
-              <button
-                onClick={openLink('https://www.instagram.com/Makesestore/')}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.instagram.com/Makesestore/"
                 className="button1"
               >
                 Conheça
-              </button>
+              </a>
             </CardBody>
           </Card>
         </Container>
