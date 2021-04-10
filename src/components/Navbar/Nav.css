@@ -17,54 +17,10 @@
   padding: 2rem;
 }
 
-.registrar {
-  text-decoration: none;
-  color: var(--main);
-  border: 0.1em solid var(--main);
-  margin: 0 0.1em 0.1em 0;
-  border-radius: 0.5em;
-  font-weight: bold;
-}
-
-.registrar:hover {
-  text-decoration: none;
-  color: var(--white);
-}
-
-.login {
-  text-decoration: none;
-  color: var(--main);
-  font-weight: bold;
-}
-
-.login:hover {
-  text-decoration: none;
-  color: var(--white);
-}
-
-.profile-icon {
-  color: var(--third);
-  font-size: 1.5em;
-}
-
-.profile-icon:hover {
-  color: var(--main);
-}
-
 .toggler {
   border-color: var(--third) !important;
 }
 
 .nav-background {
   background-color: var(--black);
-}
-
-@media (max-width: 500px) {
-  .profile-icon {
-    font-size: 1.8em;
-  }
-
-  .navitem {
-    padding: 1rem 0 1rem;
-  }
 }

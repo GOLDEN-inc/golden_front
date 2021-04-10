@@ -1,92 +1,54 @@
 import React from 'react';
 import Nav from '../Navbar/Nav';
 
-import ReactTextRotator from 'react-text-rotator';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Container, Row, Col } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Jumbotron,
+} from 'reactstrap';
 
+import makese from '../../images/makse.jpeg';
+import golden_logo from '../../images/golden_logo_rounded.png';
 import arrow from '../../images/arrow-down-white.png';
-import golden from '../../images/golden_baby.jpg';
 
 import SectionTitle from './SectionTitle';
 
 import './AboutUs.css';
+import { faAngleDown, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 const AboutUs = () => {
-  const content = [
-    {
-      text: 'Nós somos a Golden.',
-      className: 'classA',
-      animation: 'fade',
-    },
-    {
-      text: 'Através de uma rede de influenciadores',
-      className: 'classB',
-      animation: 'fade',
-    },
-    {
-      text: 'Impactamos pessoas e criamos conexões.',
-      className: 'classC',
-      animation: 'fade',
-    },
-    {
-      text: 'Vamos nessa?',
-      className: 'classD',
-      animation: 'fade',
-    },
-  ];
-
-  const TextRotator = () => (
-    <ReactTextRotator content={content} time={2150} startDelay={350} />
-  );
+  const openLink = (link) => {
+    window.open(link, '_blank');
+  };
 
   return (
     <React.Fragment>
       <Nav />
-      <React.Fragment>
-        <section
-          className="section section-lg vh-100"
-          id="home"
-          style={{
-            backgroundImage: `url(${golden})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
-          }}
-        >
-          <div className="bg-overlay"></div>
-          <div className="display-table">
-            <div className="display-table-cell">
-              <Container>
-                <Row>
-                  <Col
-                    lg={{ size: 8, offset: 2 }}
-                    className="text-white text-center"
-                  >
-                    <h1 className="home-title text-rotate">
-                      <TextRotator />
-                    </h1>
-                  </Col>
-                </Row>
-              </Container>
-            </div>
-          </div>
-          <div>
-            <Container>
-              <Row>
-                <Col className="text-center">
-                  <img
-                    src={arrow}
-                    alt="continue"
-                    style={{
-                      height: '2rem',
-                    }}
-                  />
-                </Col>
-              </Row>
-            </Container>
-          </div>
-        </section>
-      </React.Fragment>
+      <Jumbotron>
+        <h1 className="text-center home-title">GOLDEN</h1>
+        <hr className="styled-hr" />{' '}
+        <div className="fill">
+          <img src={golden_logo} alt="" />
+        </div>
+        <div className="text-center arrow">
+          <img
+            src={arrow}
+            alt="continue"
+            style={{
+              height: '2rem',
+            }}
+          />
+        </div>
+      </Jumbotron>
 
       <React.Fragment>
         <Container className="main-text-container">
@@ -103,22 +65,29 @@ const AboutUs = () => {
       </React.Fragment>
       <section className="section bg-main" id="process">
         <Container className="container-explanation">
-          <Row>
-            <Col md={6}>
-              <p className="main-text">Cada post possui uma indicação.</p>
-            </Col>
-            <Col md={6}>
-              <p className="main-text">Clique no post que tiver interesse.</p>
-            </Col>
-            <Col md={6}>
-              <p className="main-text">Descubra um local ou um produto novo.</p>
-            </Col>
-            <Col md={6}>
-              <p className="main-text">
-                Além de ganhar um GOLDEN de desconto em lojas parceiras.
-              </p>
-            </Col>
-          </Row>
+          <h3 className="title-explanation">Empresas Parceiras</h3>
+        </Container>
+        <Container className="conainer-card">
+          <Card>
+            <CardImg top width="100%" src={makese} alt="makese store" />
+            <CardBody>
+              <CardTitle tag="h5">MAKE-SE STORE</CardTitle>
+              <CardSubtitle tag="h6" className="mb-2 text-muted">
+                Health/Beauty
+              </CardSubtitle>
+              <CardText>
+                Compartilhe o seu GOLDEN e ganhe{' '}
+                <em className="emphais">10%</em> de comissão no valor{' '}
+                <em className="emphais">TOTAL</em> da compra
+              </CardText>
+              <button
+                onClick={openLink('https://www.instagram.com/Makesestore/')}
+                className="button1"
+              >
+                Conheça
+              </button>
+            </CardBody>
+          </Card>
         </Container>
       </section>
     </React.Fragment>

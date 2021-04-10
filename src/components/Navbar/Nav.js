@@ -12,8 +12,6 @@ import {
   faInfo,
   faSignInAlt,
   faPlus,
-  // faSearch,
-  // faCamera
 } from '@fortawesome/free-solid-svg-icons';
 
 import './Nav.css';

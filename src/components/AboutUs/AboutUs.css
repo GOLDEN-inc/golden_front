@@ -2,6 +2,36 @@
   padding-top: 4rem;
 }
 
+.jumbotron {
+  background: var(--black) !important;
+  background-size: cover !important;
+  padding-top: 20% !important;
+  padding-bottom: 20% !important;
+}
+
+@media (max-width: 720px) {
+  .jumbotron {
+    padding-top: 10% !important;
+    padding-bottom: 75% !important;
+  }
+}
+
+.home-title {
+  color: var(--main);
+}
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fill img {
+  max-width: 75%;
+  max-height: 100%;
+}
+
 .bg-main {
   background-color: var(--main);
 }
@@ -57,4 +87,47 @@
 
 .container-explanation {
   padding-bottom: 2rem;
+  text-align: center;
+  align-items: center;
+}
+
+.title-explanation {
+  color: var(--white);
+}
+
+.conainer-card {
+  padding-bottom: 5rem;
+}
+
+.emphais {
+  color: var(--main);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.bg-overlay {
+  background: linear-gradient(to right, var(--main), var(--third));
+  opacity: 0.9;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.display-table {
+  display: table;
+  width: 100%;
+  height: 80%;
+}
+
+.arrow {
+  padding-top: 30%;
 }

@@ -200,7 +200,7 @@ const Profile = (props) => {
         <Form>
           {!userIsSignedIn && (
             <>
-              <hr className="profile-hr" />{' '}
+              <hr className="styled-hr" />{' '}
               <Row>
                 <Col>
                   <FormGroup>
@@ -223,12 +223,12 @@ const Profile = (props) => {
                   </Container>
                 </Col>
               </Row>
-              <hr className="profile-hr" />{' '}
+              <hr className="styled-hr" />{' '}
             </>
           )}
           {userIsSignedIn && (
             <>
-              <hr className="profile-hr" />{' '}
+              <hr className="styled-hr" />{' '}
               <Row>
                 <Col>
                   <FormGroup>
@@ -250,7 +250,7 @@ const Profile = (props) => {
                   </Container>
                 </Col>
               </Row>
-              <hr className="profile-hr" />{' '}
+              <hr className="styled-hr" />{' '}
               <Row>
                 <Col>
                   <FormGroup>
