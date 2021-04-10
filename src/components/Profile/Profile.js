@@ -22,12 +22,9 @@ import {
 
 import NavComponent from '../Navbar/Nav';
 import QRCode from 'qrcode.react';
-import { Redirect } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-
-import golden_img from '../../images/golden_baby.jpg';
 
 import './Profile.css';
 

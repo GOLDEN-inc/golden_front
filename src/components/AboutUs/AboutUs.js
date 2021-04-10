@@ -1,8 +1,6 @@
 import React from 'react';
 import Nav from '../Navbar/Nav';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import {
   Container,
   Row,
@@ -23,7 +21,6 @@ import arrow from '../../images/arrow-down-white.png';
 import SectionTitle from './SectionTitle';
 
 import './AboutUs.css';
-import { faAngleDown, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 const AboutUs = () => {
   const openLink = (link) => {

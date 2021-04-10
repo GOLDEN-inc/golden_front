@@ -30,7 +30,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   // Recapthca variable
-  const [recaptcha, setRecaptcha] = useState(false);
+  // const [recaptcha, setRecaptcha] = useState(false);
 
   // *Aldo Caamal - Redux
   // const dispatch = useDispatch();
