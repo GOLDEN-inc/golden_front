@@ -6,8 +6,6 @@ import backendService from '../../backendService';
 // import {useSelector, useDispatch} from "react-redux";
 // import {createUser} from "../../actions/signup";
 
-import './SignUp.css';
-
 import {
   Alert,
   Container,
@@ -18,6 +16,10 @@ import {
   Input,
   Row,
 } from 'reactstrap';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import './SignUp.css';
 
 const SignUp = () => {
   // SignUp Component
@@ -55,6 +57,8 @@ const SignUp = () => {
 
   // Succesfull SignUp messgae
   const [signInSuccess, setSignInSuccess] = useState(false);
+
+  const [passwordShown, setPasswordShown] = useState(false);
 
   // *Aldo Caamal - Redux
   // const dispatch = useDispatch();
@@ -155,6 +159,10 @@ const SignUp = () => {
     }
     setError(true);
     return false;
+  };
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
   };
 
   return (
@@ -293,22 +301,32 @@ const SignUp = () => {
               >
                 <FormGroup className="form-input">
                   {!passwordError || !error ? (
-                    <Input
-                      name="password"
-                      type="password"
-                      placeholder="Senha"
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                    />
+                    <div className="pass-wrapper">
+                      <Input
+                        name="password"
+                        type={passwordShown ? 'text' : 'password'}
+                        placeholder="Senha"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                      />
+                      <i className="eye-icon" onClick={togglePasswordVisiblity}>
+                        <FontAwesomeIcon size="lg" icon={faEye} />
+                      </i>
+                    </div>
                   ) : (
-                    <Input
-                      invalid
-                      name="password"
-                      type="password"
-                      placeholder="Senha"
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
-                    />
+                    <div className="pass-wrapper">
+                      <Input
+                        invalid
+                        name="password"
+                        type={passwordShown ? 'text' : 'password'}
+                        placeholder="Senha"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                      />
+                      <i className="eye-icon" onClick={togglePasswordVisiblity}>
+                        <FontAwesomeIcon size="lg" icon={faEye} />
+                      </i>
+                    </div>
                   )}
                   {passwordError && error && (
                     <FormFeedback>Senha não pode estar vazia.</FormFeedback>

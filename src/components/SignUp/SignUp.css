@@ -32,6 +32,24 @@
   color: var(--second);
   text-decoration: none;
 }
+
 .logout-button {
   padding-right: 2rem;
+}
+
+.pass-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 25%;
+  left: 80%;
+}
+
+.eye-icon:hover {
+  color: var(--main);
+  cursor: pointer;
 }
