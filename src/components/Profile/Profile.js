@@ -216,9 +216,7 @@ const Profile = (props) => {
                 </Col>
                 <Col>
                   <Container className="qrcode-container">
-                    <QRCode
-                      value={`${process.env.PUBLIC_URL}/user/${golden}`}
-                    />
+                    <QRCode value={window.location.href} />
                   </Container>
                 </Col>
               </Row>
@@ -243,9 +241,7 @@ const Profile = (props) => {
                 </Col>
                 <Col>
                   <Container className="qrcode-container">
-                    <QRCode
-                      value={`${process.env.PUBLIC_URL}/user/${golden}`}
-                    />
+                    <QRCode value={window.location.href} />
                   </Container>
                 </Col>
               </Row>

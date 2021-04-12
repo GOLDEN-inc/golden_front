@@ -18,7 +18,7 @@ import './Nav.css';
 
 // import firebase from "../../firebase/config";
 
-const NavbarComponent = (props) => {
+const NavbarComponent = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
   const [token, setToken] = useState('');
 
