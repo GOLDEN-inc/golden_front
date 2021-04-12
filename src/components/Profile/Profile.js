@@ -114,7 +114,9 @@ const Profile = (props) => {
         setTimeout(() => {
           setDataUpdateSuccess(false);
         }, 3000);
-        props.history.replace(`./${userGolden}`);
+        backendService.updateAuthenticate(data.user.golden, () => {
+          props.history.replace(`./${userGolden}`);
+        });
       }
     });
   };
@@ -215,7 +217,7 @@ const Profile = (props) => {
                 <Col>
                   <Container className="qrcode-container">
                     <QRCode
-                      value={'http://localhost:3000/user/' + userGolden}
+                      value={`${process.env.PUBLIC_URL}/user/${golden}`}
                     />
                   </Container>
                 </Col>
@@ -242,7 +244,7 @@ const Profile = (props) => {
                 <Col>
                   <Container className="qrcode-container">
                     <QRCode
-                      value={'http://localhost:3000/user/' + userGolden}
+                      value={`${process.env.PUBLIC_URL}/user/${golden}`}
                     />
                   </Container>
                 </Col>

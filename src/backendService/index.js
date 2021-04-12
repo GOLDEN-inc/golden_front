@@ -60,6 +60,16 @@ class Auth {
     }
   }
 
+  async updateAuthenticate(golden, next) {
+    if (typeof window !== 'undefined') {
+      var item = JSON.parse(localStorage.getItem('jwt'));
+      console.log('==>', item);
+      item.user.golden = golden;
+      localStorage.setItem('jwt', JSON.stringify(item));
+      next();
+    }
+  }
+
   async signout(next) {
     if (typeof window !== 'undefined') localStorage.removeItem('jwt');
 

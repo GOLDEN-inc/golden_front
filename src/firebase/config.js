@@ -83,7 +83,6 @@ class Firebase {
       .get();
 
     const postData = post.data();
-    console.log('postData ==> ', postData);
     return postData;
   }
 

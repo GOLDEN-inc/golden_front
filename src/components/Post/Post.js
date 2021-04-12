@@ -79,8 +79,6 @@ const Post = (props) => {
   const updateCurrentPost = async (e) => {
     e.preventDefault();
     setIsBusy(true);
-    console.log('fileRef ==> ', fileRef);
-    console.log('fileRef ==> ', fileRef.current);
     const post = {
       id: postid,
       title: titleRef.current.value,

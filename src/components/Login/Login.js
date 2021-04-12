@@ -10,6 +10,7 @@ import backendService from '../../backendService';
 import './Login.css';
 
 import { Alert, Container, Col, Form, FormGroup, Input, Row } from 'reactstrap';
+import golden from '../../images/golden_logo_rounded.png';
 
 const Login = () => {
   // * Login component
@@ -85,11 +86,7 @@ const Login = () => {
         >
           <Container className="container-forms">
             <Link to="/">
-              <img
-                className="logo-main"
-                src="https://firebasestorage.googleapis.com/v0/b/golden-ef7d8.appspot.com/o/golden_logo_rounded.png?alt=media&token=673d0fac-b898-43b4-bd36-c5374c8fdda2"
-                alt="Logo"
-              />
+              <img className="logo-main" src={golden} alt="Logo" />
             </Link>
             <h1 className="main-title-login">GOLDEN</h1>
             <Alert

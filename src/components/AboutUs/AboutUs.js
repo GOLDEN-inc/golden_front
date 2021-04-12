@@ -23,10 +23,6 @@ import SectionTitle from './SectionTitle';
 import './AboutUs.css';
 
 const AboutUs = () => {
-  const openLink = (link) => {
-    window.open(link, '_blank');
-  };
-
   return (
     <React.Fragment>
       <Nav />

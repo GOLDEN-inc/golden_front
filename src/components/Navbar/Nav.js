@@ -18,12 +18,14 @@ import './Nav.css';
 
 // import firebase from "../../firebase/config";
 
-const NavbarComponent = () => {
+const NavbarComponent = (props) => {
   const [userSignedIn, setUserSignedIn] = useState(false);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (isAuthenticated()) {
       setUserSignedIn(true);
+      setToken(JSON.parse(getToken()).user.golden);
     }
   }, []);
 
@@ -46,10 +48,7 @@ const NavbarComponent = () => {
             {userSignedIn ? (
               <NavItem>
                 {' '}
-                <NavLink
-                  href={'/user/' + JSON.parse(getToken()).user.golden}
-                  className="nav-link"
-                >
+                <NavLink href={'/user/' + token} className="nav-link">
                   {' '}
                   <div className="row d-flex flex-column justify-content-center align-items-center">
                     {' '}
