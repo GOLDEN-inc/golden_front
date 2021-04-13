@@ -61,7 +61,7 @@ const NavbarComponent = () => {
               <NavItem>
                 <NavLink
                   target="_blank"
-                  href="https://www.youtube.com/watch?v=I2QXmjBn4Yc"
+                  href="https://www.youtube.com/watch?v=wzuTM0cGw24"
                   className="nav-link"
                 >
                   <div className="row d-flex flex-column justify-content-center align-items-center">
@@ -75,7 +75,7 @@ const NavbarComponent = () => {
               <NavItem>
                 <NavLink
                   target="_blank"
-                  href="https://www.youtube.com/watch?v=I2QXmjBn4Yc"
+                  href="https://www.youtube.com/watch?v=wzuTM0cGw24"
                   className="nav-link"
                 >
                   <div className="row d-flex flex-column justify-content-center align-items-center">

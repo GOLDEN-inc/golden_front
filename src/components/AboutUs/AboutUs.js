@@ -17,6 +17,7 @@ import {
 import makese from '../../images/makese.png';
 import golden_logo from '../../images/golden_logo_rounded.png';
 import arrow from '../../images/arrow-down-white.png';
+import instructions from '../../images/instructions.png';
 
 import SectionTitle from './SectionTitle';
 
@@ -54,6 +55,15 @@ const AboutUs = () => {
             </Col>
           </Row>
           <hr className="line"></hr>
+          <Row>
+            <Container style={{ textAlign: 'center' }}>
+              <img
+                style={{ width: '90%' }}
+                src={instructions}
+                alt="instruções"
+              />
+            </Container>
+          </Row>
         </Container>
       </React.Fragment>
       <section className="section bg-main" id="process">
