@@ -19,7 +19,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import golden from '../../images/golden_logo_rounded.png';
+import golden_img from '../../images/golden_logo_rounded.png';
 import './SignUp.css';
 
 const SignUp = () => {
@@ -172,7 +172,7 @@ const SignUp = () => {
         <Col sm="12" lg="6">
           <Container className="company-container">
             <Link to="/">
-              <img className="logo-main" src={golden} alt="Logo" />
+              <img className="logo-main" src={golden_img} alt="Logo" />
             </Link>
             <h1 className="company-name">GOLDEN</h1>
             <p>Indicou. Comprou. Ganhou.</p>
