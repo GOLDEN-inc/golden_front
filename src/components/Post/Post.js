@@ -68,7 +68,6 @@ const Post = (props) => {
     });
 
     setTimeout(() => setTimer(false), 1000);
-    console.log('timer: ', timer);
   }, []);
 
   const redirect = routeRedirect;

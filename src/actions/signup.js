@@ -14,9 +14,6 @@ export const createUser = (email, password, name, golden, pix, telfone_wpp) => {
       pix,
       telfone_wpp
     );
-    console.log('3 - $$$$$$$$$$$$');
-
-    console.log('1) --->', response.error);
 
     dispatch({ type: 'CREATE_USER', payload: response });
   };
