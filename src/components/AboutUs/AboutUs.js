@@ -14,7 +14,7 @@ import {
   Jumbotron,
 } from 'reactstrap';
 
-import makese from '../../images/makse.jpeg';
+import makese from '../../images/makese.png';
 import golden_logo from '../../images/golden_logo_rounded.png';
 import arrow from '../../images/arrow-down-white.png';
 
