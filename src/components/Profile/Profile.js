@@ -209,7 +209,6 @@ const Profile = (props) => {
                         disabled
                         type="text"
                         placeholder={`${userGolden}`}
-                        onChange={(e) => setUserGolden(e.target.value)}
                       />
                     </Container>
                   </FormGroup>
@@ -234,7 +233,9 @@ const Profile = (props) => {
                       <Input
                         type="text"
                         placeholder={`${userGolden}`}
-                        onChange={(e) => setUserGolden(e.target.value)}
+                        onChange={(event) =>
+                          setUserGolden(event.target.value.toLowerCase())
+                        }
                       />
                     </Container>
                   </FormGroup>

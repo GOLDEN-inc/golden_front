@@ -273,7 +273,9 @@ const SignUp = () => {
                       name="golden"
                       placeholder="Nome de usuário: usuario123"
                       value={golden}
-                      onChange={(event) => setGolden(event.target.value)}
+                      onChange={(event) =>
+                        setGolden(event.target.value.toLowerCase())
+                      }
                     />
                   ) : (
                     <Input
@@ -281,7 +283,9 @@ const SignUp = () => {
                       name="golden"
                       placeholder="Nome de usuário: usuario123"
                       value={golden}
-                      onChange={(event) => setGolden(event.target.value)}
+                      onChange={(event) =>
+                        setGolden(event.target.value.toLowerCase())
+                      }
                     />
                   )}
                   {goldenError && error && (
