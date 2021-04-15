@@ -233,6 +233,67 @@ const Profile = (props) => {
                 </Col>
               </Row>
               <hr className="styled-hr" />{' '}
+              <Row>
+                <Container className="golden-social-network">
+                  <p>
+                    Compartilhe este <em className="emphasis">GOLDEN</em> nas
+                    redes sociais!
+                  </p>
+                </Container>
+              </Row>
+              <Row>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <TwitterShareButton
+                      url={window.location.href}
+                      title="Utilize este GOLDEN e ganhe descontos!"
+                    >
+                      <TwitterIcon size={32} round />
+                    </TwitterShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <FacebookShareButton
+                      url={window.location.href}
+                      title="Utilize este GOLDEN e ganhe descontos!"
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <WhatsappShareButton
+                      url={window.location.href}
+                      title="Utilize este GOLDEN e ganhe descontos!"
+                    >
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <LinkedinShareButton
+                      url={window.location.href}
+                      title="Utilize este GOLDEN e ganhe descontos!"
+                    >
+                      <LinkedinIcon size={32} round />
+                    </LinkedinShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <TelegramShareButton
+                      url={window.location.href}
+                      title="Utilize este GOLDEN e ganhe descontos!"
+                    >
+                      <TelegramIcon size={32} round />
+                    </TelegramShareButton>
+                  </Container>
+                </Col>
+              </Row>
+              <hr className="styled-hr" />{' '}
             </>
           )}
           {userIsSignedIn && (
@@ -259,12 +320,21 @@ const Profile = (props) => {
                   </Container>
                 </Col>
               </Row>
+              <hr className="styled-hr" />{' '}
+              <Row>
+                <Container className="golden-social-network">
+                  <p>
+                    Compartilhe o seu <em className="emphasis">GOLDEN</em> nas
+                    redes sociais!
+                  </p>
+                </Container>
+              </Row>
               <Row>
                 <Col xs={{ size: 2 }}>
                   <Container className="icons-container">
                     <TwitterShareButton
                       url={window.location.href}
-                      title={window.location.href}
+                      title="Utilize o meu GOLDEN e ganhe descontos!"
                     >
                       <TwitterIcon size={32} round />
                     </TwitterShareButton>
@@ -274,8 +344,7 @@ const Profile = (props) => {
                   <Container className="icons-container">
                     <FacebookShareButton
                       url={window.location.href}
-                      title={window.location.href}
-                      className="Demo__some-network__share-button"
+                      title="Utilize o meu GOLDEN e ganhe descontos!"
                     >
                       <FacebookIcon size={32} round />
                     </FacebookShareButton>
@@ -285,7 +354,7 @@ const Profile = (props) => {
                   <Container className="icons-container">
                     <WhatsappShareButton
                       url={window.location.href}
-                      title={window.location.href}
+                      title="Utilize o meu GOLDEN e ganhe descontos!"
                     >
                       <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
@@ -295,7 +364,7 @@ const Profile = (props) => {
                   <Container className="icons-container">
                     <LinkedinShareButton
                       url={window.location.href}
-                      title={window.location.href}
+                      title="Utilize o meu GOLDEN e ganhe descontos!"
                     >
                       <LinkedinIcon size={32} round />
                     </LinkedinShareButton>
@@ -305,7 +374,7 @@ const Profile = (props) => {
                   <Container className="icons-container">
                     <TelegramShareButton
                       url={window.location.href}
-                      title={window.location.href}
+                      title="Utilize o meu GOLDEN e ganhe descontos!"
                     >
                       <TelegramIcon size={32} round />
                     </TelegramShareButton>

@@ -80,8 +80,8 @@ const AboutUs = () => {
               </CardSubtitle>
               <CardText>
                 Compartilhe o seu GOLDEN e ganhe{' '}
-                <em className="emphais">10%</em> de comissão no valor{' '}
-                <em className="emphais">TOTAL</em> da compra
+                <em className="emphasis">10%</em> de comissão no valor{' '}
+                <em className="emphasis">TOTAL</em> da compra
               </CardText>
               <a
                 target="_blank"

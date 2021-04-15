@@ -99,12 +99,6 @@
   padding-bottom: 5rem;
 }
 
-.emphais {
-  color: var(--main);
-  font-weight: bold;
-  font-style: normal;
-}
-
 .bg-overlay {
   background: linear-gradient(to right, var(--main), var(--third));
   opacity: 0.9;
