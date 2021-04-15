@@ -26,6 +26,19 @@ import QRCode from 'qrcode.react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
+import {
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from 'react-share';
+
 import './Profile.css';
 
 // *Aldo Caamal - Redux
@@ -243,6 +256,59 @@ const Profile = (props) => {
                 <Col>
                   <Container className="qrcode-container">
                     <QRCode value={window.location.href} />
+                  </Container>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <TwitterShareButton
+                      url={window.location.href}
+                      title={window.location.href}
+                    >
+                      <TwitterIcon size={32} round />
+                    </TwitterShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <FacebookShareButton
+                      url={window.location.href}
+                      title={window.location.href}
+                      className="Demo__some-network__share-button"
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <WhatsappShareButton
+                      url={window.location.href}
+                      title={window.location.href}
+                    >
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <LinkedinShareButton
+                      url={window.location.href}
+                      title={window.location.href}
+                    >
+                      <LinkedinIcon size={32} round />
+                    </LinkedinShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 2 }}>
+                  <Container className="icons-container">
+                    <TelegramShareButton
+                      url={window.location.href}
+                      title={window.location.href}
+                    >
+                      <TelegramIcon size={32} round />
+                    </TelegramShareButton>
                   </Container>
                 </Col>
               </Row>
