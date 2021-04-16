@@ -14,8 +14,8 @@ import {
   Jumbotron,
 } from 'reactstrap';
 
-import makese from '../../images/makese.png';
-import golden_logo from '../../images/golden_logo_rounded.png';
+import makese from '../../images/makese.jpg';
+import golden_logo from '../../images/golden_logo_rounded.jpg';
 import arrow from '../../images/arrow-down-white.png';
 import instructions from '../../images/instructions.png';
 
@@ -31,7 +31,7 @@ const AboutUs = () => {
         <h1 className="text-center home-title">GOLDEN</h1>
         <hr className="styled-hr" />{' '}
         <div className="fill">
-          <img src={golden_logo} alt="" />
+          <img src={golden_logo} alt="Logo GOLDEN" />
         </div>
         <div className="text-center arrow">
           <img
