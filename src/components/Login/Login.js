@@ -122,7 +122,9 @@ const Login = () => {
                     name="email"
                     placeholder="E-mail"
                     value={email}
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={(event) =>
+                      setEmail(event.target.value.toLowerCase())
+                    }
                   />
                 </FormGroup>
               </Col>

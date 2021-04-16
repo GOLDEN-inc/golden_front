@@ -404,7 +404,9 @@ const Profile = (props) => {
                       <Input
                         type="text"
                         placeholder={`${userEmail}`}
-                        onChange={(event) => setUserEmail(event.target.value)}
+                        onChange={(event) =>
+                          setUserEmail(event.target.value.toLowerCase())
+                        }
                       />
                     </Container>
                   </FormGroup>
