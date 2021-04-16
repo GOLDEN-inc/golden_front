@@ -49,8 +49,8 @@ const AboutUs = () => {
           <Row>
             <Col>
               <SectionTitle
-                title="Indicações feitas pelos nossos influenciadores"
-                desc="Indique. Conheça. Ganhe Descontos."
+                title="Indique. Conheça. Ganhe Descontos."
+                desc="GOLDEN"
               />
             </Col>
           </Row>
@@ -74,14 +74,14 @@ const AboutUs = () => {
           <Card>
             <CardImg top width="100%" src={makese} alt="makese store" />
             <CardBody>
-              <CardTitle tag="h5">MAKE-SE STORE</CardTitle>
+              <CardTitle tag="h4">MAKE-SE STORE</CardTitle>
               <CardSubtitle tag="h6" className="mb-2 text-muted">
                 Health/Beauty
               </CardSubtitle>
-              <CardText>
-                Compartilhe o seu GOLDEN e ganhe{' '}
-                <em className="emphasis">10%</em> de comissão no valor{' '}
-                <em className="emphasis">TOTAL</em> da compra
+              <CardText tag="h5">
+                Compartilhe a loja <em className="emphasis">MAKESE</em> em suas
+                redes sociais e ganhe <em className="emphasis">10%</em> de
+                comissão no valor <em className="emphasis">TOTAL</em> da compra
               </CardText>
               <a
                 target="_blank"
