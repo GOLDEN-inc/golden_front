@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
   faUser,
-  faInfo,
   faSignInAlt,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
@@ -45,7 +44,7 @@ const NavbarComponent = () => {
                 </div>
               </NavLink>
             </NavItem>
-            {userSignedIn ? (
+            {userSignedIn && (
               <NavItem>
                 {' '}
                 <NavLink href={'/user/' + token} className="nav-link">
@@ -57,34 +56,8 @@ const NavbarComponent = () => {
                   </div>{' '}
                 </NavLink>{' '}
               </NavItem>
-            ) : (
-              <NavItem>
-                <NavLink
-                  target="_blank"
-                  href="https://www.youtube.com/watch?v=wzuTM0cGw24"
-                  className="nav-link"
-                >
-                  <div className="row d-flex flex-column justify-content-center align-items-center">
-                    <FontAwesomeIcon size="lg" icon={faInfo} />
-                    <div>Golden</div>
-                  </div>
-                </NavLink>
-              </NavItem>
             )}{' '}
-            {userSignedIn ? (
-              <NavItem>
-                <NavLink
-                  target="_blank"
-                  href="https://www.youtube.com/watch?v=wzuTM0cGw24"
-                  className="nav-link"
-                >
-                  <div className="row d-flex flex-column justify-content-center align-items-center">
-                    <FontAwesomeIcon size="lg" icon={faInfo} />
-                    <div>Golden</div>
-                  </div>
-                </NavLink>
-              </NavItem>
-            ) : (
+            {!userSignedIn && (
               <>
                 <NavItem>
                   <NavLink href="/entrar" className="nav-link">
