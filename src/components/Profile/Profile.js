@@ -216,12 +216,13 @@ const Profile = (props) => {
         <Form>
           {!userIsSignedIn && (
             <>
+              <h1 className="text-center home-title">GOLDEN</h1>
               <hr className="styled-hr" />{' '}
               <Row>
                 <Col>
                   <FormGroup>
                     <Container className="golden-container">
-                      <Label>GOLDEN (CUPOM)</Label>
+                      <Label>GOLDEN</Label>
                       <Input
                         disabled
                         type="text"
@@ -245,52 +246,62 @@ const Profile = (props) => {
                   </p>
                 </Container>
               </Row>
-              <Row>
-                <Col xs={{ size: 2 }}>
+              <Row className="row-icons">
+                <Col xs={{ size: 1.5 }}>
                   <Container className="icons-container">
                     <TwitterShareButton
-                      url={window.location.href}
-                      title="Utilize este GOLDEN e ganhe descontos!"
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
                       <TwitterIcon size={32} round />
                     </TwitterShareButton>
                   </Container>
                 </Col>
-                <Col xs={{ size: 2 }}>
+                <Col xs={{ size: 1.5 }}>
                   <Container className="icons-container">
                     <FacebookShareButton
-                      url={window.location.href}
-                      title="Utilize este GOLDEN e ganhe descontos!"
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
                       <FacebookIcon size={32} round />
                     </FacebookShareButton>
                   </Container>
                 </Col>
-                <Col xs={{ size: 2 }}>
+                <Col xs={{ size: 1.5 }}>
+                  <Container className="icons-container">
+                    <FacebookMessengerShareButton
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                    >
+                      <FacebookMessengerIcon size={32} round />
+                    </FacebookMessengerShareButton>
+                  </Container>
+                </Col>
+                <Col xs={{ size: 1.5 }}>
                   <Container className="icons-container">
                     <WhatsappShareButton
-                      url={window.location.href}
-                      title="Utilize este GOLDEN e ganhe descontos!"
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
                       <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
                   </Container>
                 </Col>
-                <Col xs={{ size: 2 }}>
+                <Col xs={{ size: 1.5 }}>
                   <Container className="icons-container">
                     <LinkedinShareButton
-                      url={window.location.href}
-                      title="Utilize este GOLDEN e ganhe descontos!"
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
                       <LinkedinIcon size={32} round />
                     </LinkedinShareButton>
                   </Container>
                 </Col>
-                <Col xs={{ size: 2 }}>
+                <Col xs={{ size: 1.5 }}>
                   <Container className="icons-container">
                     <TelegramShareButton
-                      url={window.location.href}
-                      title="Utilize este GOLDEN e ganhe descontos!"
+                      url="https://www.instagram.com/Makesestore/"
+                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
                       <TelegramIcon size={32} round />
                     </TelegramShareButton>
@@ -298,6 +309,21 @@ const Profile = (props) => {
                 </Col>
               </Row>
               <hr className="styled-hr" />{' '}
+              <Row>
+                <Container className="doubt-container">
+                  <p>
+                    Quer saber mais como construir uma renda passiva com a{' '}
+                    <em className="emphasis">GOLDEN</em> ?
+                  </p>
+                  <WhatsappShareButton
+                    url="https://wa.me/5561996995651"
+                    title="Me conte mais sobre a GOLDEN!"
+                    className="whatsapp-share-button"
+                  >
+                    Saber mais!
+                  </WhatsappShareButton>
+                </Container>
+              </Row>
             </>
           )}
           {userIsSignedIn && (
@@ -509,93 +535,97 @@ const Profile = (props) => {
             </>
           )}{' '}
         </Form>
-        <Row>
-          <Container className="doubt-container">
-            <p>
-              Ficou com dúvidas de como{' '}
-              <em className="emphasis">ganhar dinheiro</em> ?
-            </p>
-            <p>Peça ajuda!</p>
-            <WhatsappShareButton
-              url="https://wa.me/5561996995651"
-              title="Me ajude a com a GOLDEN!"
-              className="whatsapp-share-button"
-            >
-              Me ajude!
-            </WhatsappShareButton>
-          </Container>
-        </Row>
-      </Container>
-      <Container className="bottom-section">
-        <Row className="row-icons">
-          <Container className="golden-social-network">
-            <p className="text-white">
-              Compartilhe a <em className="emphasis">GOLDEN</em> com os seus
-              amigos!
-            </p>
-          </Container>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
-              <TwitterShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-            </Container>
-          </Col>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
-              <FacebookShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
-            </Container>
-          </Col>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
-              <FacebookMessengerShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
-              >
-                <FacebookMessengerIcon size={32} round />
-              </FacebookMessengerShareButton>
-            </Container>
-          </Col>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
+        {userIsSignedIn && (
+          <Row>
+            <Container className="doubt-container">
+              <p>
+                Ficou com dúvidas de como{' '}
+                <em className="emphasis">ganhar dinheiro</em> ?
+              </p>
+              <p>Peça ajuda!</p>
               <WhatsappShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                url="https://wa.me/5561996995651"
+                title="Me ajude a com a GOLDEN!"
+                className="whatsapp-share-button"
               >
-                <WhatsappIcon size={32} round />
+                Me ajude!
               </WhatsappShareButton>
             </Container>
-          </Col>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
-              <LinkedinShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
-              >
-                <LinkedinIcon size={32} round />
-              </LinkedinShareButton>
-            </Container>
-          </Col>
-          <Col xs={{ size: 1.5 }}>
-            <Container className="icons-container">
-              <TelegramShareButton
-                url={window.location.href}
-                title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
-              >
-                <TelegramIcon size={32} round />
-              </TelegramShareButton>
-            </Container>
-          </Col>
-        </Row>
+          </Row>
+        )}
       </Container>
+      {userIsSignedIn && (
+        <Container className="bottom-section">
+          <Row className="row-icons">
+            <Container className="golden-social-network">
+              <p className="text-white">
+                Compartilhe a <em className="emphasis">GOLDEN</em> com os seus
+                amigos!
+              </p>
+            </Container>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <TwitterShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <FacebookShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <FacebookMessengerShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <FacebookMessengerIcon size={32} round />
+                </FacebookMessengerShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <WhatsappShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <LinkedinShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <TelegramShareButton
+                  url={window.location.href}
+                  title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
+              </Container>
+            </Col>
+          </Row>
+        </Container>
+      )}
     </React.Fragment>
   );
 };
