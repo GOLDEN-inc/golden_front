@@ -511,11 +511,18 @@ const Profile = (props) => {
         </Form>
         <Row>
           <Container className="doubt-container">
-            <p>Ficou com dúvidas de como ganhar dinheiro?</p>
+            <p>
+              Ficou com dúvidas de como{' '}
+              <em className="emphasis">ganhar dinheiro</em> ?
+            </p>
             <p>Peça ajuda!</p>
-            <button onClick={clickSubmit} className="button1 button1-profile">
+            <WhatsappShareButton
+              url="https://wa.me/5561996995651"
+              title="Me ajude a com a GOLDEN!"
+              className="whatsapp-share-button"
+            >
               Me ajude!
-            </button>
+            </WhatsappShareButton>
           </Container>
         </Row>
       </Container>

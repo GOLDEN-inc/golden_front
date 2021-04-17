@@ -67,3 +67,13 @@
 .row-icons {
   padding-left: 1rem;
 }
+
+.whatsapp-share-button {
+  color: var(--main) !important;
+  background-color: var(--main) !important;
+  color: white !important;
+  padding: 1em 1.5em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  border-radius: 1em !important;
+}
