@@ -1,9 +1,26 @@
-export const getUserByGolden = (golden) => {
+export const getAllUsers = () => {
+  return fetch(`${process.env.REACT_APP_API_URL}/users`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+export const getUserByGolden = (golden, token) => {
   return fetch(`${process.env.REACT_APP_API_URL}/user/${golden}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => {

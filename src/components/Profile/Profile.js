@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import backendService from '../../backendService';
-import { getUserByGolden, updateUserByGolden } from '../../backendService/user';
+import {
+  getUserByGolden,
+  updateUserByGolden,
+  getAllUsers,
+} from '../../backendService/user';
 import { isAuthenticated, getToken } from '../../backendService/auth';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
@@ -93,17 +97,30 @@ const Profile = (props) => {
   // const logoutUserAction = () => dispatch(logoutUser());
 
   useEffect(() => {
-    if (isAuthenticated()) setUserIsSignedIn(true);
+    if (isAuthenticated()) {
+      setUserIsSignedIn(true);
+    }
 
-    getUserByGolden(golden).then((data) => {
-      setUserGolden(data.golden);
-      setUserName(data.name);
-      setUserEmail(data.email);
-      setUserPix(data.pix);
-      setUserWpp(data.wpp);
-      setUserWithdraw(data.withdraw);
-      setUserBalance(data.balance);
-    });
+    try {
+      const token = JSON.parse(getToken()).token;
+
+      getUserByGolden(golden, token).then((data) => {
+        setUserGolden(data.golden);
+        setUserName(data.name);
+        setUserEmail(data.email);
+        setUserPix(data.pix);
+        setUserWpp(data.wpp);
+        setUserWithdraw(data.withdraw);
+        setUserBalance(data.balance);
+      });
+    } catch (e) {
+      setUserIsSignedIn(false);
+      getAllUsers().then((data) => {
+        let user_data = data.users.find((element) => element.golden === golden);
+        setUserGolden(user_data.golden);
+        setUserName(user_data.name);
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -113,6 +130,126 @@ const Profile = (props) => {
 
   if (userGolden === undefined) {
     return <Alert color="warning">Carregando...</Alert>;
+  }
+
+  if (userEmail === undefined || userIsSignedIn === false) {
+    return (
+      <React.Fragment>
+        <br />
+        <br />
+        <br />
+        <NavComponent />
+        <Form>
+          <h1 className="text-center home-title">GOLDEN</h1>
+          <hr className="styled-hr" />
+          <h4 className="text-center">{userName}</h4>
+          <br />
+          <Row>
+            <Col>
+              <FormGroup>
+                <Container className="golden-container">
+                  <Label>GOLDEN</Label>
+                  <Input disabled type="text" placeholder={`${userGolden}`} />
+                </Container>
+              </FormGroup>
+            </Col>
+            <Col>
+              <Container className="qrcode-container">
+                <QRCode value={window.location.href} />
+              </Container>
+            </Col>
+          </Row>
+          <hr className="styled-hr" />{' '}
+          <Row>
+            <Container className="golden-social-network">
+              <p>
+                Compartilhe este <em className="emphasis">CUPOM</em> nas redes
+                sociais!
+              </p>
+            </Container>
+          </Row>
+          <Row className="row-icons">
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <TwitterShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <FacebookShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <FacebookMessengerShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <FacebookMessengerIcon size={32} round />
+                </FacebookMessengerShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <WhatsappShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <LinkedinShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
+              </Container>
+            </Col>
+            <Col xs={{ size: 1.5 }}>
+              <Container className="icons-container">
+                <TelegramShareButton
+                  url="https://www.instagram.com/Makesestore/"
+                  title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
+              </Container>
+            </Col>
+          </Row>
+          <hr className="styled-hr" />{' '}
+          <Row>
+            <Container className="doubt-container">
+              <p>
+                Quer saber mais como construir uma{' '}
+                <em className="emphasis">renda passiva</em> com a{' '}
+                <em className="emphasis">GOLDEN</em> ?
+              </p>
+              <WhatsappShareButton
+                url="https://wa.me/5561996995651"
+                title="Me conte mais sobre a GOLDEN!"
+                className="whatsapp-share-button"
+              >
+                Saber mais!
+              </WhatsappShareButton>
+            </Container>
+          </Row>
+        </Form>
+      </React.Fragment>
+    );
   }
 
   const clickSubmit = (e) => {
@@ -163,13 +300,6 @@ const Profile = (props) => {
           </Nav>
         </Navbar>
       )}
-      {!userIsSignedIn && (
-        <>
-          <br />
-          <br />
-          <br />
-        </>
-      )}
       <NavComponent />
       <Container>
         {/* <Row>
@@ -214,118 +344,6 @@ const Profile = (props) => {
           </>
         )}
         <Form>
-          {!userIsSignedIn && (
-            <>
-              <h1 className="text-center home-title">GOLDEN</h1>
-              <hr className="styled-hr" />{' '}
-              <Row>
-                <Col>
-                  <FormGroup>
-                    <Container className="golden-container">
-                      <Label>GOLDEN</Label>
-                      <Input
-                        disabled
-                        type="text"
-                        placeholder={`${userGolden}`}
-                      />
-                    </Container>
-                  </FormGroup>
-                </Col>
-                <Col>
-                  <Container className="qrcode-container">
-                    <QRCode value={window.location.href} />
-                  </Container>
-                </Col>
-              </Row>
-              <hr className="styled-hr" />{' '}
-              <Row>
-                <Container className="golden-social-network">
-                  <p>
-                    Compartilhe este <em className="emphasis">CUPOM</em> nas
-                    redes sociais!
-                  </p>
-                </Container>
-              </Row>
-              <Row className="row-icons">
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <TwitterShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <TwitterIcon size={32} round />
-                    </TwitterShareButton>
-                  </Container>
-                </Col>
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <FacebookShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <FacebookIcon size={32} round />
-                    </FacebookShareButton>
-                  </Container>
-                </Col>
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <FacebookMessengerShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <FacebookMessengerIcon size={32} round />
-                    </FacebookMessengerShareButton>
-                  </Container>
-                </Col>
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <WhatsappShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <WhatsappIcon size={32} round />
-                    </WhatsappShareButton>
-                  </Container>
-                </Col>
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <LinkedinShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <LinkedinIcon size={32} round />
-                    </LinkedinShareButton>
-                  </Container>
-                </Col>
-                <Col xs={{ size: 1.5 }}>
-                  <Container className="icons-container">
-                    <TelegramShareButton
-                      url="https://www.instagram.com/Makesestore/"
-                      title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
-                    >
-                      <TelegramIcon size={32} round />
-                    </TelegramShareButton>
-                  </Container>
-                </Col>
-              </Row>
-              <hr className="styled-hr" />{' '}
-              <Row>
-                <Container className="doubt-container">
-                  <p>
-                    Quer saber mais como construir uma renda passiva com a{' '}
-                    <em className="emphasis">GOLDEN</em> ?
-                  </p>
-                  <WhatsappShareButton
-                    url="https://wa.me/5561996995651"
-                    title="Me conte mais sobre a GOLDEN!"
-                    className="whatsapp-share-button"
-                  >
-                    Saber mais!
-                  </WhatsappShareButton>
-                </Container>
-              </Row>
-            </>
-          )}
           {userIsSignedIn && (
             <>
               <hr className="styled-hr" />{' '}

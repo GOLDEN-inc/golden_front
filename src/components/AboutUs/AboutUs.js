@@ -49,8 +49,8 @@ const AboutUs = () => {
           <Row>
             <Col>
               <SectionTitle
-                title="Indique. Conheça. Ganhe Descontos."
-                desc="GOLDEN"
+                title="Construa uma renda passiva com a GOLDEN"
+                desc="Indique. Conheça. Ganhe."
               />
             </Col>
           </Row>
