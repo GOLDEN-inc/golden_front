@@ -232,19 +232,19 @@ const Profile = (props) => {
           </Row>
           <hr className="styled-hr" />{' '}
           <Row>
-            <Container className="doubt-container">
+            <Container className="doubt-container doubt-container-no-signin">
               <p>
                 Quer saber mais como construir uma{' '}
                 <em className="emphasis">renda passiva</em> com a{' '}
                 <em className="emphasis">GOLDEN</em> ?
               </p>
-              <WhatsappShareButton
-                url="https://wa.me/5561996995651"
-                title="Me conte mais sobre a GOLDEN!"
+              <br />
+              <a
                 className="whatsapp-share-button"
+                href="https://wa.me/5561996995651?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20a%20ganhar%20dinheiro%20agora%21%20Como%20eu%20fa%C3%A7o%3F"
               >
                 Saber mais!
-              </WhatsappShareButton>
+              </a>
             </Container>
           </Row>
         </Form>

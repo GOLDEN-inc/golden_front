@@ -35,6 +35,11 @@
   text-align: center;
 }
 
+.doubt-container-no-signin {
+  margin-bottom: 3rem;
+  padding-bottom: 5rem;
+}
+
 .money-disponivel {
   color: var(--green);
 }
