@@ -243,7 +243,7 @@ const Profile = (props) => {
               <br />
               <a
                 className="whatsapp-share-button"
-                href="https://wa.me/5561992820353?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20a%20ganhar%20dinheiro%20agora%21%20Como%20eu%20fa%C3%A7o%3F"
+                href="https://wa.me/5561992820353?text=Oi%2C%20GOLDEN%21%20%0AQuero%20come%C3%A7ar%20a%20ganhar%20dinheiro%20agora%21%20Como%20eu%20fa%C3%A7o%3F"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -350,7 +350,7 @@ const Profile = (props) => {
                 <br />
                 <a
                   className="whatsapp-share-button"
-                  href="https://wa.me/5561992820353text=Ola%21%20Quero%20retirar%20o%20meu%20saldo%21"
+                  href="https://wa.me/5561992820353text=Oi%2C%20GOLDEN%21%20%0AQuero%20retirar%20meu%20dinheiro."
                   target="_blank"
                   rel="noreferrer"
                 >
