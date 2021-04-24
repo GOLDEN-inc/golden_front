@@ -133,7 +133,7 @@ const SignUp = () => {
             setSignInSuccess(true);
             setTimeout(() => {
               setRedirect(true);
-            }, 2500);
+            }, 1500);
           }
         });
 
