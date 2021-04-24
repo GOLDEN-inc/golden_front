@@ -350,7 +350,7 @@ const Profile = (props) => {
                 <br />
                 <a
                   className="whatsapp-share-button"
-                  href="https://wa.me/Ola%21%20Quero%20retirar%20o%20meu%20saldo%21"
+                  href="https://wa.me/5561992820353text=Ola%21%20Quero%20retirar%20o%20meu%20saldo%21"
                   target="_blank"
                   rel="noreferrer"
                 >
