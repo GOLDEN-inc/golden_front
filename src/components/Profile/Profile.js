@@ -175,7 +175,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <TwitterIcon size={32} round />
+                  <TwitterIcon size={28} round />
                 </TwitterShareButton>
               </Container>
             </Col>
@@ -185,7 +185,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <FacebookIcon size={32} round />
+                  <FacebookIcon size={28} round />
                 </FacebookShareButton>
               </Container>
             </Col>
@@ -195,7 +195,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <FacebookMessengerIcon size={32} round />
+                  <FacebookMessengerIcon size={28} round />
                 </FacebookMessengerShareButton>
               </Container>
             </Col>
@@ -205,7 +205,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <WhatsappIcon size={32} round />
+                  <WhatsappIcon size={28} round />
                 </WhatsappShareButton>
               </Container>
             </Col>
@@ -215,7 +215,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <LinkedinIcon size={32} round />
+                  <LinkedinIcon size={28} round />
                 </LinkedinShareButton>
               </Container>
             </Col>
@@ -225,7 +225,7 @@ const Profile = (props) => {
                   url="https://www.instagram.com/Makesestore/"
                   title={`Utilize este CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                 >
-                  <TelegramIcon size={32} round />
+                  <TelegramIcon size={28} round />
                 </TelegramShareButton>
               </Container>
             </Col>
@@ -242,6 +242,8 @@ const Profile = (props) => {
               <a
                 className="whatsapp-share-button"
                 href="https://wa.me/5561996995651?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20a%20ganhar%20dinheiro%20agora%21%20Como%20eu%20fa%C3%A7o%3F"
+                target="_blank"
+                rel="noreferrer"
               >
                 Saber mais!
               </a>
@@ -265,7 +267,7 @@ const Profile = (props) => {
         setDataUpdateSuccess(true);
         setTimeout(() => {
           setDataUpdateSuccess(false);
-        }, 3000);
+        }, 2800);
         backendService.updateAuthenticate(data.user.golden, () => {
           props.history.replace(`./${userGolden}`);
         });
@@ -393,7 +395,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <TwitterIcon size={32} round />
+                      <TwitterIcon size={28} round />
                     </TwitterShareButton>
                   </Container>
                 </Col>
@@ -403,7 +405,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <FacebookIcon size={32} round />
+                      <FacebookIcon size={28} round />
                     </FacebookShareButton>
                   </Container>
                 </Col>
@@ -413,7 +415,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <FacebookMessengerIcon size={32} round />
+                      <FacebookMessengerIcon size={28} round />
                     </FacebookMessengerShareButton>
                   </Container>
                 </Col>
@@ -423,7 +425,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <WhatsappIcon size={32} round />
+                      <WhatsappIcon size={28} round />
                     </WhatsappShareButton>
                   </Container>
                 </Col>
@@ -433,7 +435,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <LinkedinIcon size={32} round />
+                      <LinkedinIcon size={28} round />
                     </LinkedinShareButton>
                   </Container>
                 </Col>
@@ -443,7 +445,7 @@ const Profile = (props) => {
                       url="https://www.instagram.com/Makesestore/"
                       title={`Utilize o meu CUPOM - ${golden} - e ganhe 5% de desconto na loja MAKESE`}
                     >
-                      <TelegramIcon size={32} round />
+                      <TelegramIcon size={28} round />
                     </TelegramShareButton>
                   </Container>
                 </Col>
@@ -561,13 +563,17 @@ const Profile = (props) => {
                 <em className="emphasis">ganhar dinheiro</em> ?
               </p>
               <p>Peça ajuda!</p>
-              <WhatsappShareButton
-                url="https://wa.me/5561996995651"
-                title="Me ajude a com a GOLDEN!"
+              <br />
+              <a
                 className="whatsapp-share-button"
+                href="https://wa.me/5561996995651text=Me%20ajude%20com%20a%20GOLDEN%21"
+                target="_blank"
+                rel="noreferrer"
               >
                 Me ajude!
-              </WhatsappShareButton>
+              </a>
+              <br />
+              <br />
             </Container>
           </Row>
         )}
@@ -587,7 +593,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <TwitterIcon size={32} round />
+                  <TwitterIcon size={28} round />
                 </TwitterShareButton>
               </Container>
             </Col>
@@ -597,7 +603,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <FacebookIcon size={32} round />
+                  <FacebookIcon size={28} round />
                 </FacebookShareButton>
               </Container>
             </Col>
@@ -607,7 +613,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <FacebookMessengerIcon size={32} round />
+                  <FacebookMessengerIcon size={28} round />
                 </FacebookMessengerShareButton>
               </Container>
             </Col>
@@ -617,7 +623,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <WhatsappIcon size={32} round />
+                  <WhatsappIcon size={28} round />
                 </WhatsappShareButton>
               </Container>
             </Col>
@@ -627,7 +633,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <LinkedinIcon size={32} round />
+                  <LinkedinIcon size={28} round />
                 </LinkedinShareButton>
               </Container>
             </Col>
@@ -637,7 +643,7 @@ const Profile = (props) => {
                   url={window.location.href}
                   title="Conheça o meu perfil da GOLDEN! Uma empresa que me paga por indicar experiências."
                 >
-                  <TelegramIcon size={32} round />
+                  <TelegramIcon size={28} round />
                 </TelegramShareButton>
               </Container>
             </Col>
