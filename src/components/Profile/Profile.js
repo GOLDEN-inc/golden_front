@@ -343,6 +343,21 @@ const Profile = (props) => {
                 </Row>
               </Col>
             </Row>
+            <Row>
+              <Container className="doubt-container">
+                <br />
+                <a
+                  className="whatsapp-share-button"
+                  href="https://wa.me/Ola%21%20Quero%20retirar%20o%20meu%20saldo%21"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Retirar o meu dinheiro
+                </a>
+                <br />
+                <br />
+              </Container>
+            </Row>
           </>
         )}
         <Form>
