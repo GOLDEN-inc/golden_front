@@ -175,7 +175,7 @@ const SignUp = () => {
               <img className="logo-main" src={golden_img} alt="Logo" />
             </Link>
             <h1 className="company-name">GOLDEN</h1>
-            <p>Indicou. Comprou. Ganhou.</p>
+            <p>Indique. Conheça. Ganhe.</p>
           </Container>
         </Col>
         <Col sm="12" lg="6">

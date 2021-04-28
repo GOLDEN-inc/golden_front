@@ -89,6 +89,7 @@ const Login = () => {
               <img className="logo-main" src={golden} alt="Logo" />
             </Link>
             <h1 className="main-title-login">GOLDEN</h1>
+            <p>Indique. Conheça. Ganhe.</p>
             <Alert
               style={{
                 display: errorMessage ? '' : 'none',
