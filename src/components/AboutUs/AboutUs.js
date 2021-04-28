@@ -82,7 +82,7 @@ const AboutUs = () => {
                 Compartilhe a loja <em className="emphasis">MAKESE</em> em suas
                 redes sociais - utilizando a{' '}
                 <em className="emphasis">GOLDEN</em> - e ganhe{' '}
-                <em className="emphasis">10%</em> de comissão no valor{' '}
+                <em className="emphasis">comissão</em> no valor{' '}
                 <em className="emphasis">TOTAL</em> da compra
               </CardText>
               <a
