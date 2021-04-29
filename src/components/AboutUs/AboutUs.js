@@ -15,7 +15,7 @@ import {
 } from 'reactstrap';
 
 import makese from '../../images/makese.jpg';
-import golden_logo from '../../images/golden_logo_rounded.jpg';
+import golden_logo from '../../images/golden_logo_rounded_black.jpg';
 import arrow from '../../images/arrow-down-white.png';
 import instructions from '../../images/instructions.png';
 
