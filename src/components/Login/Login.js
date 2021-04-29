@@ -10,7 +10,7 @@ import backendService from '../../backendService';
 import './Login.css';
 
 import { Alert, Container, Col, Form, FormGroup, Input, Row } from 'reactstrap';
-import golden from '../../images/golden_logo_rounded.png';
+import golden from '../../images/golden_logo_rounded.jpg';
 
 const Login = () => {
   // * Login component

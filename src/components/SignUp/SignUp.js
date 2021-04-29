@@ -19,7 +19,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import golden_img from '../../images/golden_logo_rounded.png';
+import golden_img from '../../images/golden_logo_rounded.jpg';
 import './SignUp.css';
 
 const SignUp = () => {
