@@ -14,6 +14,8 @@ import {
   Jumbotron,
 } from 'reactstrap';
 
+import { Link } from 'react-scroll';
+
 import makese from '../../images/makese.jpg';
 import golden_logo from '../../images/golden_logo_rounded_black.jpg';
 import arrow from '../../images/arrow-down-white.png';
@@ -34,17 +36,19 @@ const AboutUs = () => {
           <img src={golden_logo} alt="Logo GOLDEN" />
         </div>
         <div className="text-center arrow">
-          <img
-            src={arrow}
-            alt="continue"
-            style={{
-              height: '2rem',
-            }}
-          />
+          <Link to="about" spy={true} smooth={true}>
+            <img
+              src={arrow}
+              alt="continue"
+              style={{
+                height: '2rem',
+              }}
+            />
+          </Link>
         </div>
       </Jumbotron>
 
-      <React.Fragment>
+      <div id="about">
         <Container className="main-text-container">
           <Row>
             <Col>
@@ -65,7 +69,7 @@ const AboutUs = () => {
             </Container>
           </Row>
         </Container>
-      </React.Fragment>
+      </div>
       <section className="section bg-main" id="process">
         <Container className="container-explanation">
           <h3 className="title-explanation">Empresas Parceiras</h3>

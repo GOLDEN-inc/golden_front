@@ -27,6 +27,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-scroll": "^1.8.2",
     "react-share": "^4.4.0",
     "react-text-rotator": "^1.1.0",
     "reactstrap": "^8.9.0",
