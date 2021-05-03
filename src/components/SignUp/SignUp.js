@@ -61,6 +61,8 @@ const SignUp = () => {
 
   const [passwordShown, setPasswordShown] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   // *Aldo Caamal - Redux
   // const dispatch = useDispatch();
   // const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
@@ -117,6 +119,8 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     if (validateFields()) {
       await backendService
         .signup(email, password, name, golden, pix, cell)
@@ -130,6 +134,7 @@ const SignUp = () => {
             setGolden('');
             setCell('');
             setPix('');
+            setLoading(false);
             setSignInSuccess(true);
             setTimeout(() => {
               setRedirect(true);
@@ -399,6 +404,7 @@ const SignUp = () => {
                 </FormGroup>
               </Col>
 
+              {loading && <Alert color="warning">Carregando...</Alert>}
               <button className="button1 button-singup">Criar</button>
             </Form>
             <Link className="login-link" to="/entrar">
