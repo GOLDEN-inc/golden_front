@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import backendService from '../../backendService';
 
-// *Aldo Caamal - Redux
-// import {useSelector, useDispatch} from "react-redux";
-// import {createUser} from "../../actions/signup";
-
 import {
   Alert,
   Container,
@@ -62,10 +58,6 @@ const SignUp = () => {
   const [passwordShown, setPasswordShown] = useState(false);
 
   const [loading, setLoading] = useState(false);
-
-  // *Aldo Caamal - Redux
-  // const dispatch = useDispatch();
-  // const createUserAction = (email, password, name, golden, pix, cell) => dispatch(createUser(email, password, name, golden, pix, cell));
 
   useEffect(() => {
     //
@@ -125,7 +117,9 @@ const SignUp = () => {
       await backendService
         .signup(email, password, name, golden, pix, cell)
         .then((data) => {
+          console.log('==>', data);
           if (data.error) {
+            setLoading(false);
             setErrorMessage(data.error);
           } else {
             setName('');
@@ -164,6 +158,7 @@ const SignUp = () => {
       return true;
     }
     setError(true);
+    setLoading(false);
     return false;
   };
 
