@@ -278,7 +278,7 @@ const SignUp = () => {
                       placeholder="Nome de usuário: usuario123"
                       value={golden}
                       onChange={(event) =>
-                        setGolden(event.target.value.toLowerCase())
+                        setGolden(event.target.value.trim().toLowerCase())
                       }
                     />
                   ) : (
