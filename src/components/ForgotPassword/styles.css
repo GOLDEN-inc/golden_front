@@ -1,0 +1,11 @@
+.success-message {
+  color: var(--main);
+}
+
+.warning-message {
+  color: var(--red);
+}
+
+.login-link {
+  color: var(--main);
+}

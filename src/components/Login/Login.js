@@ -151,6 +151,10 @@ const Login = () => {
             <Link className="registrar-link" to="/registrar">
               Cadastre-se
             </Link>
+            <br/>
+            <Link className="registrar-link" to="/forgot-password">
+              Esqueci a minha senha
+            </Link>
           </Container>
         </Col>
       </Row>

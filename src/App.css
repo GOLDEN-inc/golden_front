@@ -244,3 +244,7 @@ label input {
   font-weight: bold;
   font-style: normal;
 }
+
+span {
+  color: var(--main);
+}

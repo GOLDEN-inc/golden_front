@@ -400,7 +400,7 @@ const SignUp = () => {
               </Col>
 
               {loading && <Alert color="warning">Carregando...</Alert>}
-              <button className="button1 button-singup">Criar</button>
+              <button className="button1 button-signup">Criar</button>
             </Form>
             <Link className="login-link" to="/entrar">
               Entrar
